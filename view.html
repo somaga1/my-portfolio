@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winifred Achinike | Professional Virtual Assistant & Administrative Support</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        accent: '#FF6B6B',
+                        success: '#51CF66',
+                        warning: '#FFD43B',
+                        brand: '#FF8C42',
+                        brandDark: '#2D3E5F',
+                    },
+                    fontFamily: {
+                        'display': ['system-ui', '-apple-system', 'sans-serif'],
+                        'body': ['system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .screenshot-img {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .screenshot-img:hover {
+            border-color: #5D5CDE;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(93, 92, 222, 0.15);
+        }
+        .tool-icon {
+            transition: all 0.3s ease;
+        }
+        .tool-icon:hover {
+            transform: translateY(-2px);
+        }
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+        #imageModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.95);
+            backdrop-filter: blur(5px);
+        }
+        #imageModal.show {
+            display: block;
+        }
+        .modal-content {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding-top: 80px;
+        }
+        .modal-description {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            z-index: 1001;
+        }
+        .modal-tap-hint {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            z-index: 1001;
+        }
+        .evidence-section {
+            background: #f8fafc;
+            border-left: 4px solid #5D5CDE;
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body class="font-body bg-white text-gray-900 transition-colors duration-300">
+    
+    <!-- Image Modal -->
+    <div id="imageModal" onclick="closeModal()">
+        <div class="modal-description" id="modalDescription"></div>
+        <img id="modalImage" class="modal-content" src="" alt="Screenshot">
+        <div class="modal-tap-hint">Tap anywhere to close</div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+        <div class="relative z-10 text-center text-white px-6">
+            <div class="glass-effect rounded-3xl p-8 md:p-12 max-w-5xl mx-auto">
+                <!-- Profile Image -->
+                <div class="flex justify-center mb-6">
+                    <img src="https://pfst.cf2.poecdn.net/base/image/b079e56247c2a1a9e29ffe2241afacfb031cc48c29952d130644186b71de6f5c?w=1080&h=1080" alt="Winifred Achinike" class="profile-image">
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    Winifred Achinike
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-light mb-8 text-blue-100">
+                    Professional Virtual Assistant
+                </h2>
+                <p class="text-lg font-medium mb-8 text-blue-100 max-w-3xl mx-auto">
+                    Providing comprehensive administrative support, process automation, and business optimization services to help entrepreneurs and businesses focus on growth while I handle the operations.
+                </p>
+                <div class="flex flex-wrap justify-center gap-3 mb-8">
+                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm font-medium">Administrative Support</span>
+                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm font-medium">Customer Service</span>
+                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm font-medium">Project Management</span>
+                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm font-medium">Content Creation</span>
+                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm font-medium">Lead Generation</span>
+                    <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm font-medium">Email Marketing</span>
+                </div>
+                <button onclick="scrollToSection('services')" class="bg-white text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105">
+                    View My Services
+                </button>
+            </div>
+        </div>
+        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce z-10 cursor-pointer hover:scale-110 transition-all duration-300" onclick="scrollToSection('services')">
+            <i data-lucide="chevron-down" class="w-8 h-8 text-white opacity-80 hover:opacity-100"></i>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white bg-opacity-95 backdrop-blur-sm border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="font-bold text-xl">Winifred Achinike</div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#services" class="hover:text-primary transition-colors">Services</a>
+                    <a href="#about" class="hover:text-primary transition-colors">About</a>
+                    <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Overview -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">Virtual Assistant Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    I provide end-to-end administrative support that allows you to focus on strategic business growth while I handle the day-to-day operations with precision and efficiency.
+                </p>
+            </div>
+
+            <!-- Core Values Grid -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center">
+                        <i data-lucide="shield-check" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Reliable & Professional</h3>
+                    <p class="text-gray-600">Consistent, high-quality support you can depend on</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-success rounded-full flex items-center justify-center">
+                        <i data-lucide="zap" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Efficient & Automated</h3>
+                    <p class="text-gray-600">Streamlined processes that save time and reduce errors</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-accent rounded-full flex items-center justify-center">
+                        <i data-lucide="trending-up" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Growth-Focused</h3>
+                    <p class="text-gray-600">Solutions designed to scale with your business</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. Administrative Support -->
+    <section class="py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="service-card bg-white rounded-2xl p-8 shadow-xl mb-12">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mr-4">
+                        <i data-lucide="file-text" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">Administrative Support</h3>
+                        <p class="text-gray-600">Core administrative tasks that keep your business running smoothly</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 mb-8 text-lg">
+                    I handle all aspects of administrative support including email management, calendar coordination, data entry, document preparation, and general administrative tasks. Using tools like Google Workspace, Microsoft Office, and Notion, I ensure your business operations run efficiently while maintaining high standards of organization and professionalism.
+                </p>
+
+                <!-- Email Management Subservice -->
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold mb-4 text-blue-800">📧 Email Management</h4>
+                    <p class="text-gray-600 mb-4">Professional email organization, response management, and automated filtering systems.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Inbox organization & filtering setup</li>
+                        <li>• Professional email responses and templates</li>
+                        <li>• Follow-up scheduling and automation</li>
+                        <li>• Email signature and branding setup</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+
+                        <p class="text-sm text-gray-600 mb-3">Organized mailbox sample systems I've implemented:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="relative">
+                                <img 
+                                    src="filter.png" 
+                                    alt="Email filter setup"
+                                    class="screenshot-img"
+                                    onclick="openModal('Filters Sort Incoming Emails Automatically:', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Filters Sort Incoming Emails Automatically:</p>
+                            </div>
+                            <div class="relative">
+                                <img 
+                                    src="mailbox.png" 
+                                    alt="Professional email template design"
+                                    class="screenshot-img"
+                                    onclick="openModal('Results in an organized and efficient mailbox', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Results in an organized and efficient mailbox system</p>
+                            </div>
+                        </div>
+                        <br>
+
+                        <p class="text-sm text-gray-600 mb-3">Email automation and management systems I've implemented using Mailchimp:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="relative">
+                                <img 
+                                    src="sequence.png" 
+                                    alt="Email automation sequence setup"
+                                    class="screenshot-img"
+                                    onclick="openModal('Professional email automation sequence with timed delivery and personalization', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Automated email sequence with professional templates and scheduling</p>
+                            </div>
+                            <div class="relative">
+                                <img 
+                                    src="email1-LAPTOP-F8N32GGE.png" 
+                                    alt="Professional email template design"
+                                    class="screenshot-img"
+                                    onclick="openModal('Professional email template with branding and clear call-to-action', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Professional email template with personalization and branding</p>
+                            </div>
+                        </div>
+                        <br>
+
+                        <p class="text-sm text-gray-600 mb-3">Professional email templates</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="relative">
+                                <img 
+                                    src="correspondence2.png" 
+                                    alt="Email automation sequence setup"
+                                    class="screenshot-img"
+                                    onclick="openModal('Professional email template', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Meeting reschedule</p>
+                            </div>
+                            <div class="relative">
+                                <img 
+                                    src="correspondence3.png" 
+                                    alt="Professional email template design"
+                                    class="screenshot-img"
+                                    onclick="openModal('Professional email template with branding and clear call-to-action', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Follow up</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calendar Management Subservice -->
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold mb-4 text-green-800">📅 Calendar Management</h4>
+                    <p class="text-gray-600 mb-4">Professional scheduling, appointment coordination, and calendar optimization.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Appointment scheduling and coordination</li>
+                        <li>• Meeting preparation and agenda creation</li>
+                        <li>• Calendar optimization and time blocking</li>
+                        <li>• Automated reminder systems</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600 mb-3">Calendar management and scheduling systems I've created:</p>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="relative">
+                                <img 
+                                    src="gcal.png" 
+                                    alt="Google Calendar content planning system"
+                                    class="screenshot-img"
+                                    onclick="openModal('Comprehensive Google Calendar system with content planning and scheduling', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Strategic content calendar with detailed planning and coordination</p>
+                            </div>
+                            <div class="relative">
+                                <img 
+                                    src="calbooking.png" 
+                                    alt="Professional booking interface"
+                                    class="screenshot-img"
+                                    onclick="openModal('User-friendly booking interface with automated scheduling', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Professional booking interface with available time slots</p>
+                            </div>
+                            <div class="relative">
+                                <img 
+                                    src="consultation.png" 
+                                    alt="Calendar event with meeting details"
+                                    class="screenshot-img"
+                                    onclick="openModal('Detailed calendar event with meeting preparation and coordination', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Professional calendar for consulting director</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://calendar.google.com/calendar/u/0?cid=MjFkNWJiMDI5ZmMzZTYxZDkzNDZhMTI0ZTk2NzY4MWZhMGIzYTYxZGFmM2NkMjc5NTQxMjM1ZDgxNWQ4NmEzYkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" class="inline-flex items-center text-primary hover:text-primary-dark transition-colors">
+                                <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                                View Live Calendar System
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Entry & Management Subservice -->
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold mb-4 text-purple-800">📊 Data Entry & Management</h4>
+                    <p class="text-gray-600 mb-4">Accurate data processing, organization, and reporting systems.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Accurate data entry and validation</li>
+                        <li>• Database management and organization</li>
+                        <li>• Report generation and analysis</li>
+                        <li>• File organization and digital archiving</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600 mb-3">Data management systems I've implemented:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="relative">
+                                <img 
+                                    src="sheets.png" 
+                                    alt="Comprehensive data tracking spreadsheet"
+                                    class="screenshot-img"
+                                    onclick="openModal('Professional data tracking spreadsheet with color-coded status and analytics', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Lead tracking spreadsheet with color-coded status and performance metrics</p>
+                            </div>
+                            <div class="relative">
+                                <img 
+                                    src="hubspot.png" 
+                                    alt="CRM data management system"
+                                    class="screenshot-img"
+                                    onclick="openModal('Professional CRM data management with detailed contact tracking', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">CRM contact management with detailed activity timeline</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://docs.google.com/spreadsheets/d/1KqPwKCEnycwjAbjNRM_ZDe5qi2Lj5kroLE3RaDwWzYw/edit?usp=drive_link" target="_blank" class="inline-flex items-center text-primary hover:text-primary-dark transition-colors">
+                                <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                                View Live Data Tracking System
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Document Preparation Subservice -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-bold mb-4 text-orange-800">📄 Document Preparation</h4>
+                    <p class="text-gray-600 mb-4">Professional document creation, formatting, and template development.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Professional document formatting and design</li>
+                        <li>• Template creation for recurring documents</li>
+                        <li>• Presentation design and content organization</li>
+                        <li>• Contract and proposal preparation</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600">Professional document creation and template systems (examples being prepared)</p>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="font-semibold mb-4 text-gray-700">🛠️ Tools & Platforms:</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://www.google.com/favicon.ico" alt="Google Workspace" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Google Workspace</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://res.cdn.office.net/assets/mail/favicon-57c531b748b9.ico" alt="Microsoft Office" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Microsoft Office</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://www.notion.so/images/favicon.ico" alt="Notion" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Notion</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://airtable.com/images/favicon/baymax/favicon-32x32.png" alt="Airtable" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Airtable</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Customer Service & Communication -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="service-card bg-white rounded-2xl p-8 shadow-xl mb-12">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-accent rounded-lg flex items-center justify-center mr-4">
+                        <i data-lucide="headphones" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">Customer Service & Communication</h3>
+                        <p class="text-gray-600">Professional customer support and communication management</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 mb-8 text-lg">
+                    I provide exceptional customer service through multiple channels including live chat, email support, phone handling, and social media management. Using platforms like Zendesk, Intercom, and Freshdesk, I ensure every customer interaction reflects your brand's professionalism and commitment to service excellence.
+                </p>
+
+                <!-- Live Chat Support -->
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold mb-4 text-red-800">💬 Live Chat Support</h4>
+                    <p class="text-gray-600 mb-4">Real-time customer assistance and multi-channel support management.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Real-time customer assistance and problem resolution</li>
+                        <li>• Multi-channel support coordination</li>
+                        <li>• Issue escalation protocols and management</li>
+                        <li>• Response time optimization and tracking</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600">Professional live chat support systems (examples being prepared)</p>
+                    </div>
+                </div>
+
+                <!-- Email & Phone Support -->
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold mb-4 text-blue-800">📞 Email & Phone Support</h4>
+                    <p class="text-gray-600 mb-4">Professional call handling and comprehensive email ticket management.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Professional call handling and message taking</li>
+                        <li>• Email ticket management and resolution</li>
+                        <li>• Customer follow-up and satisfaction tracking</li>
+                        <li>• Support documentation and knowledge base creation</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600">Email support templates and phone handling protocols (examples being prepared)</p>
+                    </div>
+                </div>
+
+                <!-- Social Media Customer Service -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-bold mb-4 text-green-800">📱 Social Media Customer Service</h4>
+                    <p class="text-gray-600 mb-4">Community engagement and social media inquiry management.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Community engagement and response management</li>
+                        <li>• Social media inquiry handling</li>
+                        <li>• Brand reputation management</li>
+                        <li>• Crisis communication protocols</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600 mb-3">Social media management and customer engagement:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="relative">
+                                <img 
+                                    src="Planner.png" 
+                                    alt="Social media management dashboard"
+                                    class="screenshot-img"
+                                    onclick="openModal('Professional social media management and engagement tracking', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Social media content planning and engagement management</p>
+                            </div>
+                            <div class="relative">
+                                <img 
+                                    src="preview.png" 
+                                    alt="Social media customer engagement"
+                                    class="screenshot-img"
+                                    onclick="openModal('Professional social media post with customer engagement elements', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Social media post with customer engagement strategy</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="font-semibold mb-4 text-gray-700">🛠️ Tools & Platforms:</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://d1eipm3vz40hy0.cloudfront.net/images/p-favicons/favicon-16x16.png" alt="Zendesk" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Zendesk</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://static.intercomassets.com/assets/favicon-7a85357e5cea28470c14540bfe8b5b4c99d38d8e4e955ed0b75bfa0dbbc10915.ico" alt="Intercom" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Intercom</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://www.freshworks.com/static-assets/favicon/favicon-32x32.png" alt="Freshdesk" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Freshdesk</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://slack.com/favicon.ico" alt="Slack" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Slack</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Project Management & Organization -->
+    <section class="py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="service-card bg-white rounded-2xl p-8 shadow-xl mb-12">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-success rounded-lg flex items-center justify-center mr-4">
+                        <i data-lucide="kanban-square" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">Project Management & Organization</h3>
+                        <p class="text-gray-600">Structured workflows and comprehensive project coordination</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 mb-8 text-lg">
+                    I use ClickUp, Notion, Asana, and Monday.com to create structured workflows and maintain project visibility across all client work. My approach ensures deadlines are met, resources are optimized, and stakeholders stay informed throughout the project lifecycle.
+                </p>
+
+                <!-- Task Management -->
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold mb-4 text-blue-800">📋 Task Management & Planning</h4>
+                    <p class="text-gray-600 mb-4">Comprehensive project breakdown, task assignment, and progress tracking.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Project breakdown and strategic planning</li>
+                        <li>• Task assignment and deadline management</li>
+                        <li>• Progress monitoring and status updates</li>
+                        <li>• Resource allocation and optimization</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600 mb-3">Project management systems I've implemented:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="relative">
+                                <img 
+                                    src="board.png" 
+                                    alt="ClickUp project board with organized workflows"
+                                    class="screenshot-img"
+                                    onclick="openModal('Comprehensive ClickUp board with organized project lists and workflow management', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">ClickUp board with organized project lists and workflow management</p>
+                            </div>
+                            <div class="relative">
+                                <img 
+                                    src="task.png" 
+                                    alt="Detailed task management with assignments"
+                                    class="screenshot-img"
+                                    onclick="openModal('Detailed task management with checklists, assignments, and progress tracking', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Detailed task management with checklists, assignments, and progress tracking</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://sharing.clickup.com/9012955332/l/h/5-90126061345-1/ab014b9e53fd8ed" target="_blank" class="inline-flex items-center text-primary hover:text-primary-dark transition-colors">
+                                <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                                View Live ClickUp Workspace
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Coordination
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold mb-4 text-green-800">👥 Team Coordination</h4>
+                    <p class="text-gray-600 mb-4">Resource allocation, communication protocols, and meeting facilitation.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Resource allocation and team assignments</li>
+                        <li>• Communication protocols and guidelines</li>
+                        <li>• Meeting facilitation and agenda management</li>
+                        <li>• Conflict resolution and problem solving</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600">Team coordination and communication systems (examples being prepared)</p>
+                    </div>
+                </div>
+
+                <-- Reporting & Analytics -->
+                <!-- <div class="mb-8">
+                    <h4 class="text-xl font-bold mb-4 text-purple-800">📊 Reporting & Analytics</h4>
+                    <p class="text-gray-600 mb-4">Performance tracking, status reporting, and ROI analysis.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Performance tracking and metrics analysis</li>
+                        <li>• Regular status reporting and updates</li>
+                        <li>• Budget monitoring and cost analysis</li>
+                        <li>• ROI analysis and optimization recommendations</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600">Project reporting and analytics dashboards (examples being prepared)</p>
+                    </div>
+                </div> -->
+
+                <div class="mb-6">
+                    <h4 class="font-semibold mb-4 text-gray-700">🛠️ Tools & Platforms:</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://clickup.com/favicon.ico" alt="ClickUp" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">ClickUp</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://www.notion.so/images/favicon.ico" alt="Notion" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Notion</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://asana.com/favicon.ico" alt="Asana" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Asana</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://monday.com/favicon.ico" alt="Monday.com" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Monday.com</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://trello.com/favicon.ico" alt="Trello" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Trello</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Content Creation & Social Media Management -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="service-card bg-white rounded-2xl p-8 shadow-xl mb-12">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-warning rounded-lg flex items-center justify-center mr-4">
+                        <i data-lucide="palette" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">Content Creation & Social Media Management</h3>
+                        <p class="text-gray-600">Professional content design and strategic social media presence</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 mb-8 text-lg">
+                    I create engaging visual content and manage social media presence using Canva, Adobe Creative Suite, and CapCut for video editing. My content strategy includes graphic design, video production, content calendars, and comprehensive social media scheduling across platforms like Facebook, Instagram, LinkedIn, and Twitter.
+                </p>
+
+                <!-- Graphic Design -->
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold mb-4 text-purple-800">🎨 Graphic Design</h4>
+                    <p class="text-gray-600 mb-4">Professional visual content creation for marketing and branding needs.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Social media graphics and marketing materials</li>
+                        <li>• Brand-consistent design templates</li>
+                        <li>• Infographics and visual presentations</li>
+                        <li>• Logo design and brand identity elements</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600 mb-3">Professional graphic design work:</p>
+                        <div class="relative mb-4">
+                            <img 
+                                src="canva.png" 
+                                alt="Professional Canva design workspace"
+                                class="screenshot-img"
+                                onclick="openModal('Professional Canva design workspace showing layout creation and brand consistency', this.src)"
+                            >
+                            <p class="text-xs text-gray-500 mt-2">Professional Canva design workspace with layout creation and brand elements</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://drive.google.com/file/d/1gBFMaldwxSdnzvxYk4sjLiMgP-Y3zHh4/view?usp=drive_link" target="_blank" class="inline-flex items-center text-primary hover:text-primary-dark transition-colors">
+                                <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                                View Design Portfolio
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Production -->
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold mb-4 text-red-800">🎬 Video Production</h4>
+                    <p class="text-gray-600 mb-4">Engaging video content creation for social media and marketing.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Short-form promotional videos</li>
+                        <li>• Professional transitions and effects</li>
+                        <li>• Text overlays and call-to-action elements</li>
+                        <li>• Mobile-optimized video formatting</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600 mb-3">Video production and editing work:</p>
+                        <div class="relative mb-4">
+                            <img 
+                                src="capcut.png" 
+                                alt="CapCut video editing timeline"
+                                class="screenshot-img"
+                                onclick="openModal('Professional video editing timeline with multiple layers, transitions, and effects', this.src)"
+                            >
+                            <p class="text-xs text-gray-500 mt-2">Video editing timeline with multiple layers, transitions, and professional effects</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://drive.google.com/file/d/1Eizb9AaCA-MX4Gyes941AmqFUJ6ZY1m8/view?usp=drive_link" target="_blank" class="inline-flex items-center text-primary hover:text-primary-dark transition-colors">
+                                <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                                View Video Portfolio
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media Management -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-bold mb-4 text-blue-800">📱 Social Media Management</h4>
+                    <p class="text-gray-600 mb-4">Strategic social media presence and engagement management.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Content scheduling and calendar management</li>
+                        <li>• Audience engagement and community building</li>
+                        <li>• Performance analytics and optimization</li>
+                        <li>• Multi-platform management and coordination</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600 mb-3">Social media management and scheduling systems:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="relative">
+                                <img 
+                                    src="Planner.png" 
+                                    alt="Meta Business Suite content planning"
+                                    class="screenshot-img"
+                                    onclick="openModal('Professional social media content planning and scheduling dashboard', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Meta Business Suite content planning and scheduling system</p>
+                            </div>
+                            <div class="relative">
+                                <img 
+                                    src="preview.png" 
+                                    alt="Social media post optimization"
+                                    class="screenshot-img"
+                                    onclick="openModal('Optimized social media post with engagement strategy and call-to-action', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Social media post preview with optimization and engagement elements</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="font-semibold mb-4 text-gray-700">🛠️ Tools & Platforms:</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://www.canva.com/favicon.ico" alt="Canva" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Canva</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://www.adobe.com/favicon.ico" alt="Adobe Creative Suite" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Adobe Creative Suite</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://lf16-capcut.faceulive.com/obj/capcutpc-fe/favicon.ico" alt="CapCut" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">CapCut</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://business.facebook.com/favicon.ico" alt="Meta Business Suite" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Meta Business Suite</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://hootsuite.com/favicon.ico" alt="Hootsuite" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Hootsuite</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://buffer.com/favicon.ico" alt="Buffer" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Buffer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Lead Generation & CRM Management -->
+    <section class="py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="service-card bg-white rounded-2xl p-8 shadow-xl mb-12">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-brand rounded-lg flex items-center justify-center mr-4">
+                        <i data-lucide="target" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">Lead Generation & CRM Management</h3>
+                        <p class="text-gray-600">Strategic lead capture and comprehensive customer relationship management</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 mb-8 text-lg">
+                    I design and implement comprehensive lead generation systems using HubSpot, Salesforce, and Pipedrive, coupled with automation tools like Zapier to create seamless workflows. My approach includes lead capture form creation, lead scoring, nurturing sequences, and detailed pipeline management to maximize conversion rates.
+                </p>
+
+                <!-- Lead Capture Systems -->
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold mb-4 text-orange-800">🎯 Lead Capture Systems</h4>
+                    <p class="text-gray-600 mb-4">Custom lead capture forms and conversion optimization.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Custom lead capture form design and optimization</li>
+                        <li>• Strategic field selection and user experience</li>
+                        <li>• Landing page creation and A/B testing</li>
+                        <li>• Conversion rate optimization and analysis</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600 mb-3">Lead capture systems I've created:</p>
+                        <div class="relative mb-4">
+                            <img 
+                                src="form.png" 
+                                alt="Professional lead capture form"
+                                class="screenshot-img"
+                                onclick="openModal('Professional lead capture form with custom fields, validation, and mobile optimization', this.src)"
+                            >
+                            <p class="text-xs text-gray-500 mt-2">Professional lead capture form with custom fields and mobile optimization</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://share-eu1.hsforms.com/1nQALxK3bTve9hv-yptvW2A2f3mf3" target="_blank" class="inline-flex items-center text-primary hover:text-primary-dark transition-colors">
+                                <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                                View Live Lead Capture Form
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process Automation -->
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold mb-4 text-indigo-800">⚡ Process Automation</h4>
+                    <p class="text-gray-600 mb-4">Seamless integrations and automated workflow management.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Platform integrations using Zapier and native APIs</li>
+                        <li>• Automated lead scoring and qualification</li>
+                        <li>• Instant follow-up and notification systems</li>
+                        <li>• Pipeline automation and stage progression</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600 mb-3">Automation workflows I've implemented:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="relative">
+                                <img 
+                                    src="zap.png" 
+                                    alt="Zapier automation workflow"
+                                    class="screenshot-img"
+                                    onclick="openModal('Automated workflow connecting lead capture to CRM with instant processing', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Automated workflow connecting multiple platforms for seamless lead processing</p>
+                            </div>
+                            <div class="relative">
+                                <img 
+                                    src="runs.png" 
+                                    alt="Automation performance monitoring"
+                                    class="screenshot-img"
+                                    onclick="openModal('Automation performance monitoring showing successful lead processing rates', this.src)"
+                                >
+                                <p class="text-xs text-gray-500 mt-2">Automation testing and performance monitoring dashboard</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CRM Management -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-bold mb-4 text-green-800">🎯 CRM Management</h4>
+                    <p class="text-gray-600 mb-4">Comprehensive customer relationship management and pipeline tracking.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Contact management and database organization</li>
+                        <li>• Sales pipeline tracking and reporting</li>
+                        <li>• Activity logging and communication history</li>
+                        <li>• Performance analytics and conversion tracking</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600 mb-3">CRM management systems I've implemented:</p>
+                        <div class="relative mb-4">
+                            <img 
+                                src="hubspot.png" 
+                                alt="HubSpot CRM management"
+                                class="screenshot-img"
+                                onclick="openModal('Professional CRM management with detailed contact tracking and activity timeline', this.src)"
+                            >
+                            <p class="text-xs text-gray-500 mt-2">CRM contact management with detailed activity timeline and interaction history</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="font-semibold mb-4 text-gray-700">🛠️ Tools & Platforms:</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://www.hubspot.com/favicon.ico" alt="HubSpot" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">HubSpot</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://www.salesforce.com/favicon.ico" alt="Salesforce" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Salesforce</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://zapier.com/favicon.ico" alt="Zapier" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Zapier</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://www.pipedrive.com/favicon.ico" alt="Pipedrive" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Pipedrive</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Email Marketing & Automation -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="service-card bg-white rounded-2xl p-8 shadow-xl mb-12">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-yellow-500 rounded-lg flex items-center justify-center mr-4">
+                        <i data-lucide="mail" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">Email Marketing & Automation</h3>
+                        <p class="text-gray-600">Strategic email campaigns and automated nurturing sequences</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 mb-8 text-lg">
+                    I create comprehensive email marketing campaigns using Mailchimp, ConvertKit, and ActiveCampaign to build engaging automated sequences with personalization, professional design, and strategic timing. My email strategies include welcome series, nurturing campaigns, promotional sequences, and retention programs designed to maximize engagement and conversions.
+                </p>
+
+                <!-- Campaign Design -->
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold mb-4 text-yellow-800">📧 Campaign Design</h4>
+                    <p class="text-gray-600 mb-4">Professional email template creation and brand-consistent design.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Professional email template design</li>
+                        <li>• Brand-consistent visual elements</li>
+                        <li>• Mobile-responsive layouts</li>
+                        <li>• A/B testing setup and optimization</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600 mb-3">Email design and template creation:</p>
+                        <div class="relative mb-4">
+                            <img 
+                                src="email1.png" 
+                                alt="Professional email template"
+                                class="screenshot-img"
+                                onclick="openModal('Professional email template with dynamic content, personalization, and clear call-to-action', this.src)"
+                            >
+                            <p class="text-xs text-gray-500 mt-2">Professional email template with personalization and brand-consistent design</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Automation Sequences -->
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold mb-4 text-green-800">🤖 Automation Sequences</h4>
+                    <p class="text-gray-600 mb-4">Automated email sequences and behavioral trigger setup.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Welcome series and onboarding sequences</li>
+                        <li>• Drip campaigns and nurturing flows</li>
+                        <li>• Behavioral triggers and conditional logic</li>
+                        <li>• Lead nurturing and conversion sequences</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600 mb-3">Email automation sequences I've created:</p>
+                        <div class="relative mb-4">
+                            <img 
+                                src="sequence.png" 
+                                alt="Email automation sequence"
+                                class="screenshot-img"
+                                onclick="openModal('Comprehensive email automation sequence with timed delivery and personalization', this.src)"
+                            >
+                            <p class="text-xs text-gray-500 mt-2">Automated email sequence with timed delivery and conversion tracking</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- List Management -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-bold mb-4 text-blue-800">📊 List Management & Analytics</h4>
+                    <p class="text-gray-600 mb-4">Contact segmentation, performance tracking, and optimization.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Contact list segmentation and tagging</li>
+                        <li>• Open rate and click-through analysis</li>
+                        <li>• Conversion tracking and ROI measurement</li>
+                        <li>• List hygiene and deliverability optimization</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600 mb-3">Email list management and analytics:</p>
+                        <div class="relative mb-4">
+                            <img 
+                                src="audience.png" 
+                                alt="Email list management dashboard"
+                                class="screenshot-img"
+                                onclick="openModal('Advanced contact list management with segmentation and behavioral tracking', this.src)"
+                            >
+                            <p class="text-xs text-gray-500 mt-2">Contact list management with segmentation, tagging, and performance analytics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="font-semibold mb-4 text-gray-700">🛠️ Tools & Platforms:</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://mailchimp.com/favicon.ico" alt="Mailchimp" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Mailchimp</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://convertkit.com/favicon.ico" alt="ConvertKit" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">ConvertKit</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://www.activecampaign.com/favicon.ico" alt="ActiveCampaign" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">ActiveCampaign</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://www.klaviyo.com/favicon.ico" alt="Klaviyo" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Klaviyo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Research & Data Analysis -->
+    <section class="py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="service-card bg-white rounded-2xl p-8 shadow-xl mb-12">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-indigo-600 rounded-lg flex items-center justify-center mr-4">
+                        <i data-lucide="search" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">Research & Data Analysis</h3>
+                        <p class="text-gray-600">Comprehensive market research and data-driven insights</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 mb-8 text-lg">
+                    I conduct thorough market research, competitor analysis, and data compilation using advanced tools like SEMrush, Ahrefs, and Google Analytics. My research capabilities include industry analysis, lead prospecting, data mining, survey creation, and comprehensive reporting that provides actionable insights for strategic decision-making.
+                </p>
+
+                <!-- Market Research -->
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold mb-4 text-indigo-800">🔍 Market Research</h4>
+                    <p class="text-gray-600 mb-4">Industry analysis, competitor research, and market opportunity identification.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Industry trend analysis and market sizing</li>
+                        <li>• Competitor research and positioning analysis</li>
+                        <li>• Customer persona development and validation</li>
+                        <li>• Market opportunity assessment</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600">Market research reports and competitive analysis (examples being prepared)</p>
+                    </div>
+                </div>
+
+                <!-- Data Collection -->
+                <div class="mb-12">
+                    <h4 class="text-xl font-bold mb-4 text-blue-800">📊 Data Collection</h4>
+                    <p class="text-gray-600 mb-4">Lead prospecting, contact sourcing, and survey data gathering.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Lead prospecting and contact information sourcing</li>
+                        <li>• Survey design, execution, and data collection</li>
+                        <li>• Data mining and database cleanup</li>
+                        <li>• Information verification and validation</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600">Data collection and prospecting systems (examples being prepared)</p>
+                    </div>
+                </div>
+
+                <!-- Analysis & Reporting -->
+                <div class="mb-8">
+                    <h4 class="text-xl font-bold mb-4 text-purple-800">📈 Analysis & Reporting</h4>
+                    <p class="text-gray-600 mb-4">Performance analytics, trend identification, and strategic recommendations.</p>
+                    <ul class="text-sm space-y-2 text-gray-700 mb-4">
+                        <li>• Performance analytics and metrics analysis</li>
+                        <li>• Trend identification and pattern recognition</li>
+                        <li>• Strategic recommendations and action plans</li>
+                        <li>• Executive summaries and presentation preparation</li>
+                    </ul>
+                    <div class="evidence-section">
+                        <h5 class="font-semibold mb-2">📁 Evidence & Examples:</h5>
+                        <p class="text-sm text-gray-600">Analytics reports and strategic analysis (examples being prepared)</p>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="font-semibold mb-4 text-gray-700">🛠️ Tools & Platforms:</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://www.google.com/favicon.ico" alt="Google Analytics" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Google Analytics</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://www.semrush.com/favicon.ico" alt="SEMrush" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">SEMrush</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://ahrefs.com/favicon.ico" alt="Ahrefs" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Ahrefs</span>
+                        </div>
+                        <div class="tool-icon bg-white px-3 py-2 rounded-lg shadow-md flex items-center">
+                            <img src="https://www.typeform.com/favicon.ico" alt="Typeform" class="w-5 h-5 mr-2">
+                            <span class="text-sm font-medium">Typeform</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">Why Choose Me as Your Virtual Assistant</h2>
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-xl text-gray-600 mb-8">
+                        I bring a unique combination of technical expertise, process optimization, and reliable communication to every project. My approach focuses on understanding your business needs and creating sustainable systems that grow with you.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-3 gap-8 mt-12">
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center">
+                                <i data-lucide="clock" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Time Zone Flexible</h3>
+                            <p class="text-gray-600">Available to work across different time zones to meet your business needs</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-success rounded-full flex items-center justify-center">
+                                <i data-lucide="graduation-cap" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Continuous Learning</h3>
+                            <p class="text-gray-600">Constantly updating skills with latest tools and industry best practices</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-accent rounded-full flex items-center justify-center">
+                                <i data-lucide="message-circle" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Clear Communication</h3>
+                            <p class="text-gray-600">Regular updates and transparent reporting on all project progress</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6">Ready to Streamline Your Business Operations?</h2>
+            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                Let's discuss how I can help optimize your business processes, automate routine tasks, and provide the administrative support you need to focus on growth.
+            </p>
+            <div class="bg-white rounded-2xl p-8 shadow-xl max-w-2xl mx-auto">
+                <h3 class="text-2xl font-bold mb-6">Get Started Today</h3>
+                <p class="text-gray-600 mb-6">
+                    I'm here to help you build efficient systems that save time, reduce costs, and improve productivity. From day-one administrative support to complex automation setups, I bring the expertise you need.
+                </p>
+                <div class="space-y-4">
+                    <div class="text-lg font-semibold text-primary">📧 Professional Administrative Support</div>
+                    <div class="text-gray-600">Available for new projects • Quick response time • Scalable solutions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="flex justify-center mb-6">
+                <img src="https://pfst.cf2.poecdn.net/base/image/b079e56247c2a1a9e29ffe2241afacfb031cc48c29952d130644186b71de6f5c?w=1080&h=1080" alt="Winifred Achinike" class="w-16 h-16 rounded-full border-2 border-gray-600">
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Winifred Achinike</h3>
+            <p class="text-gray-300 mb-6">
+                Professional Virtual Assistant & Administrative Support Specialist
+            </p>
+            <div class="text-sm text-gray-400 mb-4">
+                Administrative Support • Customer Service • Project Management • Content Creation • Lead Generation • Email Marketing • Research & Analysis
+            </div>
+            <div class="text-sm text-gray-500">
+                Professional Portfolio • Comprehensive Virtual Assistant Services
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Modal functions
+        function openModal(description, src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalDescription = document.getElementById('modalDescription');
+            
+            modalImg.src = src;
+            modalDescription.textContent = description;
+            modal.classList.add('show');
+            
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Navigation smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Escape key modal close
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

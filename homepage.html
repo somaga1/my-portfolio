@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winifred Achinike | Virtual Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#4A5568',
+                        accent: '#718096',
+                        light: '#F7FAFC',
+                        warm: '#FFF5F5',
+                    },
+                    fontFamily: {
+                        'display': ['Fraunces', 'serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'slide-in': 'slideIn 1s ease-out forwards',
+                        'gentle-bounce': 'gentleBounce 2s ease-in-out infinite',
+                        'float-gentle': 'floatGentle 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideIn: {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        gentleBounce: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        },
+                        floatGentle: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-15px) rotate(2deg)' },
+                        }
+                    }
+                }
+            }
+        }
+
+
+    </script>
+    <style>
+        .scroll-smooth { scroll-behavior: smooth; }
+        
+        .project-card {
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(45, 55, 72, 0.15);
+        }
+        
+        .staggered-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .staggered-grid .project-card:nth-child(even) {
+            margin-top: 3rem;
+        }
+        
+        .parallax-element {
+            will-change: transform;
+        }
+        
+        .nav-glass {
+            backdrop-filter: blur(10px);
+            background: rgba(247, 250, 252, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .service-hover:hover {
+            transform: translateY(-8px);
+            transition: all 0.4s ease;
+        }
+        
+        .skill-progress {
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+        
+        .skill-progress.animate {
+            width: var(--progress);
+        }
+        
+        @media (max-width: 768px) {
+            .staggered-grid .project-card:nth-child(even) {
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body class="font-body bg-light text-primary scroll-smooth">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 nav-glass rounded-full px-8 py-3 shadow-lg">
+        <div class="flex items-center space-x-8">
+            <div class="font-display font-bold text-lg">W</div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="text-sm font-medium hover:text-primary transition-colors">Home</a>
+                <a href="#services" class="text-sm font-medium hover:text-primary transition-colors">Services</a>
+                <a href="#examples" class="text-sm font-medium hover:text-primary transition-colors">Examples</a>
+                <a href="#about" class="text-sm font-medium hover:text-primary transition-colors">About</a>
+                <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-warm rounded-full opacity-30 animate-float-gentle parallax-element"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-48 h-48 bg-gray-100 rounded-full opacity-40 animate-float-gentle parallax-element" style="animation-delay: 2s;"></div>
+        
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+            <div class="animate-fade-in-up">
+                <h1 class="font-display text-6xl md:text-8xl font-light mb-6 text-shadow">
+                    Winifred
+                </h1>
+                <p class="text-xl md:text-2xl text-secondary mb-8 font-light">
+                    Virtual Assistant & Process Specialist
+                </p>
+                <p class="text-lg text-accent max-w-2xl mx-auto leading-relaxed mb-12">
+                    Transforming business chaos into streamlined success through thoughtful process design and automation.
+                </p>
+                
+                <!-- Subtle CTA -->
+                <div class="flex justify-center">
+                    <button onclick="scrollToSection('services')" class="group flex items-center space-x-3 bg-primary text-white px-8 py-4 rounded-full hover:opacity-90 transition-all duration-300 hover:scale-105">
+                        <span>View Services</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+                <div class="animate-gentle-bounce">
+                    <i data-lucide="mouse" class="w-6 h-6 text-accent"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-warm">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-5xl font-light mb-6">What I Do</h2>
+                <div class="w-20 h-0.5 bg-secondary mx-auto mb-6"></div>
+                <p class="text-lg text-accent max-w-2xl mx-auto">
+                    Specialized services designed to streamline operations and accelerate business growth.
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="service-hover bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="file-check" class="w-8 h-8 text-blue-600"></i>
+                    </div>
+                    <h3 class="font-display text-xl mb-4">Process Documentation</h3>
+                    <p class="text-secondary text-sm leading-relaxed">
+                        Create comprehensive SOPs, training materials, and quality frameworks to standardize operations.
+                    </p>
+                </div>
+
+                <div class="service-hover bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="zap" class="w-8 h-8 text-green-600"></i>
+                    </div>
+                    <h3 class="font-display text-xl mb-4">Marketing Automation</h3>
+                    <p class="text-secondary text-sm leading-relaxed">
+                        Design lead generation funnels, email sequences, and CRM integrations for automated growth.
+                    </p>
+                </div>
+
+                <div class="service-hover bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="mail" class="w-8 h-8 text-purple-600"></i>
+                    </div>
+                    <h3 class="font-display text-xl mb-4">Email Management</h3>
+                    <p class="text-secondary text-sm leading-relaxed">
+                        Organize, respond to, and manage your inbox with filters, labels, and automated responses.
+                    </p>
+                </div>
+
+                <div class="service-hover bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="calendar" class="w-8 h-8 text-orange-600"></i>
+                    </div>
+                    <h3 class="font-display text-xl mb-4">Calendar Scheduling</h3>
+                    <p class="text-secondary text-sm leading-relaxed">
+                        Coordinate appointments, manage your calendar, schedule meetings, and handle travel arrangements.
+                    </p>
+                </div>
+
+                <div class="service-hover bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="database" class="w-8 h-8 text-pink-600"></i>
+                    </div>
+                    <h3 class="font-display text-xl mb-4">Data Entry & Organization</h3>
+                    <p class="text-secondary text-sm leading-relaxed">
+                        Accurate data entry, database management, spreadsheet creation, and information organization.
+                    </p>
+                </div>
+
+                <div class="service-hover bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="headphones" class="w-8 h-8 text-teal-600"></i>
+                    </div>
+                    <h3 class="font-display text-xl mb-4">Customer Support</h3>
+                    <p class="text-secondary text-sm leading-relaxed">
+                        Handle customer inquiries, live chat support, phone calls, and maintain excellent client relationships.
+                    </p>
+                </div>
+
+                <div class="service-hover bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="search" class="w-8 h-8 text-indigo-600"></i>
+                    </div>
+                    <h3 class="font-display text-xl mb-4">Research & Analysis</h3>
+                    <p class="text-secondary text-sm leading-relaxed">
+                        Conduct market research, competitor analysis, lead generation, and compile detailed reports.
+                    </p>
+                </div>
+
+                <div class="service-hover bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="share-2" class="w-8 h-8 text-rose-600"></i>
+                    </div>
+                    <h3 class="font-display text-xl mb-4">Social Media Management</h3>
+                    <p class="text-secondary text-sm leading-relaxed">
+                        Create content, schedule posts, manage social media accounts, and engage with your audience.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="mb-16 animate-slide-in">
+                <h2 class="font-display text-5xl md:text-6xl font-light mb-4">Service Examples</h2>
+                <div class="w-20 h-0.5 bg-secondary mb-6"></div>
+                <p class="text-lg text-accent max-w-2xl">
+                    Case studies showcasing process optimization, automation systems, and business transformation projects.
+                </p>
+            </div>
+
+            <!-- Examples in Flowing Layout -->
+            <div class="staggered-grid">
+                
+                <!-- Example 1 -->
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-br from-blue-50 to-indigo-100 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="zap" class="w-12 h-12 text-blue-600"></i>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-sm text-accent mb-2">Marketing Automation</div>
+                        <h3 class="font-display text-2xl mb-4">Lead Generation Funnel</h3>
+                        <p class="text-secondary mb-6 leading-relaxed">
+                            Complete lead generation system with CRM integration, automated email sequences, and consultation booking for construction company.
+                        </p>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-sm text-accent">
+                                <span class="font-medium text-primary">67%</span> faster processing
+                            </div>
+                            <div class="text-sm text-accent">3 weeks</div>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">HubSpot</span>
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">Zapier</span>
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">Mailchimp</span>
+                        </div>
+                        
+                        <button onclick="showDemo('marketing')" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-secondary transition-colors">
+                            View Demo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Example 2 -->
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-br from-green-50 to-teal-100 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="file-check" class="w-12 h-12 text-green-600"></i>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-sm text-accent mb-2">Process Documentation</div>
+                        <h3 class="font-display text-2xl mb-4">SOP System Creation</h3>
+                        <p class="text-secondary mb-6 leading-relaxed">
+                            Comprehensive standard operating procedures and training program that reduced onboarding time by 83% for e-commerce business.
+                        </p>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-sm text-accent">
+                                <span class="font-medium text-primary">83%</span> faster training
+                            </div>
+                            <div class="text-sm text-accent">4 weeks</div>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">Google Docs</span>
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">Loom</span>
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">Canva</span>
+                        </div>
+                        
+                        <button onclick="showDemo('sop')" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-secondary transition-colors">
+                            View Demo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Example 3 -->
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-br from-purple-50 to-pink-100 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="mail" class="w-12 h-12 text-purple-600"></i>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-sm text-accent mb-2">Email Management</div>
+                        <h3 class="font-display text-2xl mb-4">Inbox Organization System</h3>
+                        <p class="text-secondary mb-6 leading-relaxed">
+                            Complete email management including sorting, responding, filtering, and organizing inbox to achieve zero inbox daily for busy CEO.
+                        </p>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-sm text-accent">
+                                <span class="font-medium text-primary">3 hours</span> saved daily
+                            </div>
+                            <div class="text-sm text-accent">Ongoing</div>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">Gmail</span>
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">Filters</span>
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">Templates</span>
+                        </div>
+                        
+                        <button onclick="showDemo('email')" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-secondary transition-colors">
+                            View Demo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Example 4 -->
+                <div class="project-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-br from-orange-50 to-red-100 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="calendar" class="w-12 h-12 text-orange-600"></i>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-sm text-accent mb-2">Calendar Management</div>
+                        <h3 class="font-display text-2xl mb-4">Executive Schedule Coordination</h3>
+                        <p class="text-secondary mb-6 leading-relaxed">
+                            Complete calendar management including appointment scheduling, meeting coordination, and travel planning with automated reminders.
+                        </p>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-sm text-accent">
+                                <span class="font-medium text-primary">100%</span> conflict-free
+                            </div>
+                            <div class="text-sm text-accent">Daily</div>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">Google Calendar</span>
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">Calendly</span>
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">Zoom</span>
+                        </div>
+                        
+                        <button onclick="showDemo('calendar')" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-secondary transition-colors">
+                            View Demo
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Text Content -->
+                <div>
+                    <h2 class="font-display text-5xl font-light mb-6">About</h2>
+                    <div class="w-20 h-0.5 bg-secondary mb-8"></div>
+                    
+                    <p class="text-lg text-secondary mb-8 leading-relaxed">
+                        I'm passionate about turning business chaos into streamlined systems. 
+                        With expertise in process optimization and automation, I help companies 
+                        eliminate inefficiencies and scale operations smoothly.
+                    </p>
+
+                    <div class="space-y-6 mb-8">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Process Optimization</span>
+                                <span class="text-sm text-accent">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-progress bg-primary h-2 rounded-full" style="--progress: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Automation Systems</span>
+                                <span class="text-sm text-accent">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-progress bg-primary h-2 rounded-full" style="--progress: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Administrative Excellence</span>
+                                <span class="text-sm text-accent">88%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-progress bg-primary h-2 rounded-full" style="--progress: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-warm dark:bg-gray-800 p-6 rounded-2xl">
+                        <h4 class="font-medium mb-3">Quick Response Promise</h4>
+                        <p class="text-sm text-secondary">
+                            I respond to all inquiries within 24 hours and provide detailed project proposals within 48 hours.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Visual Element -->
+                <div class="relative">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=600&fit=crop" 
+                             alt="Professional workspace" 
+                             class="rounded-2xl shadow-xl w-full h-96 object-cover">
+                        
+                        <!-- Floating Stats -->
+                        <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-lg">
+                            <div class="text-2xl font-bold text-primary mb-1">15+</div>
+                            <div class="text-sm text-accent">Projects Completed</div>
+                        </div>
+                        
+                        <div class="absolute -top-6 -right-6 bg-white p-6 rounded-2xl shadow-lg">
+                            <div class="text-2xl font-bold text-primary mb-1">5+</div>
+                            <div class="text-sm text-accent">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-warm">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-5xl font-light mb-6">Let's Work Together</h2>
+                <div class="w-20 h-0.5 bg-secondary mx-auto mb-6"></div>
+                <p class="text-lg text-accent max-w-2xl mx-auto">
+                    Ready to streamline your business operations? Let's discuss how I can help you achieve your goals.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="flex items-center space-x-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                            <i data-lucide="mail" class="w-6 h-6 text-blue-600"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">Email</div>
+                            <div class="text-sm text-accent">winifred.achinike@email.com</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                            <i data-lucide="linkedin" class="w-6 h-6 text-green-600"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">LinkedIn</div>
+                            <div class="text-sm text-accent">linkedin.com/in/winifred-achinike</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                            <i data-lucide="calendar" class="w-6 h-6 text-purple-600"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">Schedule a Call</div>
+                            <div class="text-sm text-accent">calendly.com/winifred-achinike</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">First Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none text-base">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Last Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none text-base">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none text-base">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Project Type</label>
+                            <select class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none text-base">
+                                <option>Process Documentation</option>
+                                <option>Marketing Automation</option>
+                                <option>Email Management</option>
+                                <option>Calendar Scheduling</option>
+                                <option>Data Entry & Organization</option>
+                                <option>Customer Support</option>
+                                <option>Research & Analysis</option>
+                                <option>Social Media Management</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Project Details</label>
+                            <textarea rows="4" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:outline-none text-base resize-none"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary text-white py-4 rounded-lg hover:bg-secondary transition-colors font-medium">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="font-display text-2xl mb-4">Winifred Achinike</h3>
+                    <p class="text-gray-300 mb-4">
+                        Virtual Assistant specializing in process optimization and business automation.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-medium mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li>Process Documentation</li>
+                        <li>Marketing Automation</li>
+                        <li>Email Management</li>
+                        <li>Calendar Scheduling</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-medium mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <i data-lucide="calendar" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2024 Winifred Achinike. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax-element');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.1 + (index * 0.05);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Animate skills on scroll
+        const skillsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.skill-progress');
+                    progressBars.forEach(bar => {
+                        bar.classList.add('animate');
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        skillsObserver.observe(document.querySelector('#about'));
+
+        // Demo functions for service examples
+        function showDemo(type) {
+            const demoContent = {
+                marketing: {
+                    title: 'Marketing Automation - Lead Generation Funnel',
+                    content: `
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">1. Lead Capture Setup</h4>
+                                <p class="text-sm">Facebook Lead Ads → Zapier → HubSpot CRM</p>
+                                <p class="text-xs text-gray-600">Automated lead import with contact scoring</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">2. Email Sequence (7-day nurture)</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Day 1: Welcome + Free Construction Guide</li>
+                                    <li>• Day 3: Client Success Story Video</li>
+                                    <li>• Day 5: Consultation Booking Link</li>
+                                    <li>• Day 7: Limited-time Project Discount</li>
+                                </ul>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">3. Booking Integration</h4>
+                                <p class="text-sm">Calendly → Google Calendar → Zoom</p>
+                                <p class="text-xs text-gray-600">Automatic meeting scheduling with reminders</p>
+                            </div>
+                            <div class="bg-orange-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">Results Achieved:</h4>
+                                <p class="text-sm">67% faster lead processing, 40% higher consultation booking rate</p>
+                            </div>
+                        </div>
+                    `
+                },
+                sop: {
+                    title: 'Process Documentation - SOP System',
+                    content: `
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">📋 Standard Operating Procedures Created</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Customer Onboarding Process (12 steps)</li>
+                                    <li>• Order Fulfillment Workflow</li>
+                                    <li>• Quality Control Checklist</li>
+                                    <li>• Customer Service Response Templates</li>
+                                </ul>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">🎥 Training Materials</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• 15 Loom video walkthroughs</li>
+                                    <li>• Interactive Canva training guides</li>
+                                    <li>• Role-specific onboarding checklists</li>
+                                    <li>• Performance tracking templates</li>
+                                </ul>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">📊 Quality Framework</h4>
+                                <p class="text-sm">Implemented 3-tier review system with automated quality scores</p>
+                            </div>
+                            <div class="bg-orange-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">Results:</h4>
+                                <p class="text-sm">New employee training time reduced from 6 weeks to 1 week</p>
+                            </div>
+                        </div>
+                    `
+                },
+                email: {
+                    title: 'Email Management - Inbox Organization',
+                    content: `
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">📧 Filtering System Setup</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Priority Labels: Urgent, Important, Follow-up</li>
+                                    <li>• Automated sorting by sender type</li>
+                                    <li>• Smart categorization (Clients, Vendors, Internal)</li>
+                                    <li>• Spam and promotional filtering</li>
+                                </ul>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">📝 Response Templates</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Meeting confirmations and scheduling</li>
+                                    <li>• Client proposal acknowledgments</li>
+                                    <li>• Vendor inquiry responses</li>
+                                    <li>• Out-of-office and delay notifications</li>
+                                </ul>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">⏰ Response Schedule</h4>
+                                <p class="text-sm">Priority emails: 2-hour response guarantee</p>
+                                <p class="text-sm">Regular emails: Same-day response</p>
+                            </div>
+                            <div class="bg-orange-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">Results:</h4>
+                                <p class="text-sm">Inbox Zero achieved daily, 3 hours saved per day</p>
+                            </div>
+                        </div>
+                    `
+                },
+                calendar: {
+                    title: 'Calendar Management - Executive Scheduling',
+                    content: `
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">📅 Scheduling System</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Google Calendar with color-coded categories</li>
+                                    <li>• Calendly integration for external meetings</li>
+                                    <li>• Buffer time blocks for preparation</li>
+                                    <li>• Travel time automatically calculated</li>
+                                </ul>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">🔄 Coordination Process</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Cross-reference all participants' availability</li>
+                                    <li>• Send meeting invites with agendas</li>
+                                    <li>• Coordinate room bookings and catering</li>
+                                    <li>• Handle rescheduling and cancellations</li>
+                                </ul>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">✈️ Travel Management</h4>
+                                <p class="text-sm">Flight bookings, hotel reservations, ground transportation</p>
+                            </div>
+                            <div class="bg-orange-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">Results:</h4>
+                                <p class="text-sm">Zero scheduling conflicts, 100% meeting attendance rate</p>
+                            </div>
+                        </div>
+                    `
+                }
+            };
+            
+            const demo = demoContent[type];
+            if (!demo) return;
+            
+            // Create demo modal
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl p-6 max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-gray-900">${demo.title}</h3>
+                        <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-gray-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-gray-700 mb-6">
+                        ${demo.content}
+                    </div>
+                    <button onclick="this.closest('.fixed').remove()" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-secondary transition-colors">
+                        Close Demo
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Create success modal
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl p-8 max-w-md w-full text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="check" class="w-8 h-8 text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Message Sent!</h3>
+                    <p class="text-gray-600 mb-6">Thank you for your message! I'll get back to you within 24 hours.</p>
+                    <button onclick="this.parentElement.parentElement.remove()" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-secondary transition-colors">
+                        Close
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            lucide.createIcons();
+        });
+
+        // Intersection observer for animations
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe cards
+        document.querySelectorAll('.project-card, .service-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winifred Achinike | Professional Virtual Administrative Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        accent: '#FF6B6B',
+                        success: '#51CF66',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .screenshot-img {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border: 2px solid transparent;
+        }
+        .screenshot-img:hover {
+            border-color: #5D5CDE;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(93, 92, 222, 0.15);
+        }
+        .service-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+        #imageModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.95);
+        }
+        #imageModal.show {
+            display: block;
+        }
+        .modal-content {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding-top: 80px;
+        }
+        .modal-description {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            z-index: 1001;
+        }
+        .modal-tap-hint {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-900">
+    
+    <!-- Image Modal -->
+    <div id="imageModal" onclick="closeModal()">
+        <div class="modal-description" id="modalDescription"></div>
+        <img id="modalImage" class="modal-content" src="" alt="Screenshot">
+        <div class="modal-tap-hint">Tap anywhere to close</div>
+    </div>
+
+    <!-- Header -->
+    <header class="gradient-bg text-white py-20">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <img src="https://pfst.cf2.poecdn.net/base/image/b079e56247c2a1a9e29ffe2241afacfb031cc48c29952d130644186b71de6f5c?w=1080&h=1080" alt="Winifred Achinike" class="w-28 h-28 rounded-full mx-auto mb-6 border-4 border-white border-opacity-30">
+            
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Winifred Achinike</h1>
+            <h2 class="text-2xl md:text-3xl font-light mb-8 opacity-90">Professional Virtual Administrative Assistant</h2>
+            
+            <div class="max-w-4xl mx-auto mb-10">
+                <p class="text-xl opacity-90 mb-8">
+                    Complete administrative support with proven systems for email management, calendar coordination, data organization, and business operations.
+                </p>
+                
+                <!-- Core Services Preview -->
+                <div class="bg-white bg-opacity-20 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold mb-4">Full-Service Administrative Support</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                        <div class="bg-white bg-opacity-30 rounded-lg p-3">
+                            <i data-lucide="mail" class="w-5 h-5 mx-auto mb-1"></i>
+                            <div class="font-medium">Email & Communication</div>
+                        </div>
+                        <div class="bg-white bg-opacity-30 rounded-lg p-3">
+                            <i data-lucide="calendar" class="w-5 h-5 mx-auto mb-1"></i>
+                            <div class="font-medium">Scheduling & Calendar</div>
+                        </div>
+                        <div class="bg-white bg-opacity-30 rounded-lg p-3">
+                            <i data-lucide="database" class="w-5 h-5 mx-auto mb-1"></i>
+                            <div class="font-medium">Data & CRM</div>
+                        </div>
+                        <div class="bg-white bg-opacity-30 rounded-lg p-3">
+                            <i data-lucide="target" class="w-5 h-5 mx-auto mb-1"></i>
+                            <div class="font-medium">Marketing Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="scrollToSection('services')" class="bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105">
+                View My Work Portfolio
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="font-bold text-xl">Winifred Achinike</div>
+                <div class="flex items-center space-x-6">
+                    <a href="#services" class="hover:text-primary transition-colors">Portfolio</a>
+                    <a href="#tools" class="hover:text-primary transition-colors">Tools</a>
+                    <a href="#contact" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Portfolio -->
+    <section id="services" class="py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6">Virtual Assistant Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    I provide end-to-end administrative support that allows you to focus on strategic business growth while I handle the day-to-day operations with precision and efficiency. Here are examples of work completed for clients across all service areas.
+                </p>
+            </div>
+
+            <!-- Administrative Excellence -->
+            <div class="service-card bg-white rounded-xl p-8 mb-12">
+                <div class="flex items-center mb-8">
+                    <div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mr-4">
+                        <i data-lucide="briefcase" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">Core Administrative Services</h3>
+                        <p class="text-gray-600 text-lg">Email management, scheduling, data entry, and daily business operations</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div>
+                        <img 
+                            src="filter.png" 
+                            alt="Email filtering system"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Automated email filtering and organization system for efficient inbox management', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Email Organization</h4>
+                        <p class="text-xs text-gray-600">Automated filtering and inbox management</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="gcal.png" 
+                            alt="Calendar management system"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Professional calendar management with color-coded scheduling and event coordination', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Calendar Coordination</h4>
+                        <p class="text-xs text-gray-600">Scheduling and appointment management</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="sheets.png" 
+                            alt="Data management spreadsheet"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Comprehensive data tracking and management system with organized records', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Data Entry & Management</h4>
+                        <p class="text-xs text-gray-600">Organized data tracking and reporting</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="correspondence2.png" 
+                            alt="Professional correspondence"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Professional business correspondence with clear communication and follow-up', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Business Correspondence</h4>
+                        <p class="text-xs text-gray-600">Professional communication and responses</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="invoice.png" 
+                            alt="Invoice Management"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Automated billing and payment tracking', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Invoice Management</h4>
+                        <p class="text-xs text-gray-600">Automated billing and payment tracking</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="onboarding.png" 
+                            alt="Onboarding Checklist"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Employee onboarding  task tracking', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Onboarding Checklist</h4>
+                        <p class="text-xs text-gray-600">Employee onboarding task tracking</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="Presentation.png" 
+                            alt="Presentation Slide Deck"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Social media management and content strategy deck', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Presentation Slide Deck</h4>
+                        <p class="text-xs text-gray-600">Social media management and content strategy deck</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h4 class="font-semibold mb-2">Administrative Tasks I Handle:</h4>
+                    <div class="grid md:grid-cols-3 gap-4 text-sm">
+                        <ul class="space-y-1">
+                            <li>• Daily email management and responses</li>
+                            <li>• Calendar scheduling and coordination</li>
+                            <li>• Data entry and database management</li>
+                            <li>• Document preparation and formatting</li>
+                        </ul>
+                        <ul class="space-y-1">
+                            <li>• Customer service and inquiry handling</li>
+                            <li>• Travel planning and coordination</li>
+                            <li>• File organization and management</li>
+                            <li>• Research and information gathering</li>
+                        </ul>
+                        <ul class="space-y-1">
+                            <li>• Vendor communication and coordination</li>
+                            <li>• Appointment booking and confirmations</li>
+                            <li>• Report preparation and presentation</li>
+                            <li>• General administrative support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Management -->
+            <div class="service-card bg-white rounded-xl p-8 mb-12">
+                <div class="flex items-center mb-8">
+                    <div class="w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center mr-4">
+                        <i data-lucide="kanban-square" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">Project Management & Organization</h3>
+                        <p class="text-gray-600 text-lg">Workflow coordination, task management, and team collaboration</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                    <div>
+                        <img 
+                            src="board.png" 
+                            alt="ClickUp project management"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Professional ClickUp project board with organized workflows and task management', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Project Boards</h4>
+                        <p class="text-xs text-gray-600">ClickUp workflow management</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="task.png" 
+                            alt="Task management system"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Detailed task management with assignments, deadlines, and progress tracking', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Task Coordination</h4>
+                        <p class="text-xs text-gray-600">Assignment and progress tracking</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="consultation.png" 
+                            alt="Meeting coordination"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Professional meeting coordination and project milestone management', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Team Coordination</h4>
+                        <p class="text-xs text-gray-600">Meeting and milestone management</p>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="https://sharing.clickup.com/9012955332/l/h/5-90126061345-1/ab014b9e53fd8ed" target="_blank" class="inline-flex items-center text-primary hover:underline font-medium">
+                        <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                        View Live ClickUp Project Workspace
+                    </a>
+                </div>
+            </div>
+
+            <!-- Lead Generation & CRM -->
+            <div class="service-card bg-white rounded-xl p-8 mb-12">
+                <div class="flex items-center mb-8">
+                    <div class="w-16 h-16 bg-orange-600 rounded-lg flex items-center justify-center mr-4">
+                        <i data-lucide="target" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">Lead Generation & CRM Management</h3>
+                        <p class="text-gray-600 text-lg">Lead capture systems, CRM organization, and sales pipeline management</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div>
+                        <img 
+                            src="form-LAPTOP-F8N32GGE.png" 
+                            alt="Lead capture form"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Professional lead capture form with custom fields and mobile optimization', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Lead Capture Forms</h4>
+                        <p class="text-xs text-gray-600">Custom forms with validation</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="zap.png" 
+                            alt="Process automation"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Zapier automation workflow connecting lead capture to CRM systems', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Process Automation</h4>
+                        <p class="text-xs text-gray-600">Automated lead processing</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="hubspot.png" 
+                            alt="CRM management"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('HubSpot CRM with detailed contact management and activity tracking', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">CRM Organization</h4>
+                        <p class="text-xs text-gray-600">Contact and pipeline management</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="runs.png" 
+                            alt="Automation monitoring"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Automation performance monitoring and optimization dashboard', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Performance Tracking</h4>
+                        <p class="text-xs text-gray-600">Automation monitoring and optimization</p>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="https://share-eu1.hsforms.com/1nQALxK3bTve9hv-yptvW2A2f3mf3" target="_blank" class="inline-flex items-center text-primary hover:underline font-medium">
+                        <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                        View Live Lead Capture Form
+                    </a>
+                </div>
+            </div>
+
+            <!-- Email Marketing & Automation -->
+            <div class="service-card bg-white rounded-xl p-8 mb-12">
+                <div class="flex items-center mb-8">
+                    <div class="w-16 h-16 bg-yellow-600 rounded-lg flex items-center justify-center mr-4">
+                        <i data-lucide="mail" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">Email Marketing & Automation</h3>
+                        <p class="text-gray-600 text-lg">Campaign creation, automated sequences, and email list management</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                    <div>
+                        <img 
+                            src="sequence.png" 
+                            alt="Email automation sequence"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Professional email automation sequence with timed delivery and personalization', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Email Sequences</h4>
+                        <p class="text-xs text-gray-600">Automated marketing campaigns</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="email1-LAPTOP-F8N32GGE.png" 
+                            alt="Email template design"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Professional email template with branded design and clear call-to-action', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Email Templates</h4>
+                        <p class="text-xs text-gray-600">Branded email design</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="audience.png" 
+                            alt="Email list management"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Email list management with segmentation and performance analytics', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">List Management</h4>
+                        <p class="text-xs text-gray-600">Segmentation and analytics</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Creation & Social Media -->
+            <div class="service-card bg-white rounded-xl p-8 mb-12">
+                <div class="flex items-center mb-8">
+                    <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center mr-4">
+                        <i data-lucide="palette" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">Content Creation & Social Media Management</h3>
+                        <p class="text-gray-600 text-lg">Graphic design, video production, and social media coordination</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div>
+                        <img 
+                            src="canva.png" 
+                            alt="Graphic design workspace"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Professional Canva design workspace with brand-consistent layouts', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Graphic Design</h4>
+                        <p class="text-xs text-gray-600">Professional visual content</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="capcut.png" 
+                            alt="Video editing"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Professional video editing with transitions and effects', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Video Production</h4>
+                        <p class="text-xs text-gray-600">Engaging video content</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="Planner.png" 
+                            alt="Social media planning"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Social media content planning and scheduling dashboard', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Social Media Planning</h4>
+                        <p class="text-xs text-gray-600">Content calendar and scheduling</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="preview.png" 
+                            alt="Content preview and optimization"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Social media content preview with optimization and engagement strategy', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Content Optimization</h4>
+                        <p class="text-xs text-gray-600">Engagement and performance</p>
+                    </div>
+                </div>
+                
+                <div class="mt-4 flex space-x-4">
+                    <a href="https://drive.google.com/file/d/1gBFMaldwxSdnzvxYk4sjLiMgP-Y3zHh4/view?usp=drive_link" target="_blank" class="inline-flex items-center text-primary hover:underline font-medium">
+                        <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                        Design Portfolio
+                    </a>
+                    <a href="https://drive.google.com/file/d/1Eizb9AaCA-MX4Gyes941AmqFUJ6ZY1m8/view?usp=drive_link" target="_blank" class="inline-flex items-center text-primary hover:underline font-medium">
+                        <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                        Video Portfolio
+                    </a>
+                </div>
+            </div>
+
+            <!-- Customer Service & Communication -->
+            <div class="service-card bg-white rounded-xl p-8 mb-12">
+                <div class="flex items-center mb-8">
+                    <div class="w-16 h-16 bg-red-600 rounded-lg flex items-center justify-center mr-4">
+                        <i data-lucide="headphones" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">Customer Service & Professional Communication</h3>
+                        <p class="text-gray-600 text-lg">Multi-channel support, inquiry management, and customer engagement</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                    <div>
+                        <img 
+                            src="correspondence3.png" 
+                            alt="Customer service email"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Professional customer service email with clear problem resolution', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Customer Support</h4>
+                        <p class="text-xs text-gray-600">Professional inquiry responses</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="calbooking.png" 
+                            alt="Appointment booking system"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Professional appointment booking interface with automated confirmations', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Booking Management</h4>
+                        <p class="text-xs text-gray-600">Automated scheduling system</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="mailbox.png" 
+                            alt="Communication organization"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Organized communication system with priority management and follow-up tracking', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Communication Organization</h4>
+                        <p class="text-xs text-gray-600">Systematic inquiry management</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research & Data Analysis -->
+            <div class="service-card bg-white rounded-xl p-8">
+                <div class="flex items-center mb-8">
+                    <div class="w-16 h-16 bg-indigo-600 rounded-lg flex items-center justify-center mr-4">
+                        <i data-lucide="search" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold">Research & Data Analysis</h3>
+                        <p class="text-gray-600 text-lg">Market research, data compilation, and comprehensive analysis</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                    <div>
+                        <img 
+                            src="sheets.png" 
+                            alt="Research data compilation"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Comprehensive research data compilation with organized analysis and findings', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Research Compilation</h4>
+                        <p class="text-xs text-gray-600">Organized data collection and analysis</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="audience.png" 
+                            alt="Data analysis dashboard"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Data analysis dashboard with performance metrics and insights', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Performance Analytics</h4>
+                        <p class="text-xs text-gray-600">Metrics tracking and reporting</p>
+                    </div>
+                    <div>
+                        <img 
+                            src="form.png" 
+                            alt="Data collection forms"
+                            class="screenshot-img mb-3"
+                            onclick="openModal('Professional data collection forms with systematic information gathering', this.src)"
+                        >
+                        <h4 class="font-semibold text-sm mb-1">Data Collection</h4>
+                        <p class="text-xs text-gray-600">Systematic information gathering</p>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="https://docs.google.com/spreadsheets/d/1KqPwKCEnycwjAbjNRM_ZDe5qi2Lj5kroLE3RaDwWzYw/edit?usp=drive_link" target="_blank" class="inline-flex items-center text-primary hover:underline font-medium">
+                        <i data-lucide="external-link" class="w-4 h-4 mr-2"></i>
+                        View Live Research Data System
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools -->
+    <section id="tools" class="py-12 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-bold text-center mb-8">Professional Tools & Platforms</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <h3 class="font-semibold mb-3 text-gray-700">Core Administrative</h3>
+                    <div class="space-y-2">
+                        <div class="bg-gray-50 px-3 py-2 rounded text-sm">Google Workspace</div>
+                        <div class="bg-gray-50 px-3 py-2 rounded text-sm">Microsoft Office</div>
+                        <div class="bg-gray-50 px-3 py-2 rounded text-sm">Notion</div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="font-semibold mb-3 text-gray-700">Project & CRM</h3>
+                    <div class="space-y-2">
+                        <div class="bg-gray-50 px-3 py-2 rounded text-sm">ClickUp</div>
+                        <div class="bg-gray-50 px-3 py-2 rounded text-sm">HubSpot</div>
+                        <div class="bg-gray-50 px-3 py-2 rounded text-sm">Zapier</div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3 class="font-semibold mb-3 text-gray-700">Marketing & Design</h3>
+                    <div class="space-y-2">
+                        <div class="bg-gray-50 px-3 py-2 rounded text-sm">Mailchimp</div>
+                        <div class="bg-gray-50 px-3 py-2 rounded text-sm">Canva</div>
+                        <div class="bg-gray-50 px-3 py-2 rounded text-sm">CapCut</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-4">Get In Touch</h2>
+                <p class="text-xl text-gray-600">Ready to streamline your business operations? Let's discuss your administrative needs.</p>
+            </div>
+            
+            <div class="bg-white rounded-xl p-8 shadow-lg max-w-2xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i data-lucide="mail" class="w-5 h-5 text-primary mr-3"></i>
+                                <span class="text-gray-700">winifredachinike@gmail.com</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="phone" class="w-5 h-5 text-primary mr-3"></i>
+                                <span class="text-gray-700">+2349028021766</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="globe" class="w-5 h-5 text-primary mr-3"></i>
+                                <span class="text-gray-700">Available to work immediately </span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="linkedin" class="w-5 h-5 text-primary mr-3"></i>
+                                <a href="http://www.linkedin.com/in/achinike-winifred-595b6918a"><span class="text-gray-700">LinkedIn Profile</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">What You Get</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-success mr-2"></i>
+                                <span class="text-sm">24-48 hour response time</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-success mr-2"></i>
+                                <span class="text-sm">Professional administrative support</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-success mr-2"></i>
+                                <span class="text-sm">Proven systems and processes</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-success mr-2"></i>
+                                <span class="text-sm">Ongoing support and optimization</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-8">
+                    <button class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all">
+                        Start Working Together
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h3 class="text-xl font-bold mb-2">Winifred Achinike</h3>
+            <p class="text-gray-300 mb-4">Professional Virtual Administrative Assistant</p>
+            <p class="text-sm text-gray-400">Efficient • Organized • Professional</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Modal functions
+        function openModal(description, src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalDescription = document.getElementById('modalDescription');
+            
+            modalImg.src = src;
+            modalDescription.textContent = description;
+            modal.classList.add('show');
+            
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Navigation smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Escape key modal close
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
