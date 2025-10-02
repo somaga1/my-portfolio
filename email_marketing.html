@@ -68,7 +68,7 @@
         
         .email-screenshot {
             width: 100%;
-            height: 300px;
+            height: 350px;
             background-size: cover;
             background-position: top center;
             background-repeat: no-repeat;
@@ -92,17 +92,101 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
+        }
+        
+        .lightbox-container {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .lightbox img { 
-            max-width: 100%;
+            max-width: 800px;
+            max-height: 80vh;
             width: auto;
             height: auto;
-            max-height: none;
             border-radius: 8px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            margin: 40px 0;
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            color: #5D4E37;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-nav:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-nav.prev {
+            left: -25px;
+        }
+        
+        .carousel-nav.next {
+            right: -25px;
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        .image-counter {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        
+        .multi-image-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(93, 78, 55, 0.9);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -117,8 +201,9 @@
                     <img src="https://pfst.cf2.poecdn.net/base/image/4e668be902ac4f6bdaf2d3850263a738e3eb122db804e668a6d8ee5cb773ae41?w=1536&h=1024" alt="WinifredCreates" class="h-8">
                     <span class="font-serif text-lg brand-brown font-bold">WinifredCreates</span>
                 </div>
-                <a href="#contact" class="bg-gradient-to-r from-amber-200 to-yellow-200 brand-brown px-6 py-2 rounded-full font-medium hover:from-amber-300 hover:to-yellow-300 transition-all">
-                    Work With Me
+                <a href="#contact" class="bg-gradient-to-r from-amber-200 to-yellow-200 brand-brown px-4 py-2 sm:px-6 rounded-full font-medium hover:from-amber-300 hover:to-yellow-300 transition-all text-sm sm:text-base">
+                    <span class="hidden sm:inline">Work With Me</span>
+                    <span class="sm:hidden">Contact</span>
                 </a>
             </div>
         </div>
@@ -226,7 +311,7 @@
             <div class="masonry-grid" id="portfolioGrid">
                 
                 <!-- WinifredCreates Welcome Email -->
-                <div class="masonry-item gallery-item" data-category="welcome" onclick="openLightbox('winifredcreates.png')">
+                <div class="masonry-item gallery-item" data-category="welcome" onclick="openLightbox('winifredcreates-welcome', 0)">
                     <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all relative">
                         <div class="email-screenshot" style="background-image: url('winifredcreates.png');"></div>
                         
@@ -249,10 +334,12 @@
                         </div>
                     </div>
                 </div>
-                <!-- Bloom & Co -->
-                <div class="masonry-item gallery-item" data-category="welcome" onclick="openLightbox('bloom-co.png')">
+
+                <!-- Bloom & Co Welcome Series -->
+                <div class="masonry-item gallery-item" data-category="welcome" onclick="openLightbox('bloom-welcome-series', 0)">
                     <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all relative">
                         <div class="email-screenshot" style="background-image: url('bloom-co.png');"></div>
+                        <div class="multi-image-badge">2 emails</div>
                         
                         <div class="preview-overlay">
                             <div class="flex flex-col space-y-3">
@@ -262,20 +349,20 @@
                                 </a>
                                 <button class="bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition-all flex items-center space-x-2">
                                     <span>🔍</span>
-                                    <span>View Full Size</span>
+                                    <span>View Series</span>
                                 </button>
                             </div>
                         </div>
                         
                         <div class="p-4">
                             <h3 class="font-semibold brand-brown mb-1">Bloom & Co. Welcome Series</h3>
-                            <p class="text-sm brand-light-brown">Personal, warm onboarding for new subscribers</p>
+                            <p class="text-sm brand-light-brown"> Personal, warm onboarding for new subscribers</p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Newsletter -->
-                <div class="masonry-item gallery-item" data-category="newsletter" onclick="openLightbox('newsletter.jpg')">
+                <div class="masonry-item gallery-item" data-category="newsletter" onclick="openLightbox('newsletter-design', 0)">
                     <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all relative">
                         <div class="email-screenshot" style="background-image: url('newsletter.jpg');"></div>
                         
@@ -300,7 +387,7 @@
                 </div>
 
                 <!-- Leadership Summit -->
-                <div class="masonry-item gallery-item" data-category="newsletter" onclick="openLightbox('eventinvitation.png')">
+                <div class="masonry-item gallery-item" data-category="newsletter" onclick="openLightbox('event-invitation', 0)">
                     <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all relative">
                         <div class="email-screenshot" style="background-image: url('eventinvitation.png');"></div>
                         
@@ -325,13 +412,13 @@
                 </div>
                 
                 <!-- E-commerce -->
-                <div class="masonry-item gallery-item" data-category="ecommerce" onclick="openLightbox('ecommerce.jpg')">
+                <div class="masonry-item gallery-item" data-category="ecommerce" onclick="openLightbox('ecommerce-campaign', 0)">
                     <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all relative">
-                        <div class="email-screenshot" style="background-image: url('ecommerce.jpg');"></div>
+                        <div class="email-screenshot" style="background-image: url('ecommerce.png');"></div>
                         
                         <div class="preview-overlay">
                             <div class="flex flex-col space-y-3">
-                                <a href="https://mailchi.mp/example/ecommerce" target="_blank" onclick="event.stopPropagation()" class="bg-white text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all flex items-center space-x-2">
+                                <a href="https://mailchi.mp/ba51eef6ac98/sa4ybv7ccz" target="_blank" onclick="event.stopPropagation()" class="bg-white text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all flex items-center space-x-2">
                                     <span>👁️</span>
                                     <span>Live Preview</span>
                                 </a>
@@ -343,14 +430,14 @@
                         </div>
                         
                         <div class="p-4">
-                            <h3 class="font-semibold brand-brown mb-1">E-commerce Campaign</h3>
-                            <p class="text-sm brand-light-brown">Product launch and sales emails</p>
+                            <h3 class="font-semibold brand-brown mb-1">Holiday Promotion</h3>
+                            <p class="text-sm brand-light-brown">E-commerce sales emails</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Nexus flow -->
-                <div class="masonry-item gallery-item" data-category="ecommerce" onclick="openLightbox('nexusflow.png')">
+                <div class="masonry-item gallery-item" data-category="ecommerce" onclick="openLightbox('nexus-flow-campaign', 0)">
                     <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all relative">
                         <div class="email-screenshot" style="background-image: url('nexusflow.png');"></div>
                         
@@ -374,32 +461,31 @@
                     </div>
                 </div>
                 
-                <!-- Automation -->
-                <div class="masonry-item gallery-item" data-category="automation" onclick="openLightbox('automation.jpg')">
+                <!-- Automation Series -->
+                <div class="masonry-item gallery-item" data-category="automation" onclick="openLightbox('automation-series', 0)">
                     <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all relative">
-                        <div class="email-screenshot" style="background-image: url('automation.jpg');"></div>
+                        <div class="email-screenshot" style="background-image: url('automation.png');"></div>
+                        <div class="multi-image-badge">3 emails</div>
                         
                         <div class="preview-overlay">
                             <div class="flex flex-col space-y-3">
-                                <a href="https://mailchi.mp/example/automation" target="_blank" onclick="event.stopPropagation()" class="bg-white text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all flex items-center space-x-2">
+                                <a href="https://us16.campaign-archive.com/?u=98483e7ea4eed195d1f86c892&id=f8bd5c9929" target="_blank" onclick="event.stopPropagation()" class="bg-white text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all flex items-center space-x-2">
                                     <span>👁️</span>
                                     <span>Live Preview</span>
                                 </a>
                                 <button class="bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition-all flex items-center space-x-2">
                                     <span>🔍</span>
-                                    <span>View Full Size</span>
+                                    <span>View Sequence</span>
                                 </button>
                             </div>
                         </div>
                         
                         <div class="p-4">
-                            <h3 class="font-semibold brand-brown mb-1">Email Automation</h3>
-                            <p class="text-sm brand-light-brown">Automated sequences and workflows</p>
+                            <h3 class="font-semibold brand-brown mb-1">Apex Build Co. Campaign</h3>
+                            <p class="text-sm brand-light-brown">3-part nurture sequence with smart triggers</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Add more portfolio items here with their respective data-category -->
                 
             </div>
             
@@ -428,11 +514,11 @@
                     <h3 class="font-serif text-2xl brand-brown font-bold mb-6">Tell Me About Your Project</h3>
                     <form action="mailto:winifredachinike@gmail.com" method="post" enctype="text/plain" class="space-y-4">
                         <div class="grid md:grid-cols-2 gap-4">
-                            <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-amber-200 rounded-lg focus:border-amber-600 focus:outline-none bg-white">
-                            <input type="email" name="email" placeholder="Email Address" class="w-full p-3 border border-amber-200 rounded-lg focus:border-amber-600 focus:outline-none bg-white">
+                            <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-amber-200 rounded-lg focus:border-amber-600 focus:outline-none bg-white text-base">
+                            <input type="email" name="email" placeholder="Email Address" class="w-full p-3 border border-amber-200 rounded-lg focus:border-amber-600 focus:outline-none bg-white text-base">
                         </div>
-                        <input type="text" name="company" placeholder="Company/Business Name" class="w-full p-3 border border-amber-200 rounded-lg focus:border-amber-600 focus:outline-none bg-white">
-                        <select name="project_type" class="w-full p-3 border border-amber-200 rounded-lg focus:border-amber-600 focus:outline-none bg-white">
+                        <input type="text" name="company" placeholder="Company/Business Name" class="w-full p-3 border border-amber-200 rounded-lg focus:border-amber-600 focus:outline-none bg-white text-base">
+                        <select name="project_type" class="w-full p-3 border border-amber-200 rounded-lg focus:border-amber-600 focus:outline-none bg-white text-base">
                             <option>What do you need help with?</option>
                             <option>Welcome email series</option>
                             <option>Newsletter design</option>
@@ -441,7 +527,7 @@
                             <option>Complete email marketing strategy</option>
                             <option>Not sure yet - let's discuss!</option>
                         </select>
-                        <textarea name="project_details" placeholder="Tell me more about your business and what you're hoping to achieve with email marketing..." rows="4" class="w-full p-3 border border-amber-200 rounded-lg focus:border-amber-600 focus:outline-none bg-white"></textarea>
+                        <textarea name="project_details" placeholder="Tell me more about your business and what you're hoping to achieve with email marketing..." rows="4" class="w-full p-3 border border-amber-200 rounded-lg focus:border-amber-600 focus:outline-none bg-white text-base"></textarea>
                         <button type="submit" class="w-full bg-gradient-to-r from-amber-600 to-yellow-600 text-white py-3 rounded-lg font-semibold hover:from-amber-700 hover:to-yellow-700 transition-all">
                             Send Project Details
                         </button>
@@ -520,13 +606,56 @@
         </div>
     </footer>
 
-    <!-- Lightbox -->
+    <!-- Enhanced Lightbox with Carousel -->
     <div id="lightbox" class="lightbox">
         <button onclick="closeLightbox()" class="fixed top-4 right-4 text-white text-4xl font-bold hover:text-gray-300 transition-colors z-10 bg-black/50 w-12 h-12 rounded-full flex items-center justify-center">&times;</button>
-        <img id="lightboxImg" src="" alt="">
+        
+        <div class="lightbox-container">
+            <button class="carousel-nav prev" onclick="previousImage()" id="prevBtn">‹</button>
+            <img id="lightboxImg" src="" alt="">
+            <button class="carousel-nav next" onclick="nextImage()" id="nextBtn">›</button>
+            <div class="image-counter" id="imageCounter">1 / 1</div>
+        </div>
+        
+        <div class="carousel-indicators" id="carouselIndicators"></div>
     </div>
 
     <script>
+        // Enhanced gallery data with multiple images for sequences
+        const portfolioData = {
+            'winifredcreates-welcome': {
+                images: ['winifredcreates.png'],
+                titles: ['Welcome Email']
+            },
+            'bloom-welcome-series': {
+                images: ['bloom-co.png', 'bloom-co-2.png', 'bloom-co-3.png'],
+                titles: ['Welcome Email', 'Value Email', 'CTA Email']
+            },
+            'newsletter-design': {
+                images: ['newsletter.jpg'],
+                titles: ['Newsletter Design']
+            },
+            'event-invitation': {
+                images: ['eventinvitation.png'],
+                titles: ['Event Invitation']
+            },
+            'ecommerce-campaign': {
+                images: ['ecommerce.png'],
+                titles: ['E-commerce Campaign']
+            },
+            'nexus-flow-campaign': {
+                images: ['nexusflow.png'],
+                titles: ['Nexus Flow Launch']
+            },
+            'automation-series': {
+                images: ['automation.png', 'automation-2.png', 'automation-3.png'],
+                titles: ['Welcome Email', 'Nurture Email', 'Final CTA', 'Value Email', 'Final CTA']
+            }
+        };
+
+        let currentPortfolioId = '';
+        let currentImageIndex = 0;
+
         // Gallery filtering
         function filterGallery(category) {
             const items = document.querySelectorAll('.gallery-item');
@@ -551,11 +680,93 @@
             });
         }
 
-        // Lightbox functionality
-        function openLightbox(imageSrc) {
+        // Enhanced lightbox functionality with carousel
+        function openLightbox(portfolioId, imageIndex = 0) {
+            currentPortfolioId = portfolioId;
+            currentImageIndex = imageIndex;
+            
+            const data = portfolioData[portfolioId];
+            if (!data) return;
+            
             document.getElementById('lightbox').classList.add('active');
-            document.getElementById('lightboxImg').src = imageSrc;
             document.body.style.overflow = 'hidden';
+            
+            updateLightboxImage();
+            createIndicators();
+            updateNavButtons();
+        }
+
+        function updateLightboxImage() {
+            const data = portfolioData[currentPortfolioId];
+            const lightboxImg = document.getElementById('lightboxImg');
+            const imageCounter = document.getElementById('imageCounter');
+            
+            lightboxImg.src = data.images[currentImageIndex];
+            lightboxImg.alt = data.titles[currentImageIndex];
+            
+            imageCounter.textContent = `${currentImageIndex + 1} / ${data.images.length}`;
+        }
+
+        function createIndicators() {
+            const data = portfolioData[currentPortfolioId];
+            const indicatorsContainer = document.getElementById('carouselIndicators');
+            
+            if (data.images.length <= 1) {
+                indicatorsContainer.style.display = 'none';
+                return;
+            }
+            
+            indicatorsContainer.style.display = 'flex';
+            indicatorsContainer.innerHTML = '';
+            
+            data.images.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = `carousel-dot ${index === currentImageIndex ? 'active' : ''}`;
+                dot.onclick = () => goToImage(index);
+                indicatorsContainer.appendChild(dot);
+            });
+        }
+
+        function updateNavButtons() {
+            const data = portfolioData[currentPortfolioId];
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (data.images.length <= 1) {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'flex';
+                nextBtn.style.display = 'flex';
+            }
+        }
+
+        function nextImage() {
+            const data = portfolioData[currentPortfolioId];
+            if (currentImageIndex < data.images.length - 1) {
+                currentImageIndex++;
+            } else {
+                currentImageIndex = 0; // Loop to beginning
+            }
+            updateLightboxImage();
+            createIndicators();
+        }
+
+        function previousImage() {
+            const data = portfolioData[currentPortfolioId];
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+            } else {
+                currentImageIndex = data.images.length - 1; // Loop to end
+            }
+            updateLightboxImage();
+            createIndicators();
+        }
+
+        function goToImage(index) {
+            currentImageIndex = index;
+            updateLightboxImage();
+            createIndicators();
         }
 
         function closeLightbox() {
@@ -563,10 +774,16 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Close lightbox on ESC key
+        // Keyboard navigation
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    nextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    previousImage();
+                }
             }
         });
 
