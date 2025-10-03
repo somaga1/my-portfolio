@@ -100,7 +100,7 @@
                 <!-- Service Cards -->
                 <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('automation')">
                     <div class="h-64 overflow-hidden bg-gray-50">
-                        <img src="automation-2.png" alt="Automation & Process Optimization" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                        <img src="zap.png" alt="Automation & Process Optimization" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
@@ -468,13 +468,13 @@
                 title: 'Automation & Process Optimization',
                 items: [
                     {
-                        text: 'Automated lead capture using Google Forms and Zapier',
-                        img: 'automation-2.png',
+                        text: 'Automated lead capture using Hubspot Forms and Zapier',
+                        img: 'zap.png',
                         link: 'https://forms.gle/your-lead-form',
                     },
                     {
                         text: 'Calendar sync for bookings and reminders',
-                        img: 'calendar.png',
+                        img: 'calbooking.png',
                         link: 'https://calendly.com/winifredachinike',
                     },
                     {
@@ -499,7 +499,7 @@
                     },
                     {
                         text: 'Audience segmentation and targeting',
-                        img: 'filter.png',
+                        img: 'segments.png',
                         link: 'email_marketing.html',
                     },
                     {
@@ -519,7 +519,7 @@
                 items: [
                     {
                         text: 'Facebook Lead Ads campaign for Apex Build Co.',
-                        img: 'facebook_lead_gen.html',
+                        img: 'preview.png',
                         link: 'facebook_lead_gen.html',
                     },
                     {
@@ -534,7 +534,7 @@
                     },
                     {
                         text: 'Landing page creation for lead capture',
-                        img: 'preview.png',
+                        img: 'form.png',
                         link: 'facebook_lead_gen.html',
                     }
                 ]
@@ -749,7 +749,7 @@
                 <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
                     ${samples[key].items.map(item => `
                         <div class='bg-white border border-accent overflow-hidden transition-all duration-300'>
-                            <div class='h-80 overflow-hidden'>
+                            <div class='h-80 overflow-hidden border-b border-accent'>
                                 <img src='${item.img}' alt='' class='w-full h-full object-cover'>
                             </div>
                             <div class='p-6'>
