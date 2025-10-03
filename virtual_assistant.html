@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Virtual Assistant Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="bg-white py-10 shadow-sm text-center">
+        <h1 class="text-4xl md:text-5xl font-bold font-montserrat tracking-wide text-primary mb-2">Winifred Achinike</h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">Virtual Assistant | Administrative Support | Automation | Email Marketing | Lead Generation | Project Management | Content Creation | Technical Support | Business Optimization</p>
+    </header>
+    <section class="gallery grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 py-12 px-4 max-w-6xl mx-auto">
+        <div class="card cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden flex flex-col items-center p-4" onclick="showModal('automation')">
+            <img src="automation-2.png" alt="Automation & Process Optimization" class="w-full h-44 object-cover rounded-xl mb-4">
+            <h2 class="text-xl font-semibold mb-2 text-primary">Automation & Process Optimization</h2>
+            <p class="text-gray-500 mb-2 px-2 text-center text-sm">Implementing automated workflows, calendar integrations, and business process improvements to save time and reduce errors.</p>
+            <button class="text-xs text-primary underline hover:text-primary/80 px-2 py-1 rounded" onclick="event.stopPropagation();showModal('automation');">View Works</button>
+        </div>
+        <div class="card cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden flex flex-col items-center p-4" onclick="showModal('email_marketing')">
+            <img src="newsletter.png" alt="Email Marketing" class="w-full h-44 object-cover rounded-xl mb-4">
+            <h2 class="text-xl font-semibold mb-2 text-primary">Email Marketing</h2>
+            <p class="text-gray-500 mb-2 px-2 text-center text-sm">Designing and managing email campaigns, newsletters, and audience segmentation for higher engagement and conversions.</p>
+            <button class="text-xs text-primary underline hover:text-primary/80 px-2 py-1 rounded" onclick="event.stopPropagation();showModal('email_marketing');">View Works</button>
+        </div>
+        <div class="card cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden flex flex-col items-center p-4" onclick="showModal('lead_gen')">
+            <img src="facebook_lead_gen.html" alt="Lead Generation" class="w-full h-44 object-cover rounded-xl mb-4">
+            <h2 class="text-xl font-semibold mb-2 text-primary">Lead Generation</h2>
+            <p class="text-gray-500 mb-2 px-2 text-center text-sm">Running targeted campaigns, managing CRM, and nurturing leads for business growth.</p>
+            <button class="text-xs text-primary underline hover:text-primary/80 px-2 py-1 rounded" onclick="event.stopPropagation();showModal('lead_gen');">View Works</button>
+        </div>
+        <div class="card cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden flex flex-col items-center p-4" onclick="showModal('admin_support')">
+            <img src="calendar.png" alt="Administrative Support" class="w-full h-44 object-cover rounded-xl mb-4">
+            <h2 class="text-xl font-semibold mb-2 text-primary">Administrative Support</h2>
+            <p class="text-gray-500 mb-2 px-2 text-center text-sm">Calendar management, correspondence, document preparation, and daily business operations.</p>
+            <button class="text-xs text-primary underline hover:text-primary/80 px-2 py-1 rounded" onclick="event.stopPropagation();showModal('admin_support');">View Works</button>
+        </div>
+        <div class="card cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden flex flex-col items-center p-4" onclick="showModal('development')">
+            <img src="preview.png" alt="Web & Mobile Development" class="w-full h-44 object-cover rounded-xl mb-4">
+            <h2 class="text-xl font-semibold mb-2 text-primary">Web & Mobile Development</h2>
+            <p class="text-gray-500 mb-2 px-2 text-center text-sm">Building responsive websites and mobile apps to enhance digital presence and user experience.</p>
+            <button class="text-xs text-primary underline hover:text-primary/80 px-2 py-1 rounded" onclick="event.stopPropagation();showModal('development');">View Works</button>
+        </div>
+        <div class="card cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden flex flex-col items-center p-4" onclick="showModal('consultation')">
+            <img src="onboarding.png" alt="Consultation & Onboarding" class="w-full h-44 object-cover rounded-xl mb-4">
+            <h2 class="text-xl font-semibold mb-2 text-primary">Consultation & Onboarding</h2>
+            <p class="text-gray-500 mb-2 px-2 text-center text-sm">Client onboarding, process setup, and personalized consultations for smooth project starts.</p>
+            <button class="text-xs text-primary underline hover:text-primary/80 px-2 py-1 rounded" onclick="event.stopPropagation();showModal('consultation');">View Works</button>
+        </div>
+        <div class="card cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden flex flex-col items-center p-4" onclick="showModal('content_creation')">
+            <img src="newsletter.png" alt="Content Creation" class="w-full h-44 object-cover rounded-xl mb-4">
+            <h2 class="text-xl font-semibold mb-2 text-primary">Content Creation</h2>
+            <p class="text-gray-500 mb-2 px-2 text-center text-sm">Writing articles, newsletters, and social media posts tailored to your brand and audience.</p>
+            <button class="text-xs text-primary underline hover:text-primary/80 px-2 py-1 rounded" onclick="event.stopPropagation();showModal('content_creation');">View Works</button>
+        </div>
+        <div class="card cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden flex flex-col items-center p-4" onclick="showModal('project_management')">
+            <img src="task.png" alt="Project Management" class="w-full h-44 object-cover rounded-xl mb-4">
+            <h2 class="text-xl font-semibold mb-2 text-primary">Project Management</h2>
+            <p class="text-gray-500 mb-2 px-2 text-center text-sm">Coordinating tasks, timelines, and deliverables to ensure successful project completion.</p>
+            <button class="text-xs text-primary underline hover:text-primary/80 px-2 py-1 rounded" onclick="event.stopPropagation();showModal('project_management');">View Works</button>
+        </div>
+        <div class="card cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden flex flex-col items-center p-4" onclick="showModal('invoice_management')">
+            <img src="invoice.png" alt="Invoice Management System" class="w-full h-44 object-cover rounded-xl mb-4">
+            <h2 class="text-xl font-semibold mb-2 text-primary">Invoice Management System</h2>
+            <p class="text-gray-500 mb-2 px-2 text-center text-sm">Custom Excel-based invoice management for tracking payments, automating calculations, and organizing client billing.</p>
+            <button class="text-xs text-primary underline hover:text-primary/80 px-2 py-1 rounded" onclick="event.stopPropagation();showModal('invoice_management');">View Works</button>
+        </div>
+        <div class="card cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden flex flex-col items-center p-4" onclick="showModal('tech_support')">
+            <img src="correspondence1.png" alt="Technical Support" class="w-full h-44 object-cover rounded-xl mb-4">
+            <h2 class="text-xl font-semibold mb-2 text-primary">Technical Support</h2>
+            <p class="text-gray-500 mb-2 px-2 text-center text-sm">Providing troubleshooting, software setup, and ongoing tech support for clients.</p>
+            <button class="text-xs text-primary underline hover:text-primary/80 px-2 py-1 rounded" onclick="event.stopPropagation();showModal('tech_support');">View Works</button>
+        </div>
+        <div class="card cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden flex flex-col items-center p-4" onclick="showModal('influencer_campaigns')">
+            <img src="influencer_campaign.html" alt="Influencer Campaigns" class="w-full h-44 object-cover rounded-xl mb-4">
+            <h2 class="text-xl font-semibold mb-2 text-primary">Influencer Campaigns</h2>
+            <p class="text-gray-500 mb-2 px-2 text-center text-sm">Managing influencer outreach, campaign tracking, and reporting for brand growth.</p>
+            <button class="text-xs text-primary underline hover:text-primary/80 px-2 py-1 rounded" onclick="event.stopPropagation();showModal('influencer_campaigns');">View Works</button>
+        </div>
+        <div class="card cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden flex flex-col items-center p-4" onclick="showModal('event_planning')">
+            <img src="eventinvitation.png" alt="Event Planning & Invitations" class="w-full h-44 object-cover rounded-xl mb-4">
+            <h2 class="text-xl font-semibold mb-2 text-primary">Event Planning & Invitations</h2>
+            <p class="text-gray-500 mb-2 px-2 text-center text-sm">Organizing events, sending invitations, and managing RSVPs for seamless experiences.</p>
+            <button class="text-xs text-primary underline hover:text-primary/80 px-2 py-1 rounded" onclick="event.stopPropagation();showModal('event_planning');">View Works</button>
+        </div>
+    </section>
+    <!-- Tools Used Section -->
+    <section class="max-w-6xl mx-auto py-12 px-4 bg-white rounded-2xl shadow-lg mt-8">
+        <h2 class="text-3xl font-bold text-center mb-8">Tools I Use</h2>
+        <div class="flex flex-wrap justify-center gap-8 items-center">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/excel/excel-original.svg" alt="Excel" title="Excel" class="h-12 w-12">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Sheets" title="Google Sheets" class="h-12 w-12">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" alt="Canva" title="Canva" class="h-12 w-12">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/zapier/zapier-original.svg" alt="Zapier" title="Zapier" class="h-12 w-12">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg" alt="Notion" title="Notion" class="h-12 w-12">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Calendar" title="Google Calendar" class="h-12 w-12">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hubspot/hubspot-original.svg" alt="HubSpot" title="HubSpot" class="h-12 w-12">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/capcut/capcut-original.svg" alt="CapCut" title="CapCut" class="h-12 w-12">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gmail/gmail-original.svg" alt="Email" title="Email" class="h-12 w-12">
+        </div>
+    </section>
+    <div class="links">
+        <a href="mailto:winifredachinike@gmail.com">Email Me</a>
+        <a href="https://www.linkedin.com/in/winifred-achinike" target="_blank">LinkedIn</a>
+        <a href="https://calendly.com/winifredachinike" target="_blank">Book a Call</a>
+    </div>
+    <!-- Modal Structure -->
+    <div id="sampleModal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden" onclick="if(event.target===this)closeModal()">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full mx-4 p-10 relative animate-fadein overflow-y-auto max-h-[90vh]" onclick="event.stopPropagation()">
+            <button onclick="closeModal()" class="absolute top-6 right-8 text-gray-400 hover:text-primary text-3xl font-bold">&times;</button>
+            <h2 id="modalTitle" class="text-3xl font-bold mb-8 text-primary"></h2>
+            <div id="modalSamples"></div>
+        </div>
+    </div>
+    <script>
+    const samples = {
+            invoice_management: {
+                title: 'Invoice Management System',
+                items: [
+                    {
+                        text: 'Excel-based invoice tracker with automated calculations',
+                        img: 'invoice.png',
+                        link: 'Winifred_Achinike_CV.pdf',
+                    },
+                    {
+                        text: 'Client payment status dashboard',
+                        img: 'sheets.png',
+                        link: 'https://docs.google.com/spreadsheets/',
+                    },
+                    {
+                        text: 'Automated reminders for due invoices',
+                        img: 'automation-2.png',
+                        link: 'invoice.png',
+                    }
+                ]
+            },
+        automation: {
+            title: 'Automation & Process Optimization',
+            items: [
+                {
+                    text: 'Automated lead capture using Google Forms and Zapier',
+                    img: 'automation-2.png',
+                    link: 'https://forms.gle/your-lead-form',
+                },
+                {
+                    text: 'Calendar sync for bookings and reminders',
+                    img: 'calendar.png',
+                    link: 'https://calendly.com/winifredachinike',
+                },
+                {
+                    text: 'Workflow automation for onboarding new clients',
+                    img: 'onboarding.png',
+                    link: 'https://www.notion.so/Onboarding-Workflow-Sample',
+                },
+                {
+                    text: 'Email sequence automation for follow-ups',
+                    img: 'sequence.png',
+                    link: 'https://www.mailerlite.com/',
+                }
+            ]
+        },
+        email_marketing: {
+            title: 'Email Marketing',
+            items: [
+                {
+                    text: 'Newsletter design and scheduling',
+                    img: 'newsletter.png',
+                    link: 'email_marketing.html',
+                },
+                {
+                    text: 'Audience segmentation and targeting',
+                    img: 'filter.png',
+                    link: 'email_marketing.html',
+                },
+                {
+                    text: 'A/B testing for campaign optimization',
+                    img: 'automation-3.png',
+                    link: 'email_marketing.html',
+                },
+                {
+                    text: 'Automated welcome and nurture sequences',
+                    img: 'automation.png',
+                    link: 'email_marketing.html',
+                }
+            ]
+        },
+        lead_gen: {
+            title: 'Lead Generation',
+            items: [
+                {
+                    text: 'Facebook Lead Ads campaign for Apex Build Co.',
+                    img: 'facebook_lead_gen.html',
+                    link: 'facebook_lead_gen.html',
+                },
+                {
+                    text: 'CRM setup and lead tracking',
+                    img: 'hubspot.png',
+                    link: 'https://www.hubspot.com/',
+                },
+                {
+                    text: 'Follow-up automation for new leads',
+                    img: 'automation-2.png',
+                    link: 'facebook_lead_gen.html',
+                },
+                {
+                    text: 'Landing page creation for lead capture',
+                    img: 'preview.png',
+                    link: 'facebook_lead_gen.html',
+                }
+            ]
+        },
+        admin_support: {
+            title: 'Administrative Support',
+            items: [
+                {
+                    text: 'Calendar management and scheduling',
+                    img: 'calendar.png',
+                    link: 'calbooking.png',
+                },
+                {
+                    text: 'Document preparation and editing',
+                    img: 'msoffice.png',
+                    link: 'https://www.office.com/',
+                },
+                {
+                    text: 'Professional email correspondence',
+                    img: 'mailbox.png',
+                    link: 'email_marketing.html',
+                },
+                {
+                    text: 'Daily business operations support',
+                    img: 'task.png',
+                    link: 'view.html',
+                }
+            ]
+        },
+        development: {
+            title: 'Web & Mobile Development',
+            items: [
+                {
+                    text: 'Portfolio website design and deployment',
+                    img: 'preview.png',
+                    link: 'index.html',
+                },
+                {
+                    text: 'Mobile app UI/UX with Flutter',
+                    img: 'development.html',
+                    link: 'development.html',
+                },
+                {
+                    text: 'Responsive web interfaces',
+                    img: 'view2.html',
+                    link: 'view2.html',
+                },
+                {
+                    text: 'Landing page development for campaigns',
+                    img: 'preview.png',
+                    link: 'facebook_lead_gen.html',
+                }
+            ]
+        },
+        consultation: {
+            title: 'Consultation & Onboarding',
+            items: [
+                {
+                    text: 'Client onboarding process setup',
+                    img: 'onboarding.png',
+                    link: 'consultation.png',
+                },
+                {
+                    text: 'Business process consultation',
+                    img: 'automation.png',
+                    link: 'consultation.png',
+                },
+                {
+                    text: 'Personalized workflow recommendations',
+                    img: 'automation-3.png',
+                    link: 'consultation.png',
+                },
+                {
+                    text: 'Onboarding documentation creation',
+                    img: 'form.png',
+                    link: 'consultation.png',
+                }
+            ]
+        },
+        content_creation: {
+            title: 'Content Creation',
+            items: [
+                {
+                    text: 'Newsletter writing and design',
+                    img: 'newsletter.png',
+                    link: 'email_marketing.html',
+                },
+                {
+                    text: 'Social media post creation',
+                    img: 'canva.png',
+                    link: 'https://www.instagram.com/winifredcreates/',
+                },
+                {
+                    text: 'Blog article writing',
+                    img: 'preview.png',
+                    link: 'view.html',
+                },
+                {
+                    text: 'Content calendar management',
+                    img: 'calendar.png',
+                    link: 'calbooking.png',
+                }
+            ]
+        },
+        project_management: {
+            title: 'Project Management',
+            items: [
+                {
+                    text: 'Task coordination and tracking',
+                    img: 'task.png',
+                    link: 'view.html',
+                },
+                {
+                    text: 'Timeline and deliverable management',
+                    img: 'Planner.png',
+                    link: 'view2.html',
+                },
+                {
+                    text: 'Team communication and updates',
+                    img: 'correspondence2.png',
+                    link: 'view.html',
+                },
+                {
+                    text: 'Project reporting and documentation',
+                    img: 'sheets.png',
+                    link: 'https://docs.google.com/spreadsheets/',
+                }
+            ]
+        },
+        tech_support: {
+            title: 'Technical Support',
+            items: [
+                {
+                    text: 'Software troubleshooting',
+                    img: 'correspondence1.png',
+                    link: 'view.html',
+                },
+                {
+                    text: 'System setup and configuration',
+                    img: 'automation.png',
+                    link: 'development.html',
+                },
+                {
+                    text: 'Ongoing tech support for clients',
+                    img: 'mailbox.png',
+                    link: 'email_marketing.html',
+                },
+                {
+                    text: 'Technical documentation creation',
+                    img: 'form.png',
+                    link: 'view2.html',
+                }
+            ]
+        },
+        influencer_campaigns: {
+            title: 'Influencer Campaigns',
+            items: [
+                {
+                    text: 'Influencer outreach and collaboration',
+                    img: 'influencer_campaign.html',
+                    link: 'influencer_campaign.html',
+                },
+                {
+                    text: 'Campaign tracking and analytics',
+                    img: 'automation-2.png',
+                    link: 'influencer_campaign.html',
+                },
+                {
+                    text: 'Reporting on campaign performance',
+                    img: 'sheets.png',
+                    link: 'https://docs.google.com/spreadsheets/',
+                },
+                {
+                    text: 'Content coordination with influencers',
+                    img: 'canva.png',
+                    link: 'influencer_campaign.html',
+                }
+            ]
+        },
+        event_planning: {
+            title: 'Event Planning & Invitations',
+            items: [
+                {
+                    text: 'Event organization and logistics',
+                    img: 'eventinvitation.png',
+                    link: 'eventinvitation.png',
+                },
+                {
+                    text: 'Invitation design and management',
+                    img: 'event-invitation.png',
+                    link: 'event-invitation.png',
+                },
+                {
+                    text: 'RSVP tracking and follow-up',
+                    img: 'calendar.png',
+                    link: 'calbooking.png',
+                },
+                {
+                    text: 'Virtual and in-person event support',
+                    img: 'preview.png',
+                    link: 'view.html',
+                }
+            ]
+        }
+    };
+        function showModal(key) {
+            const modal = document.getElementById('sampleModal');
+            modal.classList.remove('hidden');
+            document.getElementById('modalTitle').textContent = samples[key].title;
+            document.getElementById('modalSamples').innerHTML = `
+                <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
+                    ${samples[key].items.map(item => `
+                        <div class='flex flex-col items-center bg-gray-50 rounded-xl p-4 shadow'>
+                            <img src='${item.img}' alt='' class='w-full h-72 object-cover rounded-xl mb-4'>
+                            <div class='font-semibold text-gray-700 mb-2 text-center text-base'>${item.text}</div>
+                            <a href='${item.link}' target='_blank' class='text-xs text-primary underline hover:text-primary/80'>View Sample</a>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+        function closeModal() {
+                document.getElementById('sampleModal').classList.add('hidden');
+        }
+        // Animation for modal
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0077b6',
+                    },
+                    fontFamily: {
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    },
+                    keyframes: {
+                        fadein: {
+                            '0%': { opacity: 0, transform: 'scale(0.95)' },
+                            '100%': { opacity: 1, transform: 'scale(1)' },
+                        },
+                    },
+                    animation: {
+                        fadein: 'fadein 0.3s ease',
+                    },
+                },
+            },
+        };
+    </script>
+</body>
+</html>
