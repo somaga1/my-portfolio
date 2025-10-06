@@ -490,22 +490,22 @@
                     {
                         text: 'Newsletter design and scheduling',
                         img: 'newsletter.png',
-                        link: 'email_marketing.html',
+                        link: 'email_gallery.html',
                     },
                     {
                         text: 'Audience segmentation and targeting',
                         img: 'segments.png',
-                        link: 'email_marketing.html',
+                        
                     },
                     {
                         text: 'A/B testing for campaign optimization',
                         img: 'automation-3.png',
-                        link: 'email_marketing.html',
+                        
                     },
                     {
                         text: 'Automated welcome and nurture sequences',
                         img: 'sequence.png',
-                        link: 'email_marketing.html',
+                        link: 'https://us16.campaign-archive.com/?u=98483e7ea4eed195d1f86c892&id=f8bd5c9929',
                     }
                 ]
             },
@@ -671,8 +671,8 @@
                     },
                     {
                         text: 'Onboarding documentation creation',
-                        img: 'form.png',
-                        link: 'consultation.png',
+                        img: 'guide.png',
+                        link: 'https://docs.google.com/document/d/1j1OG1OAYkNDFqLlVsDtRH5P2yUaLf2PpGnOawwPTOXE/edit?tab=t.1efuptyhcihm',
                     }
                 ]
             },
@@ -811,7 +811,7 @@
                 document.getElementById('modalTitle').textContent = 'Email & Newsletter Designs';
                 document.getElementById('modalSamples').innerHTML = `
                     <div class='mb-8 flex justify-end'>
-                        <a href='email_gallery.html' class='inline-flex items-center text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide bg-white border border-accent px-4 py-2 rounded shadow'>
+                        <a href='email_gallery.html' target='_blank' class='inline-flex items-center text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide bg-white border border-accent px-4 py-2 rounded shadow'>
                             View All Designs
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
@@ -826,12 +826,14 @@
                                 </div>
                                 <div class='p-6'>
                                     <h3 class='font-medium text-primary mb-4 text-sm leading-relaxed'>${item.text}</h3>
-                                    <a href='${item.link}' class='inline-flex items-center text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide'>
-                                        View Sample
-                                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                                        </svg>
-                                    </a>
+                                    ${item.link ? `
+                                        <a href='${item.link}' target='_blank' class='inline-flex items-center text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide'>
+                                            View Sample
+                                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                            </svg>
+                                        </a>
+                                    ` : ''}
                                 </div>
                             </div>
                         `).join('')}

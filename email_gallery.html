@@ -23,9 +23,16 @@
                     <img src="https://pfst.cf2.poecdn.net/base/image/4e668be902ac4f6bdaf2d3850263a738e3eb122db804e668a6d8ee5cb773ae41?w=1536&h=1024" alt="WinifredCreates" class="h-8">
                     <span class="font-serif text-lg brand-brown font-bold">WinifredCreates</span>
                 </div>
-                <button onclick="history.back()" class="bg-gradient-to-r from-amber-200 to-yellow-200 brand-brown px-4 py-2 sm:px-6 rounded-full font-medium hover:from-amber-300 hover:to-yellow-300 transition-all text-sm sm:text-base">
+                <button id="backBtn" class="bg-gradient-to-r from-amber-200 to-yellow-200 brand-brown px-4 py-2 sm:px-6 rounded-full font-medium hover:from-amber-300 hover:to-yellow-300 transition-all text-sm sm:text-base">
                     Back
                 </button>
+</section>
+<script>
+document.getElementById('backBtn').onclick = function(e) {
+    e.preventDefault();
+    window.location.href = 'virtual_assistant.html#email_marketing_modal';
+};
+</script>
             </div>
         </div>
     </nav>
