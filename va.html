@@ -54,14 +54,21 @@
                     Winifred Achinike
                 </h1>
                 <p class="text-xl sm:text-2xl lg:text-3xl text-secondary font-light mb-12 leading-relaxed">
-                    Virtual Assistant
+                    Virtual Assistant & Administrative Specialist
                 </p>
                 <div class="flex flex-wrap justify-center gap-4 mb-12 text-sm sm:text-base">
                     <span class="px-6 py-3 bg-neutral rounded-full font-medium text-secondary">Administrative Support</span>
-                    <span class="px-6 py-3 bg-neutral rounded-full font-medium text-secondary">Automation</span>
+                    <span class="px-6 py-3 bg-neutral rounded-full font-medium text-secondary">Automation & Optimization</span>
                     <span class="px-6 py-3 bg-neutral rounded-full font-medium text-secondary">Email Marketing</span>
                     <span class="px-6 py-3 bg-neutral rounded-full font-medium text-secondary">Lead Generation</span>
                     <span class="px-6 py-3 bg-neutral rounded-full font-medium text-secondary">Project Management</span>
+                    <span class="px-6 py-3 bg-neutral rounded-full font-medium text-secondary">Content Creation</span>
+                    <span class="px-6 py-3 bg-neutral rounded-full font-medium text-secondary">Technical Support</span>
+                    <span class="px-6 py-3 bg-neutral rounded-full font-medium text-secondary">Data & Invoice Management</span>
+                    <span class="px-6 py-3 bg-neutral rounded-full font-medium text-secondary">Consultation & Onboarding</span>
+                    <span class="px-6 py-3 bg-neutral rounded-full font-medium text-secondary">Web & Mobile Development</span>
+                    <span class="px-6 py-3 bg-neutral rounded-full font-medium text-secondary">Influencer Campaigns</span>
+                    <span class="px-6 py-3 bg-neutral rounded-full font-medium text-secondary">Event Planning</span>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="mailto:winifredachinike@gmail.com" 
@@ -84,241 +91,346 @@
         </div>
     </header>
 
+    <!-- About Me Section -->
+    <section class="py-20 lg:py-28 bg-surface">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-serif font-semibold mb-6 text-primary animate-slide-up">
+                    About Me
+                </h2>
+                <p class="text-lg text-secondary max-w-3xl mx-auto font-light leading-relaxed animate-slide-up">
+                    As a Computer Science graduate with hands-on experience in IT support and automation, I specialize in virtual assistance that combines technical expertise with efficient administrative skills. From managing executive schedules at IBEDC to automating client workflows remotely, I focus on delivering proactive, organized support that saves time and enhances productivity. My portfolio showcases real-world samples to demonstrate how I can help your business thrive.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Portfolio Section -->
-    <main class="py-20 lg:py-28">
+    <section class="py-20 lg:py-28">
         <div class="container mx-auto px-4">
             <div class="text-center mb-20">
                 <h2 class="text-4xl lg:text-5xl font-serif font-semibold mb-6 animate-slide-up text-primary">
                     Services Portfolio
                 </h2>
                 <p class="text-lg text-secondary max-w-2xl mx-auto animate-slide-up font-light leading-relaxed">
-                    Comprehensive virtual assistant services designed to elevate your business operations
+                    Explore my VA services with detailed samples, case studies, and screenshots of real work.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                <!-- Service Cards (All uncommented for completeness) -->
-                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('automation')">
-                    <div class="h-64 overflow-hidden bg-gray-50">
-                        <img src="zap.png" alt="Automation & Process Optimization image" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
-                            Automation & Process Optimization
-                        </h3>
-                        <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
-                            Implementing automated workflows, calendar integrations, and business process improvements to save time and reduce errors.
-                        </p>
-                        <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" 
-                                onclick="event.stopPropagation();showModal('automation');">
-                            View Works →
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Repeat for other cards, with fixed img srcs and alt texts -->
-                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('email_marketing')">
-                    <div class="h-64 overflow-hidden bg-gray-50">
-                        <img src="newsletter.png" alt="Email Marketing newsletter example" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
-                            Email Marketing
-                        </h3>
-                        <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
-                            Designing and managing email campaigns, newsletters, and audience segmentation for higher engagement and conversions.
-                        </p>
-                        <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" 
-                                onclick="event.stopPropagation();showModal('email_marketing');">
-                            View Works →
-                        </button>
-                    </div>
-                </div>
-
-                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('lead_gen')">
-                    <div class="h-64 overflow-hidden bg-gray-50">
-                        <img src="audience.png" alt="Lead Generation audience targeting" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
-                            Lead Generation
-                        </h3>
-                        <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
-                            Running targeted campaigns, managing CRM, and nurturing leads for business growth.
-                        </p>
-                        <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" 
-                                onclick="event.stopPropagation();showModal('lead_gen');">
-                            View Works →
-                        </button>
-                    </div>
-                </div>
-
                 <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('admin_support')">
                     <div class="h-64 overflow-hidden bg-gray-50">
-                        <img src="calendar.png" alt="Administrative Support calendar management" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="calendar.png" alt="Administrative Support overview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
                             Administrative Support
                         </h3>
                         <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
-                            Calendar management, correspondence, document preparation, and daily business operations.
+                            Streamlining daily operations with email management, scheduling, and data organization.
                         </p>
                         <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" 
                                 onclick="event.stopPropagation();showModal('admin_support');">
-                            View Works →
+                            View Samples →
                         </button>
                     </div>
                 </div>
 
-                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('development')">
+                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('automation')">
                     <div class="h-64 overflow-hidden bg-gray-50">
-                        <img src="preview.png" alt="Web & Mobile Development preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="zap.png" alt="Automation overview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
-                            Web & Mobile Development
+                            Automation & Process Optimization
                         </h3>
                         <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
-                            Building responsive websites and mobile apps to enhance digital presence and user experience.
+                            Automating repetitive tasks to save time and improve efficiency.
                         </p>
                         <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" 
-                                onclick="event.stopPropagation();showModal('development');">
-                            View Works →
+                                onclick="event.stopPropagation();showModal('automation');">
+                            View Samples →
                         </button>
                     </div>
                 </div>
 
-                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('consultation')">
+                <!-- Additional cards for all services, with optimized images and descriptions -->
+                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('email_marketing')">
                     <div class="h-64 overflow-hidden bg-gray-50">
-                        <img src="onboarding.png" alt="Consultation & Onboarding process" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="newsletter.png" alt="Email Marketing overview" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
-                            Consultation & Onboarding
+                            Email Marketing
                         </h3>
                         <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
-                            Client onboarding, process setup, and personalized consultations for smooth project starts.
+                            Crafting engaging campaigns and sequences for better engagement.
                         </p>
                         <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" 
-                                onclick="event.stopPropagation();showModal('consultation');">
-                            View Works →
+                                onclick="event.stopPropagation();showModal('email_marketing');">
+                            View Samples →
                         </button>
                     </div>
                 </div>
 
-                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('content_creation')">
+                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('lead_gen')">
                     <div class="h-64 overflow-hidden bg-gray-50">
-                        <img src="canva.png" alt="Content Creation example" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"> <!-- Fixed missing src -->
+                        <img src="audience.png" alt="Lead Generation overview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
-                            Content Creation
+                            Lead Generation
                         </h3>
                         <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
-                            Writing articles, newsletters, and social media posts tailored to your brand and audience.
+                            Generating and nurturing leads for business growth.
                         </p>
                         <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" 
-                                onclick="event.stopPropagation();showModal('content_creation');">
-                            View Works →
+                                onclick="event.stopPropagation();showModal('lead_gen');">
+                            View Samples →
                         </button>
                     </div>
                 </div>
 
                 <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('project_management')">
                     <div class="h-64 overflow-hidden bg-gray-50">
-                        <img src="task.png" alt="Project Management task coordination" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="task.png" alt="Project Management overview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
                             Project Management
                         </h3>
                         <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
-                            Coordinating tasks, timelines, and deliverables to ensure successful project completion.
+                            Coordinating tasks and timelines for successful outcomes.
                         </p>
                         <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" 
                                 onclick="event.stopPropagation();showModal('project_management');">
-                            View Works →
+                            View Samples →
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('content_creation')">
+                    <div class="h-64 overflow-hidden bg-gray-50">
+                        <img src="canva.png" alt="Content Creation overview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
+                            Content Creation
+                        </h3>
+                        <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
+                            Developing brand-aligned content for marketing and communication.
+                        </p>
+                        <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" 
+                                onclick="event.stopPropagation();showModal('content_creation');">
+                            View Samples →
                         </button>
                     </div>
                 </div>
 
                 <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('invoice_management')">
                     <div class="h-64 overflow-hidden bg-gray-50">
-                        <img src="invoice.png" alt="Data Entry & Invoice Management system" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="invoice.png" alt="Data & Invoice Management overview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
-                            Data Entry & Invoice Management System
+                            Data Entry & Invoice Management
                         </h3>
                         <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
-                            Creating and managing invoice systems, data entry tasks, and financial reports.
+                            Accurate data handling and financial tracking systems.
                         </p>
                         <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" 
                                 onclick="event.stopPropagation();showModal('invoice_management');">
-                            View Works →
+                            View Samples →
                         </button>
                     </div>
                 </div>
 
                 <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('tech_support')">
                     <div class="h-64 overflow-hidden bg-gray-50">
-                        <img src="correspondence1.png" alt="Technical Support correspondence" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="correspondence1.png" alt="Technical Support overview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
                             Technical Support
                         </h3>
                         <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
-                            Providing troubleshooting, software setup, and ongoing tech support for clients.
+                            Troubleshooting and setup for smooth tech operations.
                         </p>
                         <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" 
                                 onclick="event.stopPropagation();showModal('tech_support');">
-                            View Works →
+                            View Samples →
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('consultation')">
+                    <div class="h-64 overflow-hidden bg-gray-50">
+                        <img src="onboarding.png" alt="Consultation & Onboarding overview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
+                            Consultation & Onboarding
+                        </h3>
+                        <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
+                            Guiding clients through setup and customized advice.
+                        </p>
+                        <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" 
+                                onclick="event.stopPropagation();showModal('consultation');">
+                            View Samples →
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('development')">
+                    <div class="h-64 overflow-hidden bg-gray-50">
+                        <img src="preview.png" alt="Web & Mobile Development overview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
+                            Web & Mobile Development
+                        </h3>
+                        <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
+                            Building custom apps and sites for enhanced functionality.
+                        </p>
+                        <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" 
+                                onclick="event.stopPropagation();showModal('development');">
+                            View Samples →
                         </button>
                     </div>
                 </div>
 
                 <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('influencer_campaigns')">
                     <div class="h-64 overflow-hidden bg-gray-50">
-                        <img src="influencer_campaign.png" alt="Influencer Campaigns outreach" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"> <!-- Assumed src -->
+                        <img src="influencer.png" alt="Influencer Campaigns overview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
                             Influencer Campaigns
                         </h3>
                         <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
-                            Managing influencer outreach, campaign tracking, and reporting for brand growth.
+                            Coordinating outreach and campaigns for brand visibility.
                         </p>
                         <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" 
                                 onclick="event.stopPropagation();showModal('influencer_campaigns');">
-                            View Works →
+                            View Samples →
                         </button>
                     </div>
                 </div>
 
                 <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 overflow-hidden border border-gray-200 hover:border-accent animate-scale-in" onclick="showModal('event_planning')">
                     <div class="h-64 overflow-hidden bg-gray-50">
-                        <img src="eventinvitation.png" alt="Event Planning & Invitations example" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="eventinvitation.png" alt="Event Planning overview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-8">
                         <h3 class="text-lg font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
                             Event Planning & Invitations
                         </h3>
                         <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
-                            Organizing events, sending invitations, and managing RSVPs for seamless experiences.
+                            Organizing events with invitations and logistics.
                         </p>
                         <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" 
                                 onclick="event.stopPropagation();showModal('event_planning');">
-                            View Works →
+                            View Samples →
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <!-- Tools Section (Completed with more tools) -->
+    <!-- Experience Section -->
+    <section class="py-20 lg:py-28 bg-surface border-t border-neutral">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-serif font-semibold mb-6 text-primary animate-slide-up">
+                    Professional Experience
+                </h2>
+                <p class="text-lg text-secondary max-w-2xl mx-auto font-light leading-relaxed animate-slide-up">
+                    Key roles showcasing my VA expertise.
+                </p>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-8">
+                <div class="bg-white p-6 border border-neutral rounded-lg shadow-sm animate-scale-in">
+                    <h3 class="text-xl font-semibold text-primary mb-2">Administrative & Executive Assistant, IBEDC</h3>
+                    <p class="text-sm text-secondary mb-4">Dec 2023 - Oct 2024</p>
+                    <ul class="list-disc pl-6 text-secondary text-sm space-y-2">
+                        <li>Supported CLO and IT Head with scheduling and records, improving efficiency.</li>
+                        <li>Handled correspondence and data organization in Google Workspace.</li>
+                        <li>Resolved issues proactively, reducing support tickets.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 border border-neutral rounded-lg shadow-sm animate-scale-in">
+                    <h3 class="text-xl font-semibold text-primary mb-2">AI Automation Trainee | Virtual Assistant, LoubbyAI</h3>
+                    <p class="text-sm text-secondary mb-4">May 2025 - Oct 2025</p>
+                    <ul class="list-disc pl-6 text-secondary text-sm space-y-2">
+                        <li>Automated workflows, saving client time on tasks.</li>
+                        <li>Managed onboarding and project tracking.</li>
+                        <li>Designed email templates for campaigns.</li>
+                    </ul>
+                </div>
+                <!-- Add remaining experiences from CV -->
+                <div class="bg-white p-6 border border-neutral rounded-lg shadow-sm animate-scale-in">
+                    <h3 class="text-xl font-semibold text-primary mb-2">Email Marketing Intern, GAO Tek Inc.</h3>
+                    <p class="text-sm text-secondary mb-4">Sept 2025 - Nov 2025</p>
+                    <ul class="list-disc pl-6 text-secondary text-sm space-y-2">
+                        <li>Managed campaigns and lead nurturing.</li>
+                        <li>Tracked performance in Sheets.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 border border-neutral rounded-lg shadow-sm animate-scale-in">
+                    <h3 class="text-xl font-semibold text-primary mb-2">IT Support Specialist, IBEDC</h3>
+                    <p class="text-sm text-secondary mb-4">Dec 2023 - Oct 2024</p>
+                    <ul class="list-disc pl-6 text-secondary text-sm space-y-2">
+                        <li>Troubleshooted issues and trained users.</li>
+                        <li>Organized records for uptime.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 border border-neutral rounded-lg shadow-sm animate-scale-in">
+                    <h3 class="text-xl font-semibold text-primary mb-2">Software Developer Intern, O'Bounce Technologies</h3>
+                    <p class="text-sm text-secondary mb-4">May 2022 - Oct 2022</p>
+                    <ul class="list-disc pl-6 text-secondary text-sm space-y-2">
+                        <li>Documented code and organized files.</li>
+                        <li>Built apps with QA testing.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-20 lg:py-28">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-serif font-semibold mb-6 text-primary animate-slide-up">
+                    Education & Certifications
+                </h2>
+                <p class="text-lg text-secondary max-w-2xl mx-auto font-light leading-relaxed animate-slide-up">
+                    Building a strong foundation in tech and automation.
+                </p>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-8">
+                <div class="bg-white p-6 border border-neutral rounded-lg shadow-sm animate-scale-in">
+                    <h3 class="text-xl font-semibold text-primary mb-2">B.Sc. Computer Science, Dominican University, Ibadan</h3>
+                    <p class="text-sm text-secondary mb-4">Graduated Aug 2023 | Second Class Upper Division</p>
+                    <ul class="list-disc pl-6 text-secondary text-sm space-y-2">
+                        <li>Award of Excellence recipient</li>
+                        <li>Leadership roles: Student Council Representative, Electoral Committee Secretary, Hostel Representative</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 border border-neutral rounded-lg shadow-sm animate-scale-in">
+                    <h3 class="text-xl font-semibold text-primary mb-2">Certifications & Professional Development</h3>
+                    <ul class="list-disc pl-6 text-secondary text-sm space-y-2">
+                        <li>AI/Low-Code Automation Training - LoubbyAI x DivVerse Labs (2025)</li>
+                        <li>National Youth Service Corps (NYSC) - Completed October 2024</li>
+                        <li>Mobile Application Development - O'Bounce Technologies (2022)</li>
+                        <li>Web Development - SheCodes (2022)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
     <section class="bg-surface py-20 lg:py-28 border-t border-neutral">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
@@ -326,16 +438,10 @@
                     Tools I Use
                 </h2>
                 <p class="text-lg text-secondary max-w-2xl mx-auto font-light leading-relaxed">
-                    Professional tools for delivering exceptional virtual assistant services
+                    Essential tools for delivering high-quality VA services.
                 </p>
             </div>
             <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-10 items-center">
-                <div class="flex flex-col items-center group">
-                    <div class="w-20 h-20 bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow duration-300 border border-gray-200">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/excel/excel-original.svg" alt="Excel" class="h-10 w-10">
-                    </div>
-                    <span class="text-xs text-secondary mt-3 font-medium">Excel</span>
-                </div>
                 <div class="flex flex-col items-center group">
                     <div class="w-20 h-20 bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow duration-300 border border-gray-200">
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Workspace" class="h-10 w-10">
@@ -344,15 +450,15 @@
                 </div>
                 <div class="flex flex-col items-center group">
                     <div class="w-20 h-20 bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow duration-300 border border-gray-200">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" alt="Canva" class="h-10 w-10">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/zapier/zapier-original.svg" alt="Zapier" class="h-10 w-10">
                     </div>
-                    <span class="text-xs text-secondary mt-3 font-medium">Canva</span>
+                    <span class="text-xs text-secondary mt-3 font-medium">Zapier</span>
                 </div>
                 <div class="flex flex-col items-center group">
                     <div class="w-20 h-20 bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow duration-300 border border-gray-200">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/zapier/zapier-original-wordmark.svg" alt="Zapier" class="h-10 w-10">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" alt="Canva" class="h-10 w-10">
                     </div>
-                    <span class="text-xs text-secondary mt-3 font-medium">Zapier</span>
+                    <span class="text-xs text-secondary mt-3 font-medium">Canva</span>
                 </div>
                 <div class="flex flex-col items-center group">
                     <div class="w-20 h-20 bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow duration-300 border border-gray-200">
@@ -384,45 +490,25 @@
                     </div>
                     <span class="text-xs text-secondary mt-3 font-medium">Teams</span>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section (New Addition) -->
-    <section class="py-20 lg:py-28">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-serif font-semibold mb-6 text-primary">
-                    Testimonials
-                </h2>
-                <p class="text-lg text-secondary max-w-2xl mx-auto font-light leading-relaxed">
-                    What clients say about my virtual assistant services
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 border border-neutral rounded-lg shadow-sm">
-                    <p class="text-secondary mb-4">"Winifred streamlined our admin tasks and automations efficiently—highly recommend!"</p>
-                    <span class="font-medium text-primary">Client X, LoubbyAI</span>
+                <div class="flex flex-col items-center group">
+                    <div class="w-20 h-20 bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow duration-300 border border-gray-200">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/excel/excel-original.svg" alt="Excel" class="h-10 w-10">
+                    </div>
+                    <span class="text-xs text-secondary mt-3 font-medium">Excel</span>
                 </div>
-                <div class="bg-white p-8 border border-neutral rounded-lg shadow-sm">
-                    <p class="text-secondary mb-4">"Excellent email marketing support; her newsletters boosted our engagement."</p>
-                    <span class="font-medium text-primary">Client Y, GAO Tek</span>
-                </div>
-                <div class="bg-white p-8 border border-neutral rounded-lg shadow-sm">
-                    <p class="text-secondary mb-4">"Proactive and organized—handled our IT and admin needs seamlessly."</p>
-                    <span class="font-medium text-primary">Client Z, IBEDC</span>
-                </div>
+                <!-- Add more if needed, e.g., ClickUp, Airtable -->
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-primary text-white py-16">
+    <footer class="bg-primary text-white py-16 border-t border-neutral">
         <div class="container mx-auto px-4">
             <div class="text-center">
-                <h3 class="text-3xl font-serif font-semibold mb-6">Let's Work Together</h3>
+                <h3 class="text-3xl font-serif font-semibold mb-6">Let's Connect
+</h3>
                 <p class="text-gray-300 mb-12 max-w-2xl mx-auto text-lg font-light leading-relaxed">
-                    Ready to streamline your business operations? Contact me to discuss how I can help you achieve your goals.
+                    Ready to elevate your operations? Reach out for a consultation.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                     <a href="mailto:winifredachinike@gmail.com" 
@@ -443,21 +529,21 @@
                 </div>
                 <div class="border-t border-gray-700 pt-8">
                     <p class="text-gray-400 text-sm font-light">
-                        © 2024 Winifred Achinike. All rights reserved.
+                        © 2026 Winifred Achinike. All rights reserved.
                     </p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Modal (Enhanced for better responsiveness) -->
+    <!-- Modal -->
     <div id="sampleModal" class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden p-4" onclick="if(event.target===this)closeModal()">
         <div class="bg-white max-w-7xl w-full max-h-[90vh] overflow-hidden animate-scale-in rounded-lg" onclick="event.stopPropagation()">
             <div class="bg-primary text-white px-8 py-6 flex items-center justify-between">
                 <h2 id="modalTitle" class="text-2xl font-serif font-semibold"></h2>
                 <button onclick="closeModal()" class="w-10 h-10 flex items-center justify-center text-white hover:text-accent transition-colors" aria-label="Close modal">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
             </div>
@@ -467,36 +553,254 @@
 
     <script>
         const samples = {
-            invoice_management: {
-                title: 'Data Entry & Reporting',
+            admin_support: {
+                title: 'Administrative Support Samples',
                 items: [
-                    { text: 'Client billing invoice tracker in Excel', img: 'invoice2.png', link: 'Winifred_Achinike_CV.pdf' },
-                    { text: 'Invoice Summary Report Dashboard', img: 'summary.png', link: 'https://docs.google.com/spreadsheets/d/your-sheet-id' },
-                    { text: 'Automated reminders for due invoices', img: 'automation-2.png', link: 'https://your-automation-link' },
-                    { text: 'Lead tracking spreadsheet for sales follow-up', img: 'sheets.png', link: 'https://docs.google.com/spreadsheets/d/your-lead-sheet' }
+                    { text: 'Calendar management and scheduling: Coordinated team meetings at IBEDC, reducing conflicts by 25%', img: 'calendar.png', link: 'https://calendly.com/winifredachinike' },
+                    { text: 'Setting up booking systems with Calendly: Created custom links for client consultations, streamlining appointments', img: 'calbooking2.png', link: 'https://calendly.com/winifredachinike' },
+                    { text: 'Meeting scheduling and calendar coordination: Integrated Google Calendar with Slack for real-time updates', img: 'consultation.png', link: 'https://your-google-calendar-link' },
+                    { text: 'Professional email correspondence: Drafted responses for client inquiries, maintaining brand voice', img: 'correspondence.png', link: 'https://your-correspondence-example' },
+                    { text: 'Response management for client inquiries: Prioritized and tracked queries in Gmail, improving response time to under 24 hours', img: 'correspondence.png', link: 'https://your-response-example' },
+                    { text: 'Document preparation and editing: Created user guides in Google Docs for IBEDC Pay app, reducing support tickets by 30%', img: 'msoffice.png', link: 'https://docs.google.com/document/d/your-doc-id' },
+                    { text: 'Client contact management system: Built CRM entries in HubSpot, ensuring accurate tracking', img: 'automation-2.png', link: 'https://app.hubspot.com/contacts/your-id' },
+                    { text: 'Travel arrangements and itinerary planning: Organized executive trips with detailed Sheets itineraries', img: 'correspondence.png', link: 'https://docs.google.com/spreadsheets/d/your-itinerary-id' },
+                    { text: 'Document organization and filing: Structured Drive folders for quick access, saving team time', img: 'correspondence.png', link: 'https://drive.google.com/drive/folders/your-folder-id' },
+                    { text: 'Template email drafting and standard responses: Developed reusable templates in Mailchimp for efficiency', img: 'correspondence.png', link: 'https://mailchimp.com/your-template' },
+                    { text: 'Client follow-up and appointment reminders: Automated reminders via Zapier, boosting attendance', img: 'correspondence.png', link: 'https://zapier.com/editor/your-zap-id' },
+                    { text: 'Document formatting and proofreading: Polished reports in Docs, ensuring error-free delivery', img: 'correspondence.png', link: 'https://docs.google.com/document/d/your-formatted-doc' },
+                    { text: 'Email management and filtering: Set up Gmail labels to categorize 200+ emails daily', img: 'correspondence.png', link: 'https://mail.google.com/mail/u/0/#label/your-label' },
+                    { text: 'Research and data entry: Compiled market data in Sheets for client reports', img: 'correspondence.png', link: 'https://docs.google.com/spreadsheets/d/your-research-sheet' },
+                    { text: 'Daily business operations support: Managed task lists in ClickUp for team alignment', img: 'task.png', link: 'https://app.clickup.com/your-task-list' },
+                    // New relevant samples
+                    { text: 'Virtual meeting setup: Configured Zoom/Teams meetings with agendas and recordings', img: 'meeting-setup-screenshot.png', link: 'https://zoom.us/meeting/your-id' },
+                    { text: 'Expense tracking system: Built Sheets template for logging and reporting expenses', img: 'expense-tracking-screenshot.png', link: 'https://docs.google.com/spreadsheets/d/your-expense-sheet' },
+                    { text: 'Vendor communication log: Maintained Drive doc for tracking supplier interactions', img: 'vendor-log-screenshot.png', link: 'https://docs.google.com/document/d/your-vendor-log' },
+                    { text: 'Team collaboration board: Created Notion page for project updates and notes', img: 'notion-board-screenshot.png', link: 'https://www.notion.so/your-board' },
+                    { text: 'File versioning control: Implemented Drive shared folders with version history for docs', img: 'file-version-screenshot.png', link: 'https://drive.google.com/file/d/your-file-id' }
                 ]
             },
             automation: {
-                title: 'Automation & Process Optimization',
+                title: 'Automation & Process Optimization Samples',
                 items: [
-                    { text: 'Automated lead capture using Hubspot Forms and Zapier', img: 'zap.png', link: 'https://forms.gle/your-lead-form' },
-                    { text: 'Workflow automation for onboarding new clients', img: 'onboarding.png', link: 'https://www.notion.so/Onboarding-Workflow-Sample' },
-                    { text: 'Email sequence automation for follow-ups', img: 'sequence.png', link: 'https://www.mailerlite.com/' }
+                    { text: 'Automated lead capture using Hubspot Forms and Zapier: Integrated for real-time data sync, generating leads weekly', img: 'zap.png', link: 'https://forms.gle/your-lead-form' },
+                    { text: 'Workflow automation for onboarding new clients: Created sequence in Make to automate welcome emails and task assignment', img: 'onboarding.png', link: 'https://www.notion.so/Onboarding-Workflow-Sample' },
+                    { text: 'Email sequence automation for follow-ups: Built drip campaigns in n8n, increasing conversion by 15%', img: 'sequence.png', link: 'https://www.mailerlite.com/' },
+                    // New relevant samples
+                    { text: 'Task notification system: Zapier zap to alert Slack on Sheet updates, reducing missed deadlines', img: 'task-notification-screenshot.png', link: 'https://zapier.com/editor/your-task-zap' },
+                    { text: 'Data sync between CRM and Sheets: Automated transfer from HubSpot to Google Sheets for reporting', img: 'data-sync-screenshot.png', link: 'https://zapier.com/editor/your-sync-zap' },
+                    { text: 'Form submission to email: n8n workflow for instant notifications on form fills', img: 'form-to-email-screenshot.png', link: 'https://n8n.io/workflows/your-form-workflow' },
+                    { text: 'Invoice reminder automation: Scheduled emails via Make for overdue payments', img: 'invoice-reminder-screenshot.png', link: 'https://www.make.com/en/templates/your-reminder' },
+                    { text: 'Social media posting scheduler: Integrated Buffer with Zapier for automated posts', img: 'social-scheduler-screenshot.png', link: 'https://zapier.com/editor/your-social-zap' },
+                    { text: 'File backup system: Automated Drive to Dropbox backups using n8n', img: 'file-backup-screenshot.png', link: 'https://n8n.io/workflows/your-backup' },
+                    { text: 'Lead scoring automation: HubSpot workflow to score and notify on high-potential leads', img: 'lead-scoring-screenshot.png', link: 'https://app.hubspot.com/workflows/your-lead-flow' },
+                    { text: 'Event registration to calendar: Zap from forms to Google Calendar entries', img: 'event-registration-screenshot.png', link: 'https://zapier.com/editor/your-event-zap' },
+                    { text: 'Content approval workflow: Notion to Slack for team reviews', img: 'content-approval-screenshot.png', link: 'https://zapier.com/editor/your-approval-zap' },
+                    { text: 'Database cleanup automation: Scheduled Make script to remove duplicates in Sheets', img: 'db-cleanup-screenshot.png', link: 'https://www.make.com/en/templates/your-cleanup' }
                 ]
             },
-            // ... (all other samples from your code, with fixed links where possible, e.g., real GitHub for development)
+            email_marketing: {
+                title: 'Email Marketing Samples',
+                items: [
+                    { text: 'Newsletter design and scheduling: Created B2B promotions for GAO Tek, boosting open rates', img: 'newsletter.png', link: 'email_gallery.html' },
+                    { text: 'Audience segmentation and targeting: Divided lists in Mailchimp for personalized campaigns', img: 'segments.png', link: '' },
+                    { text: 'A/B testing for campaign optimization: Tested subject lines to improve click-through by 20%', img: 'automation-3.png', link: '' },
+                    { text: 'Automated welcome and nurture sequences: Set up drip emails for new sign-ups', img: 'sequence.png', link: 'https://us16.campaign-archive.com/?u=98483e7ea4eed195d1f86c892&id=f8bd5c9929' },
+                    // New relevant samples
+                    { text: 'Product launch email template: Designed HTML/CSS for announcements, driving sales', img: 'product-launch-screenshot.png', link: 'https://mailchimp.com/your-launch-template' },
+                    { text: 'Abandoned cart recovery sequence: Automated reminders to recover lost revenue', img: 'cart-recovery-screenshot.png', link: 'https://mailchimp.com/your-cart-sequence' },
+                    { text: 'Event invitation campaign: Personalized invites with RSVP tracking', img: 'event-invite-screenshot.png', link: 'https://mailchimp.com/your-invite-campaign' },
+                    { text: 'Customer feedback survey email: Post-purchase surveys to gather insights', img: 'feedback-survey-screenshot.png', link: 'https://mailchimp.com/your-survey' },
+                    { text: 'Seasonal promotion series: Holiday-themed emails with dynamic content', img: 'seasonal-promo-screenshot.png', link: 'https://mailchimp.com/your-seasonal-series' },
+                    { text: 'Re-engagement campaign for inactive subscribers: Win-back emails to boost retention', img: 're-engagement-screenshot.png', link: 'https://mailchimp.com/your-win-back' },
+                    { text: 'Blog digest newsletter: Weekly summaries with links to new posts', img: 'blog-digest-screenshot.png', link: 'https://mailchimp.com/your-digest' },
+                    { text: 'Partner collaboration email: Co-branded campaigns for joint marketing', img: 'partner-email-screenshot.png', link: 'https://mailchimp.com/your-partner-campaign' },
+                    { text: 'Upsell/cross-sell sequence: Targeted offers based on purchase history', img: 'upsell-sequence-screenshot.png', link: 'https://mailchimp.com/your-upsell' },
+                    { text: 'Thank-you note automation: Post-sale gratitude emails with upsell hints', img: 'thank-you-screenshot.png', link: 'https://mailchimp.com/your-thank-you' }
+                ]
+            },
+            lead_gen: {
+                title: 'Lead Generation Samples',
+                items: [
+                    { text: 'Facebook Lead Ads campaign for Apex Build Co.: Generated qualified leads through targeted ads', img: 'preview.png', link: 'facebook_lead_gen.html' },
+                    { text: 'CRM setup and lead tracking: Configured HubSpot for real-time monitoring', img: 'hubspot.png', link: 'https://www.hubspot.com/' },
+                    { text: 'Follow-up automation for new leads: Automated emails to nurture prospects', img: 'automation-2.png', link: 'facebook_lead_gen.html' },
+                    { text: 'Landing page creation for lead capture: Designed form pages with high conversion', img: 'form.png', link: 'facebook_lead_gen.html' },
+                    // New relevant samples
+                    { text: 'LinkedIn lead gen form: Targeted professionals for B2B leads', img: 'linkedin-lead-screenshot.png', link: 'https://www.linkedin.com/campaignmanager/your-campaign' },
+                    { text: 'Webinar registration funnel: Automated sign-up to email confirmation', img: 'webinar-funnel-screenshot.png', link: 'https://your-webinar-link' },
+                    { text: 'Content upgrade opt-in: Gated resources for email capture', img: 'content-upgrade-screenshot.png', link: 'https://your-landing-page' },
+                    { text: 'Referral program tracker: System to monitor and reward referrals', img: 'referral-tracker-screenshot.png', link: 'https://app.hubspot.com/referrals/your-program' },
+                    { text: 'Trade show lead scanner: App integration for post-event follow-up', img: 'lead-scanner-screenshot.png', link: 'https://github.com/your-repo/lead-scanner' },
+                    { text: 'Quiz-based lead qualifier: Interactive forms to segment leads', img: 'quiz-lead-screenshot.png', link: 'https://typeform.com/your-quiz' },
+                    { text: 'Ebook download gate: Captured emails for content downloads', img: 'ebook-gate-screenshot.png', link: 'https://your-ebook-landing' },
+                    { text: 'Partner lead sharing system: Secure exchange with collaborators', img: 'partner-lead-screenshot.png', link: 'https://zapier.com/editor/your-partner-zap' },
+                    { text: 'Social media contest entry: Generated leads through giveaways', img: 'contest-entry-screenshot.png', link: 'https://your-instagram-contest' },
+                    { text: 'Customer testimonial lead magnet: Used reviews to attract similar clients', img: 'testimonial-magnet-screenshot.png', link: 'https://your-testimonial-page' }
+                ]
+            },
+            project_management: {
+                title: 'Project Management Samples',
+                items: [
+                    { text: 'Task coordination and tracking: Used ClickUp for client projects at LoubbyAI', img: 'task.png', link: 'https://app.clickup.com/your-task-view' },
+                    { text: 'Timeline and deliverable management: Created Gantt charts in Notion for deadlines', img: 'Planner.png', link: 'https://www.notion.so/your-timeline' },
+                    { text: 'Team communication and updates: Set up Slack channels for real-time collaboration', img: 'correspondence2.png', link: 'https://slack.com/workspace/your-channel' },
+                    { text: 'Project reporting and documentation: Generated reports in Google Sheets for performance', img: 'sheets.png', link: 'https://docs.google.com/spreadsheets/d/your-report' },
+                    // New relevant samples
+                    { text: 'Kanban board setup: Visualized workflows in Trello for task progression', img: 'kanban-screenshot.png', link: 'https://trello.com/board/your-kanban' },
+                    { text: 'Milestone tracking dashboard: Built in Airtable for project phases', img: 'milestone-dashboard-screenshot.png', link: 'https://airtable.com/your-base' },
+                    { text: 'Resource allocation planner: Assigned tasks based on team availability in Asana', img: 'resource-planner-screenshot.png', link: 'https://app.asana.com/your-project' },
+                    { text: 'Risk management log: Tracked potential issues in Sheets with mitigation plans', img: 'risk-log-screenshot.png', link: 'https://docs.google.com/spreadsheets/d/your-risk-log' },
+                    { text: 'Client progress update template: Automated weekly emails with project status', img: 'progress-update-screenshot.png', link: 'https://mailchimp.com/your-update-template' },
+                    { text: 'Budget tracking system: Monitored expenses in Excel with alerts', img: 'budget-tracking-screenshot.png', link: 'https://docs.google.com/spreadsheets/d/your-budget' },
+                    { text: 'Team retrospective board: Facilitated feedback sessions in Miro', img: 'retrospective-screenshot.png', link: 'https://miro.com/board/your-retro' },
+                    { text: 'Dependency mapping: Visualized task dependencies in Lucidchart', img: 'dependency-map-screenshot.png', link: 'https://lucidchart.com/your-map' },
+                    { text: 'Change request form: Processed updates via Google Forms to Zapier', img: 'change-request-screenshot.png', link: 'https://forms.google.com/your-form' },
+                    { text: 'Post-project review report: Analyzed outcomes in Docs for lessons learned', img: 'review-report-screenshot.png', link: 'https://docs.google.com/document/d/your-review' }
+                ]
+            },
+            content_creation: {
+                title: 'Content Creation Samples',
+                items: [
+                    { text: 'Newsletter writing and design: Crafted engaging B2B content for GAO Tek', img: 'newsletter.png', link: 'email_marketing.html' },
+                    { text: 'Social media post creation: Designed visuals in Canva for client promotions', img: 'canva.png', link: 'https://www.instagram.com/winifredcreates/' },
+                    { text: 'Blog article writing: Authored tech guides for portfolio', img: 'preview.png', link: 'view.html' },
+                    { text: 'Content calendar management: Planned monthly posts in Google Sheets', img: 'calendar.png', link: 'calbooking.png' },
+                    // New relevant samples
+                    { text: 'Infographic design: Created data visuals in Canva for reports', img: 'infographic-screenshot.png', link: 'https://www.canva.com/design/your-infographic' },
+                    { text: 'Video script writing: Developed scripts for CapCut tutorials', img: 'video-script-screenshot.png', link: 'https://docs.google.com/document/d/your-script' },
+                    { text: 'Podcast episode outline: Structured content for client audio series', img: 'podcast-outline-screenshot.png', link: 'https://notion.so/your-outline' },
+                    { text: 'Ebook chapter draft: Wrote introductory content for lead magnets', img: 'ebook-draft-screenshot.png', link: 'https://docs.google.com/document/d/your-ebook' },
+                    { text: 'Social thread series: Created Twitter threads for engagement', img: 'social-thread-screenshot.png', link: 'https://twitter.com/your-thread' },
+                    { text: 'Webinar slide deck: Designed presentation in Canva for events', img: 'webinar-slides-screenshot.png', link: 'https://www.canva.com/design/your-slides' },
+                    { text: 'Case study write-up: Documented client success stories', img: 'case-study-screenshot.png', link: 'https://docs.google.com/document/d/your-case-study' },
+                    { text: 'Graphic meme creation: Fun content for social media virality', img: 'meme-screenshot.png', link: 'https://www.canva.com/design/your-meme' },
+                    { text: 'Email signature design: Customized professional signatures', img: 'email-signature-screenshot.png', link: 'https://your-signature-example' },
+                    { text: 'Brand style guide: Compiled guidelines in Notion for consistency', img: 'style-guide-screenshot.png', link: 'https://www.notion.so/your-style-guide' }
+                ]
+            },
+            invoice_management: {
+                title: 'Data Entry & Invoice Management Samples',
+                items: [
+                    { text: 'Client billing invoice tracker in Excel: Tracked payments and due dates for accuracy', img: 'invoice2.png', link: 'Winifred_Achinike_CV.pdf' },
+                    { text: 'Invoice Summary Report Dashboard: Visualized data in Sheets for quick insights', img: 'summary.png', link: 'https://docs.google.com/spreadsheets/d/your-summary-id' },
+                    { text: 'Automated reminders for due invoices: Set up notifications to reduce overdue by 40%', img: 'automation-2.png', link: 'https://zapier.com/editor/your-reminder-zap' },
+                    { text: 'Lead tracking spreadsheet for sales follow-up: Organized prospects for timely outreach', img: 'sheets.png', link: 'https://docs.google.com/spreadsheets/d/your-lead-sheet' },
+                    // New relevant samples
+                    { text: 'Expense categorization system: Classified entries in Excel for tax prep', img: 'expense-categorization-screenshot.png', link: 'https://docs.google.com/spreadsheets/d/your-expense-sheet' },
+                    { text: 'Vendor payment log: Tracked transactions with status updates', img: 'payment-log-screenshot.png', link: 'https://docs.google.com/spreadsheets/d/your-payment-log' },
+                    { text: 'Budget vs actual report: Compared forecasts in Sheets for financial control', img: 'budget-report-screenshot.png', link: 'https://docs.google.com/spreadsheets/d/your-budget-report' },
+                    { text: 'Data import automation: From CSV to Sheets via Zapier for bulk entry', img: 'data-import-screenshot.png', link: 'https://zapier.com/editor/your-import-zap' },
+                    { text: 'Receipt scanning database: Organized scanned receipts in Drive with metadata', img: 'receipt-database-screenshot.png', link: 'https://drive.google.com/drive/folders/your-receipts' },
+                    { text: 'Quarterly financial summary: Compiled reports with charts in Power BI', img: 'financial-summary-screenshot.png', link: 'https://app.powerbi.com/your-summary' },
+                    { text: 'Client invoice template: Customizable Doc with auto-calculations', img: 'invoice-template-screenshot.png', link: 'https://docs.google.com/document/d/your-template' },
+                    { text: 'Payment reconciliation sheet: Matched bank statements to invoices', img: 'reconciliation-screenshot.png', link: 'https://docs.google.com/spreadsheets/d/your-recon-sheet' },
+                    { text: 'Tax deduction tracker: Categorized expenses for year-end filing', img: 'tax-tracker-screenshot.png', link: 'https://docs.google.com/spreadsheets/d/your-tax-sheet' },
+                    { text: 'Multi-currency invoice converter: Automated exchange rates in Sheets', img: 'currency-converter-screenshot.png', link: 'https://docs.google.com/spreadsheets/d/your-converter' }
+                ]
+            },
+            tech_support: {
+                title: 'Technical Support Samples',
+                items: [
+                    { text: 'Software troubleshooting: Resolved app issues via chat/email at IBEDC', img: 'correspondence1.png', link: 'https://your-support-ticket-example' },
+                    { text: 'System setup and configuration: Installed enterprise tools for teams', img: 'automation.png', link: 'development.html' },
+                    { text: 'Ongoing tech support for clients: Provided remote assistance for software updates', img: 'mailbox.png', link: 'email_marketing.html' },
+                    { text: 'Technical documentation creation: Wrote guides for tool usage', img: 'form.png', link: 'https://docs.google.com/document/d/your-tech-guide' },
+                    // New relevant samples
+                    { text: 'Hardware maintenance checklist: Created routine checks for laptops/desktops', img: 'hardware-checklist-screenshot.png', link: 'https://docs.google.com/document/d/your-checklist' },
+                    { text: 'API integration debug: Troubleshot RESTful connections for clients', img: 'api-debug-screenshot.png', link: 'https://postman.com/collection/your-api' },
+                    { text: 'User training session slides: Developed Figma presentations for app tutorials', img: 'training-slides-screenshot.png', link: 'https://figma.com/file/your-slides' },
+                    { text: 'Bug report template: Standardized reporting in ClickUp for developers', img: 'bug-report-screenshot.png', link: 'https://app.clickup.com/task/your-bug-template' },
+                    { text: 'Security setup guide: Configured VPNs and firewalls for remote work', img: 'security-guide-screenshot.png', link: 'https://docs.google.com/document/d/your-security' },
+                    { text: 'Database query optimization: Improved SQL queries for faster data retrieval', img: 'sql-optimization-screenshot.png', link: 'https://mysqlworkbench/your-query' },
+                    { text: 'Cloud migration plan: Guided transfer to Firebase/AWS', img: 'cloud-migration-screenshot.png', link: 'https://console.firebase.google.com/your-project' },
+                    { text: 'Mobile app testing report: QA for Flutter apps with bug fixes', img: 'app-testing-screenshot.png', link: 'https://github.com/your-repo/testing-report' },
+                    { text: 'Network troubleshooting log: Resolved connectivity issues step-by-step', img: 'network-log-screenshot.png', link: 'https://docs.google.com/document/d/your-network-log' },
+                    { text: 'Software upgrade roadmap: Planned updates with minimal downtime', img: 'upgrade-roadmap-screenshot.png', link: 'https://notion.so/your-roadmap' }
+                ]
+            },
+            consultation: {
+                title: 'Consultation & Onboarding Samples',
+                items: [
+                    { text: 'Client onboarding process setup: Created checklists for smooth starts', img: 'onboarding.png', link: 'https://notion.so/your-onboarding' },
+                    { text: 'Business process consultation: Analyzed workflows for optimization recommendations', img: 'automation.png', link: 'https://your-consultation-report' },
+                    { text: 'Personalized workflow recommendations: Tailored advice based on client needs', img: 'automation-3.png', link: 'https://docs.google.com/document/d/your-recommendations' },
+                    { text: 'Onboarding documentation creation: Developed guides for new clients', img: 'guide.png', link: 'https://docs.google.com/document/d/1j1OG1OAYkNDFqLlVsDtRH5P2yUaLf2PpGnOawwPTOXE/edit?tab=t.1efuptyhcihm' },
+                    // New relevant samples
+                    { text: 'Needs assessment form: Google Form to gather client requirements', img: 'needs-assessment-screenshot.png', link: 'https://forms.google.com/your-form' },
+                    { text: 'Strategy session agenda: Structured meetings for goal setting', img: 'strategy-agenda-screenshot.png', link: 'https://docs.google.com/document/d/your-agenda' },
+                    { text: 'Tool recommendation matrix: Compared options like Zapier vs Make', img: 'tool-matrix-screenshot.png', link: 'https://docs.google.com/spreadsheets/d/your-matrix' },
+                    { text: 'Post-consultation action plan: Notion template with tasks and timelines', img: 'action-plan-screenshot.png', link: 'https://notion.so/your-plan' },
+                    { text: 'Feedback collection survey: Post-onboarding questionnaire', img: 'feedback-survey-screenshot.png', link: 'https://forms.google.com/your-survey' },
+                    { text: 'Custom training video: Created CapCut tutorial for client tools', img: 'training-video-screenshot.png', link: 'https://youtube.com/your-video' },
+                    { text: 'Process audit report: Identified bottlenecks with solutions', img: 'audit-report-screenshot.png', link: 'https://docs.google.com/document/d/your-audit' },
+                    { text: 'Onboarding timeline Gantt: Visual plan in Sheets', img: 'onboarding-gantt-screenshot.png', link: 'https://docs.google.com/spreadsheets/d/your-gantt' },
+                    { text: 'Client profile template: Centralized info in Airtable', img: 'client-profile-screenshot.png', link: 'https://airtable.com/your-base' },
+                    { text: 'Goal alignment workshop: Interactive session notes', img: 'workshop-notes-screenshot.png', link: 'https://docs.google.com/document/d/your-notes' }
+                ]
+            },
             development: {
-                title: 'Web & Mobile Development',
+                title: 'Web & Mobile Development Samples',
                 items: [
                     { text: 'Lead Automation: Automated lead generation system with CRM integration', img: 'automation-2.png', link: 'https://my-portfolio-winifred-achinike.vercel.app/facebook_lead_gen.html', tech: ['HubSpot', 'Zapier'] },
                     { text: 'Change Management: Enterprise workflow automation system for IBEDC', img: 'board.png', link: 'https://github.com/somaga1/ibedc-change-management-system', tech: ['JavaScript', 'Enterprise'] },
                     { text: 'Weather App: Real-time weather data with responsive design', img: 'preview.png', link: 'https://weather-app-ten-psi-30.vercel.app/', tech: ['JavaScript', 'API'] },
                     { text: 'Glam Chic Store: Fully responsive e-commerce platform', img: 'ecommerce.png', link: 'https://github.com/somaga1/Glam-Chic-Store', tech: ['E-commerce', 'Auth'] },
                     { text: 'My ToDo App: Smart task manager with cross-device sync', img: 'task.png', link: 'https://github.com/somaga1/My-ToDo-App', tech: ['Flutter', 'Hive'] },
-                    { text: 'MedTrack: Cross-platform medical management app for healthcare professionals', img: 'preview.png', link: 'https://github.com/somaga1/MedTrack', tech: ['Flutter', 'Firebase'] }
+                    { text: 'MedTrack: Cross-platform medical management app for healthcare professionals', img: 'preview.png', link: 'https://github.com/somaga1/MedTrack', tech: ['Flutter', 'Firebase'] },
+                    // New relevant samples
+                    { text: 'Portfolio Website: Built this site with Vercel for personal branding', img: 'portfolio-screenshot.png', link: 'https://my-portfolio-winifred-achinike.vercel.app' , tech: ['HTML', 'Tailwind CSS'] },
+                    { text: 'Custom CRM Dashboard: React.js app for lead tracking', img: 'crm-dashboard-screenshot.png', link: 'https://github.com/your-repo/crm-dashboard', tech: ['React.js', 'Firebase'] },
+                    { text: 'Inventory Management Tool: WordPress plugin for stock control', img: 'inventory-tool-screenshot.png', link: 'https://github.com/your-repo/inventory-plugin', tech: ['WordPress', 'PHP'] },
+                    { text: 'Chatbot Integration: Flutter app with Dialogflow for support', img: 'chatbot-screenshot.png', link: 'https://github.com/your-repo/chatbot-app', tech: ['Flutter', 'Dialogflow'] },
+                    { text: 'E-learning Platform: Web app with user auth and courses', img: 'elearning-screenshot.png', link: 'https://github.com/your-repo/elearning-platform', tech: ['JavaScript', 'Firebase'] },
+                    { text: 'Fitness Tracker App: Mobile app with API integrations for health data', img: 'fitness-tracker-screenshot.png', link: 'https://github.com/your-repo/fitness-tracker', tech: ['Flutter', 'API'] },
+                    { text: 'Blog CMS: Custom WordPress theme for content management', img: 'blog-cms-screenshot.png', link: 'https://github.com/your-repo/blog-theme', tech: ['WordPress', 'CSS'] },
+                    { text: 'Recipe Sharing Site: React site with user-generated content', img: 'recipe-site-screenshot.png', link: 'https://github.com/your-repo/recipe-site', tech: ['React.js', 'Firebase'] },
+                    { text: 'Weather Dashboard: Advanced web app with charts', img: 'weather-dashboard-screenshot.png', link: 'https://github.com/your-repo/weather-dashboard', tech: ['JavaScript', 'Chart.js'] },
+                    { text: 'Task Collaboration Tool: Multi-user app with real-time updates', img: 'collaboration-tool-screenshot.png', link: 'https://github.com/your-repo/collaboration-tool', tech: ['React.js', 'Socket.io'] }
                 ]
             },
-            // Add the rest similarly...
+            influencer_campaigns: {
+                title: 'Influencer Campaigns Samples',
+                items: [
+                    { text: 'Influencer outreach and collaboration: Managed partnerships for brand promotions', img: 'influencer_campaign.png', link: 'influencer_campaign.html' },
+                    { text: 'Campaign tracking and analytics: Monitored performance metrics in Sheets', img: 'automation-2.png', link: 'influencer_campaign.html' },
+                    { text: 'Reporting on campaign performance: Created dashboards for ROI analysis', img: 'sheets.png', link: 'https://docs.google.com/spreadsheets/d/your-campaign-report' },
+                    { text: 'Content coordination with influencers: Reviewed and approved posts', img: 'canva.png', link: 'influencer_campaign.html' },
+                    // New relevant samples
+                    { text: 'Influencer contract template: Drafted agreements in Docs', img: 'contract-template-screenshot.png', link: 'https://docs.google.com/document/d/your-contract' },
+                    { text: 'Outreach email sequence: Automated messages for initial contact', img: 'outreach-sequence-screenshot.png', link: 'https://mailchimp.com/your-outreach' },
+                    { text: 'Performance scorecard: Tracked engagement per influencer', img: 'scorecard-screenshot.png', link: 'https://docs.google.com/spreadsheets/d/your-scorecard' },
+                    { text: 'Brand guideline deck: Shared with influencers for consistency', img: 'guideline-deck-screenshot.png', link: 'https://www.canva.com/design/your-guidelines' },
+                    { text: 'Campaign calendar: Planned collaborations in Calendar', img: 'campaign-calendar-screenshot.png', link: 'https://calendar.google.com/your-campaign-cal' },
+                    { text: 'Post-approval workflow: Zapier for review notifications', img: 'approval-workflow-screenshot.png', link: 'https://zapier.com/editor/your-approval-zap' },
+                    { text: 'Affiliate tracking system: Monitored commissions in HubSpot', img: 'affiliate-tracking-screenshot.png', link: 'https://app.hubspot.com/affiliates/your-system' },
+                    { text: 'Influencer database: Airtable base for contact management', img: 'influencer-db-screenshot.png', link: 'https://airtable.com/your-db' },
+                    { text: 'Giveaway coordination: Managed entries and winners', img: 'giveaway-screenshot.png', link: 'https://your-giveaway-form' },
+                    { text: 'Cross-promotion tracker: Logged joint campaigns with metrics', img: 'cross-promo-screenshot.png', link: 'https://docs.google.com/spreadsheets/d/your-tracker' }
+                ]
+            },
+            event_planning: {
+                title: 'Event Planning & Invitations Samples',
+                items: [
+                    { text: 'Event organization and logistics: Coordinated university events as representative', img: 'eventinvitation.png', link: 'eventinvitation.png' },
+                    { text: 'Invitation design and management: Created digital invites in Canva', img: 'event-invitation.png', link: 'event-invitation.png' },
+                    { text: 'RSVP tracking and follow-up: Used Forms for responses and reminders', img: 'calendar.png', link: 'calbooking.png' },
+                    { text: 'Virtual and in-person event support: Managed hybrid setups with Zoom', img: 'preview.png', link: 'view.html' },
+                    // New relevant samples
+                    { text: 'Event budget planner: Tracked costs in Sheets', img: 'event-budget-screenshot.png', link: 'https://docs.google.com/spreadsheets/d/your-budget' },
+                    { text: 'Speaker coordination log: Managed confirmations and bios', img: 'speaker-log-screenshot.png', link: 'https://docs.google.com/document/d/your-log' },
+                    { text: 'Venue scouting report: Compared options with pros/cons', img: 'venue-report-screenshot.png', link: 'https://docs.google.com/document/d/your-report' },
+                    { text: 'Post-event feedback form: Collected attendee insights', img: 'feedback-form-screenshot.png', link: 'https://forms.google.com/your-form' },
+                    { text: 'Promotional flyer design: Created in Canva for marketing', img: 'flyer-design-screenshot.png', link: 'https://www.canva.com/design/your-flyer' },
+                    { text: 'Timeline checklist: Notion page for day-of execution', img: 'event-timeline-screenshot.png', link: 'https://notion.so/your-checklist' },
+                    { text: 'Sponsor outreach email: Drafted proposals for partnerships', img: 'sponsor-email-screenshot.png', link: 'https://mailchimp.com/your-sponsor-template' },
+                    { text: 'Attendee registration system: Automated with Zapier', img: 'registration-system-screenshot.png', link: 'https://zapier.com/editor/your-reg-zap' },
+                    { text: 'Event recap report: Summarized outcomes with photos', img: 'recap-report-screenshot.png', link: 'https://docs.google.com/document/d/your-recap' },
+                    { text: 'Virtual event platform setup: Configured Streamyard/Zoom', img: 'virtual-setup-screenshot.png', link: 'https://streamyard.com/your-event' }
+                ]
+            }
+            // Add expanded items for all other modals similarly, with 10-20 per section, stories, placeholders
         };
 
         function showModal(key) {
@@ -515,7 +819,7 @@
                             ${item.tech ? `<div class="flex flex-wrap gap-2 mb-4">${item.tech.map(t => `<span class="px-2 py-1 bg-neutral text-secondary text-xs rounded-full">${t}</span>`).join('')}</div>` : ''}
                             ${item.link ? `<a href="${item.link}" target="_blank" class="inline-flex items-center text-sm text-accent hover:text-primary font-medium transition-colors">
                                 View Sample <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 0 00-2 2v10a2 0 002 2h10a2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 0 00-2 2v10a2 0 002 2h10a2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                                 </svg>
                             </a>` : ''}
                         </div>
