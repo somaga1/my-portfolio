@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winifred Achinike - Virtual Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e293b',
+                        accent: '#e07a5f',
+                        warm: '#f4f1ea',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(30, 41, 59, 0.15);
+        }
+        
+        .project-card::after {
+            content: "View Details";
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(30, 41, 59, 0.9);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 10;
+            pointer-events: none;
+        }
+        
+        .project-card:hover::after {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(30, 41, 59, 0.15);
+        }
+        
+        .project-card:hover .image-grid {
+            filter: brightness(0.95);
+        }
+        
+        .project-card {
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(30, 41, 59, 0.03) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .project-card:hover::before {
+            opacity: 1;
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-grid {
+            display: grid;
+            gap: 0.5rem;
+        }
+        
+        .image-grid.single { grid-template-columns: 1fr; }
+        .image-grid.double { grid-template-columns: 1fr 1fr; }
+        .image-grid.triple { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+        .image-grid.triple .main { grid-column: 1 / -1; }
+        
+        .tool-badge {
+            transition: all 0.2s ease;
+        }
+        
+        .tool-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 41, 59, 0.15);
+        }
+        
+        /* Added modal styles for project detail view */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            backdrop-filter: blur(8px);
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 1rem;
+            max-width: 1200px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            margin: 2rem;
+            animation: slideUp 0.4s ease;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body class="bg-warm text-gray-900">
+    
+    <!-- Hero Section -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
+            <div>
+                <h1 class="text-2xl font-bold text-primary">Winifred Achinike</h1>
+                <p class="text-sm text-gray-600">Virtual Assistant</p>
+            </div>
+            <a href="#contact" class="bg-primary text-white px-6 py-2.5 rounded-full font-medium hover:bg-accent transition-all">
+                Get in Touch
+            </a>
+        </div>
+    </header>
+
+    <!-- Tools I Use -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h2 class="text-3xl font-bold text-primary mb-6">Tools & Platforms</h2>
+        <div class="flex flex-wrap gap-3">
+            <span class="tool-badge bg-white px-4 py-2 rounded-lg text-sm font-medium border border-gray-200">Canva</span>
+            <span class="tool-badge bg-white px-4 py-2 rounded-lg text-sm font-medium border border-gray-200">CapCut</span>
+            <span class="tool-badge bg-white px-4 py-2 rounded-lg text-sm font-medium border border-gray-200">GoHighLevel</span>
+            <span class="tool-badge bg-white px-4 py-2 rounded-lg text-sm font-medium border border-gray-200">HubSpot</span>
+            <span class="tool-badge bg-white px-4 py-2 rounded-lg text-sm font-medium border border-gray-200">Notion</span>
+            <span class="tool-badge bg-white px-4 py-2 rounded-lg text-sm font-medium border border-gray-200">Asana</span>
+            <span class="tool-badge bg-white px-4 py-2 rounded-lg text-sm font-medium border border-gray-200">Slack</span>
+            <span class="tool-badge bg-white px-4 py-2 rounded-lg text-sm font-medium border border-gray-200">Google Workspace</span>
+            <span class="tool-badge bg-white px-4 py-2 rounded-lg text-sm font-medium border border-gray-200">Calendly</span>
+            <span class="tool-badge bg-white px-4 py-2 rounded-lg text-sm font-medium border border-gray-200">Zapier</span>
+            <span class="tool-badge bg-white px-4 py-2 rounded-lg text-sm font-medium border border-gray-200">ChatGPT</span>
+            <span class="tool-badge bg-white px-4 py-2 rounded-lg text-sm font-medium border border-gray-200">Trello</span>
+            <span class="tool-badge bg-white px-4 py-2 rounded-lg text-sm font-medium border border-gray-200">Microsoft Office</span>
+            <span class="tool-badge bg-white px-4 py-2 rounded-lg text-sm font-medium border border-gray-200">Airtable</span>
+            <span class="tool-badge bg-white px-4 py-2 rounded-lg text-sm font-medium border border-gray-200">Mailchimp</span>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h2 class="text-4xl font-bold text-primary mb-10">Portfolio</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Project 1: Social Media Content -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal1')">
+                <div class="image-grid triple">
+                    <div class="main image-placeholder aspect-video flex items-center justify-center text-white text-sm font-medium">
+                        Main Instagram Post Design
+                    </div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Story 1
+                    </div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Story 2
+                    </div>
+                </div>
+                <div class="p-5">
+                    <span class="bg-accent/10 text-accent text-xs font-semibold px-3 py-1 rounded-full">Social Media</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Instagram Content Suite</h3>
+                    <p class="text-gray-600 text-sm mb-3">50+ posts, stories, and reels designed in Canva</p>
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Canva</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Instagram</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Project 2: Email Management -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal2')">
+                <div class="image-grid single">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white text-sm font-medium">
+                        Email Dashboard Screenshot
+                    </div>
+                </div>
+                <div class="p-5">
+                    <span class="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">Admin</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Executive Email Management</h3>
+                    <p class="text-gray-600 text-sm mb-3">Managed 200+ daily emails with priority system</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Gmail</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Filters</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: CRM Setup -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal3')">
+                <div class="image-grid double">
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        CRM Dashboard
+                    </div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Workflow
+                    </div>
+                </div>
+                <div class="p-5">
+                    <span class="bg-purple-100 text-purple-700 text-xs font-semibold px-3 py-1 rounded-full">CRM</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">GoHighLevel Implementation</h3>
+                    <p class="text-gray-600 text-sm mb-3">Complete CRM setup with automated workflows</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">GoHighLevel</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Video Editing -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal4')">
+                <div class="image-grid triple">
+                    <div class="main image-placeholder aspect-video flex items-center justify-center text-white text-sm font-medium">
+                        Edited Video Thumbnail
+                    </div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Before
+                    </div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        After
+                    </div>
+                </div>
+                <div class="p-5">
+                    <span class="bg-pink-100 text-pink-700 text-xs font-semibold px-3 py-1 rounded-full">Video</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Promotional Video Editing</h3>
+                    <p class="text-gray-600 text-sm mb-3">30+ videos edited with captions and effects</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">CapCut</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Subtitles</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: Calendar Management -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal5')">
+                <div class="image-grid single">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white text-sm font-medium">
+                        Calendar System Screenshot
+                    </div>
+                </div>
+                <div class="p-5">
+                    <span class="bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">Scheduling</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Multi-Calendar Coordination</h3>
+                    <p class="text-gray-600 text-sm mb-3">Scheduled 150+ meetings across 3 time zones</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Google Calendar</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Calendly</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6: Data Organization -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal6')">
+                <div class="image-grid double">
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Spreadsheet
+                    </div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Dashboard
+                    </div>
+                </div>
+                <div class="p-5">
+                    <span class="bg-orange-100 text-orange-700 text-xs font-semibold px-3 py-1 rounded-full">Data</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Database Organization</h3>
+                    <p class="text-gray-600 text-sm mb-3">Organized 2000+ records with custom reports</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Excel</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Google Sheets</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 7: Presentation Design -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal7')">
+                <div class="image-grid triple">
+                    <div class="main image-placeholder aspect-video flex items-center justify-center text-white text-sm font-medium">
+                        Presentation Cover
+                    </div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Slide 2
+                    </div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Slide 3
+                    </div>
+                </div>
+                <div class="p-5">
+                    <span class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full">Design</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Pitch Deck Design</h3>
+                    <p class="text-gray-600 text-sm mb-3">20-slide investor presentation in Canva</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Canva</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">PowerPoint</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8: Customer Support -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal8')">
+                <div class="image-grid single">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white text-sm font-medium">
+                        Support Dashboard
+                    </div>
+                </div>
+                <div class="p-5">
+                    <span class="bg-teal-100 text-teal-700 text-xs font-semibold px-3 py-1 rounded-full">Support</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Customer Support Management</h3>
+                    <p class="text-gray-600 text-sm mb-3">Handled 500+ tickets with 98% satisfaction</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Zendesk</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Intercom</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 9: Content Calendar -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal9')">
+                <div class="image-grid double">
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Calendar View
+                    </div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Post Queue
+                    </div>
+                </div>
+                <div class="p-5">
+                    <span class="bg-rose-100 text-rose-700 text-xs font-semibold px-3 py-1 rounded-full">Content</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Content Scheduling System</h3>
+                    <p class="text-gray-600 text-sm mb-3">3-month content calendar across 4 platforms</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Notion</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Buffer</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 10: Research Documentation -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal10')">
+                <div class="image-grid single">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white text-sm font-medium">
+                        Research Document
+                    </div>
+                </div>
+                <div class="p-5">
+                    <span class="bg-amber-100 text-amber-700 text-xs font-semibold px-3 py-1 rounded-full">Research</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Market Research Report</h3>
+                    <p class="text-gray-600 text-sm mb-3">50-page competitor analysis with insights</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Google Docs</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Research</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 11: Invoice Management -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal11')">
+                <div class="image-grid double">
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-sm font-medium">
+                        Invoice Template
+                    </div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Expense Report
+                    </div>
+                </div>
+                <div class="p-5">
+                    <span class="bg-emerald-100 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full">Finance</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Invoice & Expense Tracking</h3>
+                    <p class="text-gray-600 text-sm mb-3">Managed 100+ invoices and expense reports</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">QuickBooks</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Excel</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 12: Newsletter Design -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal12')">
+                <div class="image-grid triple">
+                    <div class="main image-placeholder aspect-video flex items-center justify-center text-white text-sm font-medium">
+                        Newsletter Header
+                    </div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Section 1
+                    </div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Section 2
+                    </div>
+                </div>
+                <div class="p-5">
+                    <span class="bg-violet-100 text-violet-700 text-xs font-semibold px-3 py-1 rounded-full">Email Marketing</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Weekly Newsletter Design</h3>
+                    <p class="text-gray-600 text-sm mb-3">Designed and sent 50+ newsletters</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Mailchimp</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Canva</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 13: Automation Workflows -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal13')">
+                <div class="image-grid single">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white text-sm font-medium">
+                        Zapier Workflow Diagram
+                    </div>
+                </div>
+                <div class="p-5">
+                    <span class="bg-cyan-100 text-cyan-700 text-xs font-semibold px-3 py-1 rounded-full">Automation</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Multi-App Automation</h3>
+                    <p class="text-gray-600 text-sm mb-3">Built 10+ Zapier workflows saving 15hrs/week</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Zapier</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Integration</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 14: Social Media Analytics -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal14')">
+                <div class="image-grid double">
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Analytics Dashboard
+                    </div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Growth Chart
+                    </div>
+                </div>
+                <div class="p-5">
+                    <span class="bg-fuchsia-100 text-fuchsia-700 text-xs font-semibold px-3 py-1 rounded-full">Analytics</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Social Media Reporting</h3>
+                    <p class="text-gray-600 text-sm mb-3">Monthly reports tracking growth metrics</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Google Analytics</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Meta Business</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 15: Brand Guidelines -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal15')">
+                <div class="image-grid triple">
+                    <div class="main image-placeholder aspect-video flex items-center justify-center text-white text-sm font-medium">
+                        Brand Guide Cover
+                    </div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Colors
+                    </div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white text-xs">
+                        Typography
+                    </div>
+                </div>
+                <div class="p-5">
+                    <span class="bg-lime-100 text-lime-700 text-xs font-semibold px-3 py-1 rounded-full">Branding</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Brand Guidelines Document</h3>
+                    <p class="text-gray-600 text-sm mb-3">Complete brand guide with assets</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Canva</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 16: Lead Generation Campaign -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal16')">
+                <div class="image-grid double">
+                    <img src="preview.png" alt="Lead Gen Landing Page" class="aspect-square object-cover rounded-lg">
+                    <img src="automation2.png" alt="Lead Gen Automation" class="aspect-square object-cover rounded-lg">
+                </div>
+                <div class="p-5">
+                    <span class="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">Lead Generation</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Facebook Lead Ads Campaign</h3>
+                    <p class="text-gray-600 text-sm mb-3">Created and automated Facebook lead ads for Apex Build Co.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Facebook Ads</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Zapier</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">CRM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 17: Event Invitation Design -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal17')">
+                <div class="image-grid double">
+                    <img src="eventinvitation.png" alt="Event Invitation" class="aspect-square object-cover rounded-lg">
+                    <img src="event-invitation.png" alt="Event Invite Alt" class="aspect-square object-cover rounded-lg">
+                </div>
+                <div class="p-5">
+                    <span class="bg-pink-100 text-pink-700 text-xs font-semibold px-3 py-1 rounded-full">Events</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Leadership Summit Invitation</h3>
+                    <p class="text-gray-600 text-sm mb-3">Designed and managed invitations for a professional conference.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Canva</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Mailchimp</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 18: Welcome Email Series -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal18')">
+                <div class="image-grid double">
+                    <img src="winifredcreates.png" alt="Welcome Email" class="aspect-square object-cover rounded-lg">
+                    <img src="bloom-co.png" alt="Bloom & Co Welcome" class="aspect-square object-cover rounded-lg">
+                </div>
+                <div class="p-5">
+                    <span class="bg-violet-100 text-violet-700 text-xs font-semibold px-3 py-1 rounded-full">Email Marketing</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Welcome Email Series</h3>
+                    <p class="text-gray-600 text-sm mb-3">Personalized onboarding emails for new subscribers and clients.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Mailchimp</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Canva</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 19: Booking Confirmation Automation -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal19')">
+                <div class="image-grid double">
+                    <img src="calbooking.png" alt="Booking Confirmation" class="aspect-square object-cover rounded-lg">
+                    <img src="calendly.png" alt="Calendly" class="aspect-square object-cover rounded-lg">
+                </div>
+                <div class="p-5">
+                    <span class="bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">Automation</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Booking Confirmation Automation</h3>
+                    <p class="text-gray-600 text-sm mb-3">Automated booking confirmations and reminders for client appointments.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Calendly</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Google Calendar</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 20: SaaS Product Launch Campaign -->
+            <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl" onclick="openModal('modal20')">
+                <div class="image-grid single">
+                    <img src="nexusflow.png" alt="Nexus Flow Launch" class="aspect-video object-cover rounded-lg">
+                </div>
+                <div class="p-5">
+                    <span class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full">Product Launch</span>
+                    <h3 class="text-lg font-bold mt-3 mb-2">Nexus Flow SaaS Launch</h3>
+                    <p class="text-gray-600 text-sm mb-3">Launched and promoted a SaaS product with email and automation campaigns.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Mailchimp</span>
+                        <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Zapier</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Modals for Project Details -->
+    <!-- Modal 1: Instagram Content Suite -->
+    <div id="modal1" class="modal" onclick="closeModalOnBackdrop(event, 'modal1')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-accent/10 text-accent text-xs font-semibold px-3 py-1 rounded-full">Social Media</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Instagram Content Suite</h2>
+                    </div>
+                    <button onclick="closeModal('modal1')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    A wellness coach needed consistent, on-brand content to grow their Instagram presence. I created a cohesive visual identity across 50+ posts, stories, and reels that increased engagement by maintaining aesthetic consistency while telling their brand story through strategic design choices in Canva.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Feed Post 1</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Feed Post 2</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Story Template</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Reel Cover</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Canva Pro</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Instagram</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Brand Design</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Brand Guidelines Document →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Email Management -->
+    <div id="modal2" class="modal" onclick="closeModalOnBackdrop(event, 'modal2')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">Admin</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Executive Email Management</h2>
+                    </div>
+                    <button onclick="closeModal('modal2')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    An executive was drowning in 200+ daily emails. I implemented a priority-based filtering system with custom labels, automated responses for common inquiries, and a daily digest that surfaced only what mattered. Inbox zero became the new normal.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Email Dashboard</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Filter System</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Priority Labels</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Gmail</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Filters & Labels</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Automation</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Email Management Process Doc →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: CRM Setup -->
+    <div id="modal3" class="modal" onclick="closeModalOnBackdrop(event, 'modal3')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-purple-100 text-purple-700 text-xs font-semibold px-3 py-1 rounded-full">CRM</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">GoHighLevel Implementation</h2>
+                    </div>
+                    <button onclick="closeModal('modal3')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    A coaching business needed to streamline client onboarding and follow-ups. I built a complete GoHighLevel system with automated workflows that nurtured leads, scheduled discovery calls, and sent personalized follow-ups—turning manual chaos into a smooth, scalable process.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">CRM Dashboard</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Workflow Automation</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Pipeline View</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Email Templates</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">GoHighLevel</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Automation</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Lead Nurturing</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View CRM Setup Guide →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: Video Editing -->
+    <div id="modal4" class="modal" onclick="closeModalOnBackdrop(event, 'modal4')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-pink-100 text-pink-700 text-xs font-semibold px-3 py-1 rounded-full">Video</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Promotional Video Editing</h2>
+                    </div>
+                    <button onclick="closeModal('modal4')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    A content creator needed polished videos for social media but lacked editing time. I transformed raw footage into engaging 30-60 second clips with dynamic captions, smooth transitions, and on-brand effects using CapCut—ready to post and optimized for each platform.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Video Thumbnail</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Editing Timeline</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Caption Style</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Transition Effects</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">CapCut</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Subtitles</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Social Media</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Sample Videos →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5: Calendar Management -->
+    <div id="modal5" class="modal" onclick="closeModalOnBackdrop(event, 'modal5')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">Scheduling</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Multi-Calendar Coordination</h2>
+                    </div>
+                    <button onclick="closeModal('modal5')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    Managing meetings across three time zones for a global team was creating scheduling conflicts. I synchronized multiple calendars, set up Calendly with smart availability rules, and handled all meeting coordination—eliminating double-bookings and saving hours of back-and-forth emails.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Calendar Overview</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Calendly Setup</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Time Zone View</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Google Calendar</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Calendly</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Time Zone Management</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Scheduling System Doc →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6: Data Organization -->
+    <div id="modal6" class="modal" onclick="closeModalOnBackdrop(event, 'modal6')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-orange-100 text-orange-700 text-xs font-semibold px-3 py-1 rounded-full">Data</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Database Organization</h2>
+                    </div>
+                    <button onclick="closeModal('modal6')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    A growing e-commerce business had 2000+ customer records scattered across multiple spreadsheets. I consolidated everything into one organized database with custom formulas, pivot tables, and automated reports that provided instant insights into customer behavior and sales trends.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Master Database</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Dashboard View</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Pivot Tables</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Reports</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Excel</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Google Sheets</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Data Analysis</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Sample Database →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 7: Presentation Design -->
+    <div id="modal7" class="modal" onclick="closeModalOnBackdrop(event, 'modal7')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full">Design</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Pitch Deck Design</h2>
+                    </div>
+                    <button onclick="closeModal('modal7')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    A startup founder had compelling ideas but a cluttered presentation. I redesigned their 20-slide investor pitch deck in Canva with clean layouts, data visualizations, and a cohesive visual story that made complex information digestible and memorable.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Cover Slide</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Problem Slide</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Solution Slide</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Financials</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Canva</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">PowerPoint</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Presentation Design</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Full Pitch Deck →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 8: Customer Support -->
+    <div id="modal8" class="modal" onclick="closeModalOnBackdrop(event, 'modal8')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-teal-100 text-teal-700 text-xs font-semibold px-3 py-1 rounded-full">Support</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Customer Support Management</h2>
+                    </div>
+                    <button onclick="closeModal('modal8')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    A SaaS company needed help managing growing support volume. I handled 500+ tickets with empathy and efficiency, created a knowledge base for common issues, and maintained response times under 2 hours—keeping customers happy while the team focused on product development.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Support Dashboard</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Ticket Management</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Response Templates</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Zendesk</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Intercom</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Customer Service</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Knowledge Base →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 9: Content Calendar -->
+    <div id="modal9" class="modal" onclick="closeModalOnBackdrop(event, 'modal9')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-rose-100 text-rose-700 text-xs font-semibold px-3 py-1 rounded-full">Content</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Content Scheduling System</h2>
+                    </div>
+                    <button onclick="closeModal('modal9')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    A personal brand was posting inconsistently across platforms. I built a 3-month content calendar in Notion with strategic themes, scheduled posts in Buffer, and created a sustainable system that maintained consistent presence across Instagram, LinkedIn, Twitter, and Facebook.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Notion Calendar</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Buffer Queue</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Content Themes</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Platform Schedule</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Notion</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Buffer</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Content Strategy</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Content Calendar Template →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 10: Research Documentation -->
+    <div id="modal10" class="modal" onclick="closeModalOnBackdrop(event, 'modal10')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-amber-100 text-amber-700 text-xs font-semibold px-3 py-1 rounded-full">Research</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Market Research Report</h2>
+                    </div>
+                    <button onclick="closeModal('modal10')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    A business needed competitive intelligence before launching a new product. I conducted comprehensive research on 15 competitors, analyzed pricing strategies, identified market gaps, and compiled everything into a 50-page report with actionable insights that shaped their go-to-market strategy.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Report Cover</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Competitor Analysis</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Market Insights</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Recommendations</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Google Docs</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Research</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Analysis</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Sample Research Report →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 11: Invoice Management -->
+    <div id="modal11" class="modal" onclick="closeModalOnBackdrop(event, 'modal11')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full">Finance</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Invoice & Expense Tracking</h2>
+                    </div>
+                    <button onclick="closeModal('modal11')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    A freelance consultant was losing track of billable hours and expenses. I set up QuickBooks, created professional invoice templates, implemented expense tracking, and established a system for timely follow-ups on overdue payments—bringing order to their finances.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Invoice Template</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Expense Dashboard</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Payment Tracking</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">QuickBooks</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Excel</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Financial Management</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Invoice Templates →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 12: Newsletter Design -->
+    <div id="modal12" class="modal" onclick="closeModalOnBackdrop(event, 'modal12')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-violet-100 text-violet-700 text-xs font-semibold px-3 py-1 rounded-full">Email Marketing</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Weekly Newsletter Design</h2>
+                    </div>
+                    <button onclick="closeModal('modal12')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    A thought leader wanted to grow their email list but lacked design skills. I created beautiful, mobile-responsive newsletter templates in Canva, set up Mailchimp campaigns, and managed weekly sends to 5000+ subscribers—maintaining consistent branding and improving open rates.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Newsletter Header</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Content Section</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">CTA Design</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Footer</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Mailchimp</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Canva</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Email Design</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Newsletter Examples →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 13: Automation Workflows -->
+    <div id="modal13" class="modal" onclick="closeModalOnBackdrop(event, 'modal13')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-cyan-100 text-cyan-700 text-xs font-semibold px-3 py-1 rounded-full">Automation</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Multi-App Automation</h2>
+                    </div>
+                    <button onclick="closeModal('modal13')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    Repetitive tasks were eating up valuable time. I built 10+ Zapier workflows connecting Gmail, Slack, Airtable, and Google Sheets to automate lead capture, notification systems, and data syncing—reclaiming 15 hours per week for higher-value work.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Workflow Diagram</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Zapier Dashboard</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Trigger Setup</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Action Flow</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Zapier</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Integration</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Workflow Automation</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Automation Documentation →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 14: Social Media Analytics -->
+    <div id="modal14" class="modal" onclick="closeModalOnBackdrop(event, 'modal14')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-fuchsia-100 text-fuchsia-700 text-xs font-semibold px-3 py-1 rounded-full">Analytics</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Social Media Reporting</h2>
+                    </div>
+                    <button onclick="closeModal('modal14')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    A brand needed to understand what content resonated with their audience. I created monthly analytics reports pulling data from Google Analytics and Meta Business Suite, identifying top-performing content, optimal posting times, and growth opportunities with clear visualizations.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Analytics Dashboard</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Growth Metrics</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Engagement Chart</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Insights Report</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Google Analytics</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Meta Business Suite</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Data Visualization</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Sample Analytics Report →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 15: Brand Guidelines -->
+    <div id="modal15" class="modal" onclick="closeModalOnBackdrop(event, 'modal15')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-lime-100 text-lime-700 text-xs font-semibold px-3 py-1 rounded-full">Branding</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Brand Guidelines Document</h2>
+                    </div>
+                    <button onclick="closeModal('modal15')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    A startup had inconsistent branding across materials. I created comprehensive brand guidelines documenting logo usage, color palettes, typography, tone of voice, and visual examples—giving their team a clear reference to maintain brand consistency as they scaled.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Brand Guide Cover</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Logo Guidelines</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Color Palette</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Typography</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Canva</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Brand Design</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Documentation</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Complete Brand Guidelines →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 16: Facebook Lead Ads Campaign -->
+    <div id="modal16" class="modal" onclick="closeModalOnBackdrop(event, 'modal16')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">Lead Generation</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Facebook Lead Ads Campaign</h2>
+                    </div>
+                    <button onclick="closeModal('modal16')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    Apex Build Co. needed a steady stream of qualified leads for their construction services. I created targeted Facebook lead ads with compelling visuals, wrote persuasive ad copy, and set up automated workflows to instantly capture and nurture leads through their CRM system.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Ad Creative</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Landing Page</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Lead Form</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">CRM Integration</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Facebook Ads</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Zapier</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">CRM</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Campaign Results →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 17: Leadership Summit Invitation -->
+    <div id="modal17" class="modal" onclick="closeModalOnBackdrop(event, 'modal17')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-pink-100 text-pink-700 text-xs font-semibold px-3 py-1 rounded-full">Events</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Leadership Summit Invitation</h2>
+                    </div>
+                    <button onclick="closeModal('modal17')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    A professional organization needed elegant invitations for their annual leadership summit. I designed sophisticated invitation materials, created a cohesive visual identity for the event, and managed the email campaign that resulted in 85% attendance rate from 200+ invited executives.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Save the Date</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Formal Invitation</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Program Schedule</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">RSVP Tracking</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Canva</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Mailchimp</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Event Management</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Event Materials →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 18: Welcome Email Series -->
+    <div id="modal18" class="modal" onclick="closeModalOnBackdrop(event, 'modal18')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-violet-100 text-violet-700 text-xs font-semibold px-3 py-1 rounded-full">Email Marketing</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Welcome Email Series</h2>
+                    </div>
+                    <button onclick="closeModal('modal18')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    A SaaS company needed to improve their user onboarding experience. I created a 5-email welcome series that guided new users through key features, shared success stories, and provided helpful resources. The series increased user activation by 40% and reduced churn in the first month.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Welcome Email</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Feature Tutorial</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Success Stories</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Resource Guide</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Mailchimp</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Canva</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Automation</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Email Templates →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 19: Booking Confirmation Automation -->
+    <div id="modal19" class="modal" onclick="closeModalOnBackdrop(event, 'modal19')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">Automation</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Booking Confirmation Automation</h2>
+                    </div>
+                    <button onclick="closeModal('modal19')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    A consulting firm was manually sending booking confirmations and reminders, which led to missed appointments and client confusion. I automated the entire process using Calendly and Google Calendar integration, reducing no-shows by 60% and saving 10 hours per week.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Calendly Setup</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Confirmation Email</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Reminder System</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Calendar Sync</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Calendly</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Google Calendar</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Automation</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Automation Setup →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 20: Nexus Flow SaaS Launch -->
+    <div id="modal20" class="modal" onclick="closeModalOnBackdrop(event, 'modal20')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full">Product Launch</span>
+                        <h2 class="text-3xl font-bold text-primary mt-3">Nexus Flow SaaS Launch</h2>
+                    </div>
+                    <button onclick="closeModal('modal20')" class="text-gray-400 hover:text-gray-600 text-3xl leading-none">&times;</button>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    Nexus Flow needed a comprehensive launch strategy for their new project management SaaS. I coordinated email campaigns, social media content, automated onboarding sequences, and user engagement workflows that resulted in 1,000+ signups in the first month and a 25% conversion rate from trial to paid.
+                </p>
+                
+                <div class="image-gallery mb-6">
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Launch Campaign</div>
+                    <div class="image-placeholder aspect-video flex items-center justify-center text-white">Social Media Kit</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Email Templates</div>
+                    <div class="image-placeholder aspect-square flex items-center justify-center text-white">Analytics Dashboard</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Mailchimp</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Zapier</span>
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1.5 rounded-lg">Product Launch</span>
+                </div>
+                
+                <a href="#" class="inline-flex items-center text-accent font-medium hover:underline">
+                    View Launch Results →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact CTA -->
+    <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="bg-primary rounded-2xl p-12 text-center text-white">
+            <h2 class="text-4xl font-bold mb-6">Let's Work Together</h2>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="mailto:winifred.achinike@email.com" class="bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-accent hover:text-white transition-all inline-flex items-center gap-2">
+                    Email Me
+                </a>
+                <a href="https://calendly.com/winifred" class="bg-white/20 backdrop-blur text-white px-8 py-4 rounded-full font-semibold hover:bg-white/30 transition-all inline-flex items-center gap-2">
+                    Schedule a Call
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600">
+            <p>© 2025 Winifred Achinike · Available for remote work worldwide</p>
+        </div>
+    </footer>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function closeModalOnBackdrop(event, modalId) {
+            if (event.target.classList.contains('modal')) {
+                closeModal(modalId);
+            }
+        }
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Add scroll animation to project cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+    </script>
+
+    <script>
+        // Image mapping: modalId -> array of image filenames to inject (order matters)
+        const imageMap = {
+            modal1: ['canva.png','winifredcreates.png','preview.png','welcome-winifredcreates.png'],
+            modal2: ['mailbox.png','email1.png','preview.png'],
+            modal3: ['hubspot.png','automation2.png','board.png','email1.png'],
+            modal4: ['capcut.png','automation-2.png','automation-3.png','preview.png'],
+            modal5: ['calendar.png','calbooking.png','gcal.png'],
+            modal6: ['sheets.png','summary.png','runs.png','segments.png'],
+            modal7: ['Presentation.png','board.png','Planner.png','preview.png'],
+            modal8: ['mailbox.png','correspondence1.png','correspondence2.png'],
+            modal9: ['calendar.png','preview.png','Planner.png','guide.png'],
+            modal10: ['guide.png','summary.png','Screenshot 2025-06-04 091705.png','Screenshot 2025-06-02 031526.png'],
+            modal11: ['invoice.png','invoice2.png','summary.png'],
+            modal12: ['newsletter.png','eventinvitation.png','winifredcreates.png','preview.png'],
+            modal13: ['zap.png','automation2.png','automation-3.png','automation.png'],
+            modal14: ['segments.png','runs.png','summary.png','sheets.png'],
+            modal15: ['welcome-winifredcreates.png','bloom-co.png','me.jpg','winifredcreates.png'],
+            modal16: ['preview.png','automation2.png','form.png','hubspot.png'],
+            modal17: ['eventinvitation.png','event-invitation.png','preview.png','winifredcreates.png'],
+            modal18: ['winifredcreates.png','bloom-co.png','newsletter.png','sequence.png'],
+            modal19: ['calendly.png','calbooking.png','gcal.png','calendar.png'],
+            modal20: ['nexusflow.png','preview.png','newsletter.png','summary.png']
+        };
+
+        function injectImages() {
+            // Replace placeholders inside modals first
+            Object.keys(imageMap).forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (!modal) return;
+                const placeholders = modal.querySelectorAll('.image-placeholder');
+                placeholders.forEach((ph, idx) => {
+                    const images = imageMap[modalId] || [];
+                    const src = images[idx] || images[0] || 'preview.png';
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = ph.textContent.trim() || '';
+                    img.className = 'modal-image';
+                    ph.replaceWith(img);
+                });
+            });
+
+            // Replace placeholders inside project cards (match by onclick target)
+            document.querySelectorAll('.project-card').forEach(card => {
+                const onclick = card.getAttribute('onclick') || '';
+                const match = onclick.match(/openModal\('([^']+)'\)/);
+                if (!match) return;
+                const modalId = match[1];
+                const images = imageMap[modalId] || [];
+                const placeholders = card.querySelectorAll('.image-placeholder');
+                placeholders.forEach((ph, idx) => {
+                    const src = images[idx] || images[0] || 'preview.png';
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = ph.textContent.trim() || '';
+                    img.className = 'modal-image';
+                    ph.replaceWith(img);
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', injectImages);
+    </script>
+
+</body>
+</html>

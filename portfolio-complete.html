@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Winifred Achinike — Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#D4A574;--primary:#1A1A1A;--secondary:#4B5563}
+    body{font-family:DM Sans, system-ui, sans-serif}
+    .fade-in { animation: fadeIn 0.3s ease-in; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+</head>
+<body class="bg-white text-primary">
+  <header class="py-16 border-b">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl font-serif font-bold">Winifred Achinike</h1>
+      <p class="text-lg text-secondary mt-2">Virtual Assistant & Marketing Automation Specialist</p>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-12">
+    <!-- Services Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-serif font-semibold mb-8">Services & Case Studies</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesContainer"></div>
+    </section>
+
+    <!-- Tools -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">Tools & Platforms</h2>
+      <div class="flex flex-wrap gap-3">
+        <span class="px-3 py-1 bg-white border rounded">Zapier</span>
+        <span class="px-3 py-1 bg-white border rounded">HubSpot</span>
+        <span class="px-3 py-1 bg-white border rounded">Mailchimp</span>
+        <span class="px-3 py-1 bg-white border rounded">Canva</span>
+        <span class="px-3 py-1 bg-white border rounded">Airtable</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-12 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2024 Winifred Achinike — All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="sampleModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50 p-4" onclick="if(event.target===this)closeModal()">
+    <div class="bg-white max-w-4xl w-full rounded-lg overflow-hidden flex flex-col max-h-[90vh]" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between p-6 border-b bg-primary text-white">
+        <div class="flex items-center gap-4">
+          <button id="backBtn" onclick="goBackToServiceList()" class="text-white hover:text-accent transition-colors hidden">← Back</button>
+          <h3 id="modalTitle" class="text-xl font-semibold"></h3>
+        </div>
+        <button onclick="closeModal()" aria-label="Close" class="text-white hover:text-accent transition-colors">✕</button>
+      </div>
+      <div id="modalContent" class="p-6 overflow-y-auto flex-1 fade-in"></div>
+    </div>
+  </div>
+
+  <script src="samples-complete.js"></script>
+  <script>
+    let currentService = null;
+    let currentProject = null;
+
+    function renderServices() {
+      const container = document.getElementById('servicesContainer');
+      
+      Object.entries(samples).forEach(([key, service]) => {
+        const projectCount = service.projects.length;
+        const card = document.createElement('div');
+        card.className = 'p-4 bg-white rounded border cursor-pointer hover:border-accent hover:shadow-md transition-all';
+        card.onclick = () => showServiceProjects(key);
+        card.innerHTML = `
+          <h4 class="font-semibold">${service.title}</h4>
+          <p class="text-sm text-secondary mt-2">${projectCount} client project${projectCount > 1 ? 's' : ''}</p>
+          <button class="text-accent text-sm mt-4 hover:text-primary transition-colors">View projects →</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function showServiceProjects(serviceKey){
+      const modal = document.getElementById('sampleModal');
+      const title = document.getElementById('modalTitle');
+      const content = document.getElementById('modalContent');
+      const backBtn = document.getElementById('backBtn');
+      
+      const service = samples[serviceKey];
+      if (!service) return;
+      
+      currentService = serviceKey;
+      currentProject = null;
+      
+      title.textContent = service.title;
+      backBtn.classList.add('hidden');
+      
+      let html = '<div class="space-y-4">';
+      
+      service.projects.forEach((project, index) => {
+        html += `
+          <div class="p-4 bg-surface rounded-lg border border-gray-200 hover:border-accent cursor-pointer transition-all" onclick="showProjectDetails('${serviceKey}', ${index})">
+            <h4 class="font-semibold text-primary text-lg">${project.title}</h4>
+            <p class="text-sm text-secondary mt-1"><strong>Client:</strong> ${project.client}</p>
+            <p class="text-secondary mt-2">${project.summary}</p>
+            <div class="flex items-center gap-2 mt-3 text-accent text-sm">
+              <span>View details →</span>
+            </div>
+          </div>
+        `;
+      });
+      
+      html += '</div>';
+      content.innerHTML = html;
+      
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showProjectDetails(serviceKey, projectIndex){
+      const title = document.getElementById('modalTitle');
+      const content = document.getElementById('modalContent');
+      const backBtn = document.getElementById('backBtn');
+      
+      const service = samples[serviceKey];
+      const project = service.projects[projectIndex];
+      
+      currentProject = projectIndex;
+      
+      title.textContent = project.title;
+      backBtn.classList.remove('hidden');
+      
+      let html = `
+        <div class="space-y-6">
+          <div>
+            <p class="text-sm text-secondary mb-2"><strong>Client:</strong> ${project.client}</p>
+            <p class="text-secondary leading-relaxed">${project.summary}</p>
+          </div>
+
+          <!-- Challenge Section -->
+          <div class="bg-accent/10 p-6 rounded-lg">
+            <h4 class="font-semibold text-primary mb-3">The Challenge</h4>
+            <p class="text-secondary">${project.challenge}</p>
+          </div>
+
+          <!-- Solution Section -->
+          <div class="bg-surface p-6 rounded-lg">
+            <h4 class="font-semibold text-primary mb-3">The Solution</h4>
+            <p class="text-secondary">${project.solution}</p>
+          </div>
+
+          <!-- Images -->
+      `;
+      
+      if (project.images && project.images.length > 0) {
+        html += `
+          <div class="space-y-4">
+            <h4 class="font-semibold text-primary">Project Visuals</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        `;
+        project.images.forEach((img, i) => {
+          html += `<img src="${img}" alt="Project ${i+1}" class="w-full h-64 object-cover rounded-lg border border-gray-200">`;
+        });
+        html += `</div></div>`;
+      }
+
+      <!-- Results Section -->
+      html += `
+          <div class="bg-accent/10 p-6 rounded-lg">
+            <h4 class="font-semibold text-primary mb-3 text-lg">Results</h4>
+            <p class="text-accent font-medium">${project.results}</p>
+          </div>
+
+          <!-- Metrics Section -->
+      `;
+      
+      if (project.metrics) {
+        html += `
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        `;
+        Object.entries(project.metrics).forEach(([key, value]) => {
+          const label = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+          html += `
+            <div class="bg-surface p-4 rounded-lg text-center">
+              <div class="text-primary font-semibold">${value}</div>
+              <div class="text-xs text-secondary mt-1">${label}</div>
+            </div>
+          `;
+        });
+        html += `</div>`;
+      }
+
+      <!-- Tools Section -->
+      html += `
+          <div class="bg-surface p-6 rounded-lg">
+            <h4 class="font-semibold text-primary mb-4">Tools Used</h4>
+            <div class="flex flex-wrap gap-2">
+      `;
+      
+      if (project.tools_used) {
+        const tools = project.tools_used.split(', ');
+        tools.forEach(tool => {
+          html += `<span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium">${tool}</span>`;
+        });
+      }
+      
+      html += `</div></div>`;
+
+      <!-- Link Section -->
+      if (project.link) {
+        html += `
+          <div class="bg-accent/10 p-6 rounded-lg text-center">
+            <a href="${project.link}" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-accent text-primary font-medium hover:bg-accent/90 transition-colors rounded">
+              View Project <span>→</span>
+            </a>
+          </div>
+        `;
+      }
+
+      html += `</div>`;
+      
+      content.innerHTML = html;
+    }
+
+    function goBackToServiceList(){
+      if (currentService) {
+        showServiceProjects(currentService);
+      }
+    }
+
+    function closeModal(){
+      const modal = document.getElementById('sampleModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+      currentService = null;
+      currentProject = null;
+    }
+
+    document.addEventListener('keydown', e => { 
+      if(e.key === 'Escape') closeModal();
+      if(e.key === 'Backspace' && currentProject !== null) goBackToServiceList();
+    });
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', renderServices);
+  </script>
+</body>
+</html>

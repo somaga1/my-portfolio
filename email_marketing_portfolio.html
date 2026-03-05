@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winifred Achinike | Email Marketing Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2D3E5F',
+                        accent: '#5D5CDE',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'serif': ['Crimson Text', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, #f9fafb 0%, #ffffff 100%);
+        }
+        .section-padding {
+            padding: 6rem 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding: 8rem 1.5rem;
+            }
+        }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+        .screenshot {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .screenshot:hover {
+            opacity: 0.9;
+        }
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+        }
+        #modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        #modal img {
+            max-width: 95vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <!-- Modal -->
+    <div id="modal" onclick="closeModal()">
+        <button onclick="closeModal()" class="fixed top-6 right-6 text-white text-3xl hover:text-gray-300 z-10">&times;</button>
+        <img id="modalImg" src="" alt="">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="font-serif text-lg text-primary">Winifred Achinike</div>
+            <a href="#contact" class="text-sm text-primary hover:text-accent transition-colors">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-gradient pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center gap-8 mb-12">
+                <img src="https://pfst.cf2.poecdn.net/base/image/b079e56247c2a1a9e29ffe2241afacfb031cc48c29952d130644186b71de6f5c?w=1080&h=1080" alt="Winifred Achinike" class="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-serif text-primary mb-4 leading-tight">
+                        Email marketing systems that actually work
+                    </h1>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        I'm Winifred. I build complete email campaigns, automation workflows, and CRM systems. Everything below is work I've done myself, with full documentation and live examples you can test.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-4 text-sm text-gray-600 mb-8">
+                <span>Email Marketing</span>
+                <span>•</span>
+                <span>Marketing Automation</span>
+                <span>•</span>
+                <span>CRM Management</span>
+                <span>•</span>
+                <span>Content Creation</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="prose prose-lg text-gray-700 leading-relaxed">
+                <p class="text-xl mb-6">
+                    I taught myself email marketing by building real campaigns from scratch. I use free and low-cost tools like Mailchimp, HubSpot, Zapier, and Canva to create complete marketing systems.
+                </p>
+                
+                <p class="mb-6">
+                    My approach is methodical. I plan each campaign in ClickUp, breaking projects into clear tasks with checklists. I test every automation multiple times before launching. I document every step with screenshots so nothing gets lost.
+                </p>
+                
+                <p>
+                    What you'll see below: a complete lead generation campaign I built from start to finish, email designs with live links you can click, automation workflows with real integration screenshots, and the actual systems I use to track and manage leads.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Project -->
+    <section id="work" class="section-padding bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-12">
+                <h2 class="text-3xl font-serif text-primary mb-4">Featured Project</h2>
+                <p class="text-xl text-gray-600">Apex Build Co. Lead Generation Campaign</p>
+            </div>
+
+            <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+                <div class="p-8 md:p-12">
+                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                        I built a complete Facebook lead generation system for a construction company. This included designing all visual content, scheduling posts, creating lead capture forms, setting up email automation, and building booking systems. Every component is documented and functional.
+                    </p>
+
+                    <div class="grid md:grid-cols-2 gap-12 mb-12">
+                        <div>
+                            <h4 class="font-semibold text-primary mb-6 text-lg">Campaign Components</h4>
+                            <div class="space-y-4 text-gray-700">
+                                <div>
+                                    <div class="font-medium mb-1">Content Design</div>
+                                    <p class="text-sm text-gray-600">Created promotional graphics in Canva with construction imagery and clear calls to action. Edited a 15-second video in CapCut with text overlays and transitions.</p>
+                                </div>
+                                <div>
+                                    <div class="font-medium mb-1">Content Calendar</div>
+                                    <p class="text-sm text-gray-600">Planned a month of content in Google Calendar. Each post included captions, media specifications, posting times, and links to the lead form.</p>
+                                </div>
+                                <div>
+                                    <div class="font-medium mb-1">Social Scheduling</div>
+                                    <p class="text-sm text-gray-600">Scheduled all posts in Meta Business Suite with strategic timing for maximum reach to homeowners and contractors.</p>
+                                </div>
+                                <div>
+                                    <div class="font-medium mb-1">Lead Capture</div>
+                                    <p class="text-sm text-gray-600">Built a HubSpot form with seven custom fields: name, email, phone, city, project type, project description, and preferred consultation day.</p>
+                                </div>
+                                <div>
+                                    <div class="font-medium mb-1">Automation</div>
+                                    <p class="text-sm text-gray-600">Connected HubSpot to Mailchimp via Zapier. When someone submits the form, they're automatically added to Mailchimp and entered into an email sequence.</p>
+                                </div>
+                                <div>
+                                    <div class="font-medium mb-1">Email Nurture Sequence</div>
+                                    <p class="text-sm text-gray-600">Created three emails in Mailchimp: immediate welcome with consultation link, day one team introduction, day three final reminder with preparation checklist.</p>
+                                </div>
+                                <div>
+                                    <div class="font-medium mb-1">Booking System</div>
+                                    <p class="text-sm text-gray-600">Set up Calendly with Google Calendar sync. Leads can book consultations themselves. System sends automatic confirmations and reminders.</p>
+                                </div>
+                                <div>
+                                    <div class="font-medium mb-1">Lead Tracking</div>
+                                    <p class="text-sm text-gray-600">Built a spreadsheet to track all leads with status, consultation dates, pipeline stage, and notes. Also managed contacts in HubSpot CRM.</p>
+                                </div>
+                                <div>
+                                    <div class="font-medium mb-1">Project Management</div>
+                                    <p class="text-sm text-gray-600">Organized the entire project in ClickUp with three lists: Content & Scheduling, Lead Capture & Automation, Consultation Management.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold text-primary mb-6 text-lg">Screenshots</h4>
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <img src="canva.png" class="screenshot rounded-lg border border-gray-200 w-full h-48 object-cover" onclick="openModal(this.src)" alt="Canva design workspace">
+                                        <p class="text-xs text-gray-600 mt-2">Canva Design</p>
+                                    </div>
+                                    <div>
+                                        <img src="capcut.png" class="screenshot rounded-lg border border-gray-200 w-full h-48 object-cover" onclick="openModal(this.src)" alt="CapCut video editor">
+                                        <p class="text-xs text-gray-600 mt-2">CapCut Video</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img src="gcal.png" class="screenshot rounded-lg border border-gray-200 w-full" onclick="openModal(this.src)" alt="Google Calendar content plan">
+                                    <p class="text-xs text-gray-600 mt-2">Monthly Content Calendar</p>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <img src="Planner.png" class="screenshot rounded-lg border border-gray-200 w-full h-48 object-cover" onclick="openModal(this.src)" alt="Meta Business Suite">
+                                        <p class="text-xs text-gray-600 mt-2">Meta Planner</p>
+                                    </div>
+                                    <div>
+                                        <img src="preview.png" class="screenshot rounded-lg border border-gray-200 w-full h-48 object-cover" onclick="openModal(this.src)" alt="Post preview">
+                                        <p class="text-xs text-gray-600 mt-2">Post Preview</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img src="form.png" class="screenshot rounded-lg border border-gray-200 w-full" onclick="openModal(this.src)" alt="HubSpot form">
+                                    <p class="text-xs text-gray-600 mt-2">HubSpot Form Builder</p>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <img src="zap.png" class="screenshot rounded-lg border border-gray-200 w-full h-48 object-cover" onclick="openModal(this.src)" alt="Zapier workflow">
+                                        <p class="text-xs text-gray-600 mt-2">Zapier Automation</p>
+                                    </div>
+                                    <div>
+                                        <img src="runs.png" class="screenshot rounded-lg border border-gray-200 w-full h-48 object-cover" onclick="openModal(this.src)" alt="Automation test runs">
+                                        <p class="text-xs text-gray-600 mt-2">Test Results</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img src="sequence.png" class="screenshot rounded-lg border border-gray-200 w-full" onclick="openModal(this.src)" alt="Mailchimp sequence">
+                                    <p class="text-xs text-gray-600 mt-2">Email Sequence Builder</p>
+                                </div>
+                                <div>
+                                    <img src="email1-LAPTOP-F8N32GGE.png" class="screenshot rounded-lg border border-gray-200 w-full" onclick="openModal(this.src)" alt="Welcome email">
+                                    <p class="text-xs text-gray-600 mt-2">Welcome Email Design</p>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <img src="calbooking.png" class="screenshot rounded-lg border border-gray-200 w-full h-48 object-cover" onclick="openModal(this.src)" alt="Calendly booking">
+                                        <p class="text-xs text-gray-600 mt-2">Calendly Setup</p>
+                                    </div>
+                                    <div>
+                                        <img src="consultation.png" class="screenshot rounded-lg border border-gray-200 w-full h-48 object-cover" onclick="openModal(this.src)" alt="Calendar event">
+                                        <p class="text-xs text-gray-600 mt-2">Calendar Event</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <img src="sheets.png" class="screenshot rounded-lg border border-gray-200 w-full h-48 object-cover" onclick="openModal(this.src)" alt="Lead tracker">
+                                        <p class="text-xs text-gray-600 mt-2">Lead Tracker</p>
+                                    </div>
+                                    <div>
+                                        <img src="hubspot.png" class="screenshot rounded-lg border border-gray-200 w-full h-48 object-cover" onclick="openModal(this.src)" alt="HubSpot CRM">
+                                        <p class="text-xs text-gray-600 mt-2">HubSpot CRM</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <img src="board.png" class="screenshot rounded-lg border border-gray-200 w-full h-48 object-cover" onclick="openModal(this.src)" alt="ClickUp board">
+                                        <p class="text-xs text-gray-600 mt-2">ClickUp Board</p>
+                                    </div>
+                                    <div>
+                                        <img src="task.png" class="screenshot rounded-lg border border-gray-200 w-full h-48 object-cover" onclick="openModal(this.src)" alt="Task card">
+                                        <p class="text-xs text-gray-600 mt-2">Task Details</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-8">
+                        <h4 class="font-semibold text-primary mb-4">Live Links</h4>
+                        <div class="flex flex-wrap gap-4 text-sm">
+                            <a href="facebook_lead_gen.html" target="_blank" class="text-accent hover:underline">Full case study with all details</a>
+                            <a href="https://share-eu1.hsforms.com/1nQALxK3bTve9hv-yptvW2A2f3mf3" target="_blank" class="text-accent hover:underline">Test the lead form</a>
+                            <a href="https://sharing.clickup.com/9012955332/l/h/5-90126061345-1/ab014b9e53fd8ed" target="_blank" class="text-accent hover:underline">View ClickUp board</a>
+                            <a href="https://docs.google.com/spreadsheets/d/1KqPwKCEnycwjAbjNRM_ZDe5qi2Lj5kroLE3RaDwWzYw/edit?usp=drive_link" target="_blank" class="text-accent hover:underline">View lead tracker</a>
+                            <a href="https://calendar.google.com/calendar/u/0?cid=MjFkNWJiMDI5ZmMzZTYxZDkzNDZhMTI0ZTk2NzY4MWZhMGIzYTYxZGFmM2NkMjc5NTQxMjM1ZDgxNWQ4NmEzYkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" class="text-accent hover:underline">View content calendar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Campaigns -->
+    <section class="section-padding bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-12">
+                <h2 class="text-3xl font-serif text-primary mb-4">Email Campaigns</h2>
+                <p class="text-gray-600">Welcome series, newsletters, and promotional emails I've designed and sent</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-gray-50 rounded-lg overflow-hidden border border-gray-200 project-card">
+                    <img src="winifredcreates.png" class="screenshot w-full h-64 object-cover object-top" onclick="openModal(this.src)" alt="Welcome email">
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-2">Personal Welcome Email</h4>
+                        <p class="text-sm text-gray-600 mb-3">Warm onboarding message for new subscribers</p>
+                        <a href="http://eepurl.com/jlQTUQ" target="_blank" class="text-sm text-accent hover:underline">View live email</a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg overflow-hidden border border-gray-200 project-card">
+                    <img src="bloom-co.png" class="screenshot w-full h-64 object-cover object-top" onclick="openModal(this.src)" alt="Welcome series">
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-2">Bloom & Co. Series</h4>
+                        <p class="text-sm text-gray-600 mb-3">Three part welcome sequence for boutique</p>
+                        <a href="https://mailchi.mp/2d735b31ec8a/thanks-for-joining-the-community" target="_blank" class="text-sm text-accent hover:underline">View live email</a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg overflow-hidden border border-gray-200 project-card">
+                    <img src="newsletter.png" class="screenshot w-full h-64 object-cover object-top" onclick="openModal(this.src)" alt="Newsletter">
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-2">Wedding Portfolio Newsletter</h4>
+                        <p class="text-sm text-gray-600 mb-3">Monthly showcase for photography studio</p>
+                        <a href="https://mailchi.mp/2b6d5aa701b0/wedding-398" target="_blank" class="text-sm text-accent hover:underline">View live email</a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg overflow-hidden border border-gray-200 project-card">
+                    <img src="ecommerce.png" class="screenshot w-full h-64 object-cover object-top" onclick="openModal(this.src)" alt="Promotional email">
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-2">Holiday Promotion</h4>
+                        <p class="text-sm text-gray-600 mb-3">Seasonal sale for online store</p>
+                        <a href="https://mailchi.mp/ba51eef6ac98/sa4ybv7ccz" target="_blank" class="text-sm text-accent hover:underline">View live email</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-gray-50 rounded-lg overflow-hidden border border-gray-200 project-card">
+                    <img src="eventinvitation.png" class="screenshot w-full h-64 object-cover object-top" onclick="openModal(this.src)" alt="Event invitation">
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-2">Leadership Summit Invitation</h4>
+                        <p class="text-sm text-gray-600 mb-3">Professional event invitation with registration</p>
+                        <a href="https://mailchi.mp/25a734088b40/event-invitation-professional-conference" target="_blank" class="text-sm text-accent hover:underline">View live email</a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg overflow-hidden border border-gray-200 project-card">
+                    <img src="nexusflow.png" class="screenshot w-full h-64 object-cover object-top" onclick="openModal(this.src)" alt="Product launch">
+                    <div class="p-4">
+                        <h4 class="font-semibold mb-2">Nexus Flow Launch</h4>
+                        <p class="text-sm text-gray-600 mb-3">SaaS product announcement campaign</p>
+                        <a href="https://mailchi.mp/fbb35cdda172/introducing-nexus-flow" target="_blank" class="text-sm text-accent hover:underline">View live email</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="email_marketing.html" target="_blank" class="inline-flex items-center text-accent hover:underline">
+                    View complete email portfolio
+                    <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Automation Systems -->
+    <section class="section-padding bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-12">
+                <h2 class="text-3xl font-serif text-primary mb-4">Automation & CRM</h2>
+                <p class="text-gray-600">Integration workflows and customer management systems</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <img src="zap.png" class="screenshot rounded-lg border border-gray-200 w-full mb-4" onclick="openModal(this.src)" alt="Zapier workflow">
+                    <h4 class="font-semibold text-primary mb-2">Zapier Integration</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Connected HubSpot form submissions to Mailchimp. When someone fills out the form, Zapier automatically adds them to the email list and triggers the welcome sequence. Tested multiple times to ensure reliability.
+                    </p>
+                </div>
+
+                <div>
+                    <img src="hubspot.png" class="screenshot rounded-lg border border-gray-200 w-full mb-4" onclick="openModal(this.src)" alt="HubSpot CRM">
+                    <h4 class="font-semibold text-primary mb-2">HubSpot CRM</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Set up contact properties, lifecycle stages, and deal pipelines. Each lead has detailed notes about their project requirements, consultation preferences, and follow-up status. Organized by stage for easy pipeline management.
+                    </p>
+                </div>
+
+                <div>
+                    <img src="sheets.png" class="screenshot rounded-lg border border-gray-200 w-full mb-4" onclick="openModal(this.src)" alt="Lead tracker">
+                    <h4 class="font-semibold text-primary mb-2">Lead Tracking Spreadsheet</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Built a comprehensive tracker with name, contact info, project details, consultation dates, status updates, pipeline stage, source attribution, and notes. Color-coded for quick visual reference.
+                    </p>
+                    <a href="https://docs.google.com/spreadsheets/d/1KqPwKCEnycwjAbjNRM_ZDe5qi2Lj5kroLE3RaDwWzYw/edit?usp=drive_link" target="_blank" class="text-sm text-accent hover:underline inline-block mt-2">View spreadsheet</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Creation -->
+    <section class="section-padding bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-12">
+                <h2 class="text-3xl font-serif text-primary mb-4">Content & Scheduling</h2>
+                <p class="text-gray-600">Visual content and calendar management</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <div>
+                        <img src="canva.png" class="screenshot rounded-lg border border-gray-200 w-full mb-4" onclick="openModal(this.src)" alt="Canva workspace">
+                        <h4 class="font-semibold text-primary mb-2">Graphic Design in Canva</h4>
+                        <p class="text-sm text-gray-600 mb-2">
+                            Created professional social media graphics with brand-consistent imagery, clear typography, and strong calls to action. Designed for both Facebook posts and email headers.
+                        </p>
+                        <a href="https://drive.google.com/file/d/1gBFMaldwxSdnzvxYk4sjLiMgP-Y3zHh4/view?usp=drive_link" target="_blank" class="text-sm text-accent hover:underline">Download design</a>
+                    </div>
+
+                    <div>
+                        <img src="capcut.png" class="screenshot rounded-lg border border-gray-200 w-full mb-4" onclick="openModal(this.src)" alt="CapCut editor">
+                        <h4 class="font-semibold text-primary mb-2">Video Editing in CapCut</h4>
+                        <p class="text-sm text-gray-600 mb-2">
+                            Edited 15-second promotional videos with construction footage, text overlays, smooth transitions, and mobile-optimized formatting for social media distribution.
+                        </p>
+                        <a href="https://drive.google.com/file/d/1Eizb9AaCA-MX4Gyes941AmqFUJ6ZY1m8/view?usp=drive_link" target="_blank" class="text-sm text-accent hover:underline">Watch video</a>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div>
+                        <img src="gcal.png" class="screenshot rounded-lg border border-gray-200 w-full mb-4" onclick="openModal(this.src)" alt="Content calendar">
+                        <h4 class="font-semibold text-primary mb-2">Google Calendar Planning</h4>
+                        <p class="text-sm text-gray-600 mb-2">
+                            Mapped out a full month of content with post types (project showcases, building tips, testimonials, CTAs), complete captions, media specifications, optimal posting times, and direct links to lead forms.
+                        </p>
+                        <a href="https://calendar.google.com/calendar/u/0?cid=MjFkNWJiMDI5ZmMzZTYxZDkzNDZhMTI0ZTk2NzY4MWZhMGIzYTYxZGFmM2NkMjc5NTQxMjM1ZDgxNWQ4NmEzYkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" class="text-sm text-accent hover:underline">View calendar</a>
+                    </div>
+
+                    <div>
+                        <img src="Planner.png" class="screenshot rounded-lg border border-gray-200 w-full mb-4" onclick="openModal(this.src)" alt="Meta planner">
+                        <h4 class="font-semibold text-primary mb-2">Meta Business Suite Scheduling</h4>
+                        <p class="text-sm text-gray-600">
+                            Scheduled all Facebook posts with strategic timing for maximum contractor and homeowner reach. Set up posts weeks in advance with engaging captions and direct links to consultation forms.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How I Work -->
+    <section class="section-padding bg-gray-50">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-serif text-primary mb-12">How I approach projects</h2>
+            
+            <div class="space-y-8 text-gray-700 leading-relaxed">
+                <div class="bg-white p-8 rounded-lg border border-gray-200">
+                    <h4 class="font-semibold text-primary mb-3 text-lg">Planning</h4>
+                    <p>
+                        I start by understanding the goal, the audience, and what action we want them to take. For Apex Build Co., I identified the target audience (homeowners and contractors in need of construction services), mapped out the complete customer journey from ad to consultation, and selected tools that would work within budget constraints.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg border border-gray-200">
+                    <h4 class="font-semibold text-primary mb-3 text-lg">Organization</h4>
+                    <p>
+                        I use ClickUp to break every project into clear tasks with detailed checklists and due dates. For this campaign, I created three lists: Content & Scheduling for all design and posting work, Lead Capture & Automation for forms and workflows, and Consultation Management for booking and follow-up. Each task includes specific deliverables so nothing gets overlooked.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg border border-gray-200">
+                    <h4 class="font-semibold text-primary mb-3 text-lg">Testing</h4>
+                    <p>
+                        Before any campaign goes live, I test every component multiple times. I submit forms to verify they work, check that Zapier triggers fire correctly, confirm emails arrive in inbox (not spam), test all links, and verify the experience on both mobile and desktop. I document test results with screenshots.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg border border-gray-200">
+                    <h4 class="font-semibold text-primary mb-3 text-lg">Documentation</h4>
+                    <p>
+                        I screenshot every step of the process, save all asset links, and create clear documentation as I work. This makes it easy to replicate successful campaigns, troubleshoot issues, and hand off projects to teams. It's also why I can show you exactly what I've built in this portfolio.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-serif text-primary mb-12 text-center">Tools I work with</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mx-auto mb-3 border border-gray-200">
+                        <i data-lucide="mail" class="w-10 h-10 text-gray-700"></i>
+                    </div>
+                    <div class="text-sm text-gray-700 font-medium">Mailchimp</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mx-auto mb-3 border border-gray-200">
+                        <i data-lucide="users" class="w-10 h-10 text-gray-700"></i>
+                    </div>
+                    <div class="text-sm text-gray-700 font-medium">HubSpot</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mx-auto mb-3 border border-gray-200">
+                        <i data-lucide="zap" class="w-10 h-10 text-gray-700"></i>
+                    </div>
+                    <div class="text-sm text-gray-700 font-medium">Zapier</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mx-auto mb-3 border border-gray-200">
+                        <i data-lucide="palette" class="w-10 h-10 text-gray-700"></i>
+                    </div>
+                    <div class="text-sm text-gray-700 font-medium">Canva</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mx-auto mb-3 border border-gray-200">
+                        <i data-lucide="video" class="w-10 h-10 text-gray-700"></i>
+                    </div>
+                    <div class="text-sm text-gray-700 font-medium">CapCut</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mx-auto mb-3 border border-gray-200">
+                        <i data-lucide="list-checks" class="w-10 h-10 text-gray-700"></i>
+                    </div>
+                    <div class="text-sm text-gray-700 font-medium">ClickUp</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mx-auto mb-3 border border-gray-200">
+                        <i data-lucide="facebook" class="w-10 h-10 text-gray-700"></i>
+                    </div>
+                    <div class="text-sm text-gray-700 font-medium">Meta Suite</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mx-auto mb-3 border border-gray-200">
+                        <i data-lucide="calendar" class="w-10 h-10 text-gray-700"></i>
+                    </div>
+                    <div class="text-sm text-gray-700 font-medium">Google Calendar</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mx-auto mb-3 border border-gray-200">
+                        <i data-lucide="clock" class="w-10 h-10 text-gray-700"></i>
+                    </div>
+                    <div class="text-sm text-gray-700 font-medium">Calendly</div>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gray-50 rounded-lg flex items-center justify-center mx-auto mb-3 border border-gray-200">
+                        <i data-lucide="table" class="w-10 h-10 text-gray-700"></i>
+                    </div>
+                    <div class="text-sm text-gray-700 font-medium">Google Sheets</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Work -->
+    <section class="section-padding bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-12">
+                <h2 class="text-3xl font-serif text-primary mb-4">Additional work</h2>
+                <p class="text-gray-600">Other projects and capabilities</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg p-6 border border-gray-200">
+                    <img src="noirebooking.png" class="screenshot rounded-lg border border-gray-200 w-full mb-4" onclick="openModal(this.src)" alt="Booking confirmation">
+                    <h4 class="font-semibold text-primary mb-2">Automated Booking Confirmations</h4>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Designed confirmation emails that send automatically when clients book appointments. Includes all relevant details, calendar integration, and clear instructions for rescheduling if needed.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 border border-gray-200">
+                    <img src="audience.png" class="screenshot rounded-lg border border-gray-200 w-full mb-4" onclick="openModal(this.src)" alt="Audience management">
+                    <h4 class="font-semibold text-primary mb-2">Audience Segmentation</h4>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Set up contact lists with proper tagging and segmentation in Mailchimp. Organized subscribers by interest, engagement level, and where they are in the customer journey for targeted messaging.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 border border-gray-200">
+                    <img src="invoice.png" class="screenshot rounded-lg border border-gray-200 w-full mb-4" onclick="openModal(this.src)" alt="Invoice system">
+                    <h4 class="font-semibold text-primary mb-2">Invoice Management</h4>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Built spreadsheet systems for tracking client invoices, payment status, due dates, and follow-up reminders. Includes automated calculations and status indicators for easy monitoring.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 border border-gray-200">
+                    <div class="mb-4">
+                        <a href="virtual_assistant.html" target="_blank" class="text-accent hover:underline text-sm">View complete VA portfolio →</a>
+                    </div>
+                    <h4 class="font-semibold text-primary mb-2">Virtual Assistant Services</h4>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Beyond email marketing, I provide administrative support, calendar management, data entry, correspondence handling, and project coordination. Organized, detail-oriented, and reliable for day-to-day business operations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section-padding bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-serif text-primary mb-6">Let's work together</h2>
+                
+                <p class="text-lg text-gray-600 mb-12 leading-relaxed max-w-2xl mx-auto">
+                    I'm available for freelance projects or full-time work. If you need someone who can build complete email marketing systems and handle the details from start to finish, I'd like to hear from you.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <a href="mailto:winifredachinike@gmail.com" class="bg-gray-50 p-8 rounded-lg hover:bg-gray-100 transition-all border border-gray-200 text-center">
+                    <i data-lucide="mail" class="w-8 h-8 text-primary mx-auto mb-4"></i>
+                    <div class="font-semibold text-primary mb-2">Email</div>
+                    <div class="text-sm text-gray-600">winifredachinike@gmail.com</div>
+                </a>
+
+                <a href="https://wa.me/2349028021766" target="_blank" class="bg-gray-50 p-8 rounded-lg hover:bg-gray-100 transition-all border border-gray-200 text-center">
+                    <i data-lucide="message-circle" class="w-8 h-8 text-primary mx-auto mb-4"></i>
+                    <div class="font-semibold text-primary mb-2">WhatsApp</div>
+                    <div class="text-sm text-gray-600">+234 902 802 1766</div>
+                </a>
+
+                <a href="https://www.linkedin.com/in/achinike-winifred-595b6918a" target="_blank" class="bg-gray-50 p-8 rounded-lg hover:bg-gray-100 transition-all border border-gray-200 text-center">
+                    <i data-lucide="linkedin" class="w-8 h-8 text-primary mx-auto mb-4"></i>
+                    <div class="font-semibold text-primary mb-2">LinkedIn</div>
+                    <div class="text-sm text-gray-600">Connect with me</div>
+                </a>
+            </div>
+
+            <div class="text-center">
+                <a href="https://drive.google.com/file/d/1gBFMaldwxSdnzvxYk4sjLiMgP-Y3zHh4/view?usp=drive_link" target="_blank" class="inline-flex items-center text-accent hover:underline">
+                    Download CV
+                    <i data-lucide="download" class="w-4 h-4 ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-12 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6 text-center text-sm text-gray-600">
+            <div class="mb-3 font-serif text-primary text-lg">Winifred Achinike</div>
+            <div class="mb-2">Email Marketing • Marketing Automation • CRM Management</div>
+            <div>Portfolio © 2024</div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function openModal(src) {
+            document.getElementById('modal').classList.add('active');
+            document.getElementById('modalImg').src = src;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

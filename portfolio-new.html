@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Winifred Achinike — Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#D4A574;--primary:#1A1A1A;--secondary:#4B5563}
+    body{font-family:DM Sans, system-ui, sans-serif}
+  </style>
+</head>
+<body class="bg-white text-primary">
+  <header class="py-16 border-b">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl font-serif font-bold">Winifred Achinike</h1>
+      <p class="text-lg text-secondary mt-2">Virtual Assistant & Marketing Automation Specialist</p>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-12">
+    <!-- Services Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-serif font-semibold mb-8">Services & Case Studies</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesContainer"></div>
+    </section>
+
+    <!-- Tools -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">Tools & Platforms</h2>
+      <div class="flex flex-wrap gap-3">
+        <span class="px-3 py-1 bg-white border rounded">Zapier</span>
+        <span class="px-3 py-1 bg-white border rounded">HubSpot</span>
+        <span class="px-3 py-1 bg-white border rounded">Mailchimp</span>
+        <span class="px-3 py-1 bg-white border rounded">Canva</span>
+        <span class="px-3 py-1 bg-white border rounded">Airtable</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-12 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2024 Winifred Achinike — All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="sampleModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50 p-4" onclick="if(event.target===this)closeModal()">
+    <div class="bg-white max-w-4xl w-full rounded-lg overflow-hidden flex flex-col max-h-[90vh]" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between p-6 border-b bg-primary text-white">
+        <h3 id="modalTitle" class="text-xl font-semibold"></h3>
+        <button onclick="closeModal()" aria-label="Close" class="text-white hover:text-accent transition-colors">✕</button>
+      </div>
+      <div id="modalContent" class="p-6 overflow-y-auto flex-1"></div>
+    </div>
+  </div>
+
+  <script src="samples-new.js"></script>
+  <script>
+    function renderServices() {
+      const container = document.getElementById('servicesContainer');
+      
+      Object.entries(samples).forEach(([key, service]) => {
+        const caseCount = service.cases.length;
+        const card = document.createElement('div');
+        card.className = 'p-4 bg-white rounded border cursor-pointer hover:border-accent transition-colors';
+        card.onclick = () => showModal(key);
+        card.innerHTML = `
+          <h4 class="font-semibold">${service.title}</h4>
+          <p class="text-sm text-secondary mt-2">${caseCount} real case studies</p>
+          <button class="text-accent text-sm mt-4 hover:text-primary transition-colors">View cases →</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function showModal(serviceKey){
+      const modal = document.getElementById('sampleModal');
+      const title = document.getElementById('modalTitle');
+      const content = document.getElementById('modalContent');
+      
+      const service = samples[serviceKey];
+      if (!service) return;
+      
+      title.textContent = service.title;
+      
+      let html = '<div class="space-y-8">';
+      
+      service.cases.forEach((caseStudy, index) => {
+        html += `
+          <div class="${index < service.cases.length - 1 ? 'border-b pb-8' : ''}">
+            <h3 class="text-2xl font-semibold text-primary mb-2">${caseStudy.title}</h3>
+            <p class="text-secondary font-medium mb-4">${caseStudy.summary}</p>
+            <p class="text-secondary mb-6 leading-relaxed">${caseStudy.description}</p>
+            
+            <div class="bg-surface p-6 rounded-lg mb-6">
+              <h4 class="font-semibold text-primary mb-4">Results</h4>
+              <p class="text-accent font-medium">${caseStudy.results}</p>
+            </div>
+            
+            <div class="bg-surface p-6 rounded-lg">
+              <h4 class="font-semibold text-primary mb-3">Tools Used</h4>
+              <p class="text-secondary text-sm">${caseStudy.tools_used}</p>
+            </div>
+          </div>
+        `;
+      });
+      
+      html += '</div>';
+      content.innerHTML = html;
+      
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(){
+      const modal = document.getElementById('sampleModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+    
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', renderServices);
+  </script>
+</body>
+</html>

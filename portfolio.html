@@ -1,0 +1,1359 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Winifred Achinike — Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#D4A574;--primary:#1A1A1A;--secondary:#4B5563}
+    body{font-family:DM Sans, system-ui, sans-serif}
+  </style>
+</head>
+<body class="bg-white text-primary">
+  <header class="py-16 border-b">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl font-serif font-bold">Winifred Achinike</h1>
+      <p class="text-lg text-secondary mt-2">Virtual Assistant & Marketing Automation Specialist</p>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-12">
+    <!-- Featured Projects -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-serif font-semibold mb-4">Featured Projects</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <article class="bg-white border rounded-lg overflow-hidden">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold">Apex Build Co. — Lead Automation</h3>
+            <p class="text-sm text-secondary mt-2">Automated lead flow from Facebook Lead Ads into HubSpot and Mailchimp follow-ups. Reduced manual work and improved response time.</p>
+            <div class="mt-4">
+              <button class="text-accent" onclick="showModal('apex_case_study')">View case study →</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white border rounded-lg overflow-hidden">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold">AutoWave Pro — Email Campaign</h3>
+            <p class="text-sm text-secondary mt-2">Targeted B2B email outreach, HTML templates and automation setup to generate sign-ups.</p>
+            <div class="mt-4">
+              <button class="text-accent" onclick="showModal('autowave_case_study')">View case study →</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="mb-16 bg-surface p-6 rounded-lg">
+      <h2 class="text-2xl font-semibold mb-4">Services</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-4 bg-white rounded border cursor-pointer" onclick="showModal('automation')">
+          <h4 class="font-semibold">Marketing Automation</h4>
+          <p class="text-sm text-secondary mt-2">Zapier, Make, HubSpot, Mailchimp integrations and custom workflows.</p>
+        </div>
+        <div class="p-4 bg-white rounded border cursor-pointer" onclick="showModal('email_marketing')">
+          <h4 class="font-semibold">Email Marketing</h4>
+          <p class="text-sm text-secondary mt-2">Campaign design, segmentation and performance tracking.</p>
+        </div>
+        <div class="p-4 bg-white rounded border cursor-pointer" onclick="showModal('lead_gen')">
+          <h4 class="font-semibold">Lead Generation</h4>
+          <p class="text-sm text-secondary mt-2">Prospecting with Apollo & Clay, enrichment and CRM workflows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">Tools & Platforms</h2>
+      <div class="flex flex-wrap gap-3">
+        <span class="px-3 py-1 bg-white border rounded">Zapier</span>
+        <span class="px-3 py-1 bg-white border rounded">HubSpot</span>
+        <span class="px-3 py-1 bg-white border rounded">Mailchimp</span>
+        <span class="px-3 py-1 bg-white border rounded">Canva</span>
+        <span class="px-3 py-1 bg-white border rounded">Airtable</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-12 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2024 Winifred Achinike — All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="sampleModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50 p-4">
+    <div class="bg-white max-w-4xl w-full rounded-lg overflow-auto max-h-[90vh]">
+      <div class="flex items-center justify-between p-4 border-b">
+        <h3 id="modalTitle" class="text-xl font-semibold"></h3>
+        <button onclick="closeModal()" aria-label="Close">✕</button>
+      </div>
+      <div id="modalContent" class="p-6"></div>
+    </div>
+  </div>
+
+  <script>
+    function showModal(type){
+      const modal=document.getElementById('sampleModal');
+      const title=document.getElementById('modalTitle');
+      const content=document.getElementById('modalContent');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow='hidden';
+
+      const caseStudies = {
+        apex_case_study: {
+          title: 'Apex Build Co. — Lead Automation',
+          content: `
+            <div class="space-y-4">
+              <p class="text-sm text-secondary">Built a Zapier-powered pipeline: Facebook Lead Ads → HubSpot → Mailchimp. Result: 90% reduction in manual work and response time dropped from 24h to ~5m.</p>
+              <ul class="list-disc pl-6 text-sm text-secondary">
+                <li>Automated lead capture & CRM sync</li>
+                <li>Immediate welcome email via Mailchimp</li>
+                <li>Tracked conversions and handoffs to sales</li>
+              </ul>
+            </div>
+          `
+        },
+
+        autowave_case_study: {
+          title: 'AutoWave Pro — Email Campaign',
+          content: `
+            <div class="space-y-4">
+              <p class="text-sm text-secondary">Designed targeted outreach for a product launch, sent 200+ personalized emails and captured 10 sign-ups in week one.</p>
+            </div>
+          `
+        },
+
+        automation: { title: 'Marketing Automation', content: `<p class="text-sm text-secondary">Automation examples: lead capture, booking flows, CRM syncs, notifications and reporting.</p>` },
+        email_marketing: { title: 'Email Marketing', content: `<p class="text-sm text-secondary">Campaign design, segmentation, A/B testing and reporting.</p>` },
+        lead_gen: { title: 'Lead Generation', content: `<p class="text-sm text-secondary">Prospecting, enrichment, and CRM workflows to scale outreach.</p>` },
+      };
+
+      const data = caseStudies[type];
+      if(data){ title.textContent = data.title; content.innerHTML = data.content; }
+      else { title.textContent = ''; content.innerHTML = ''; }
+    }
+
+    function closeModal(){
+      const modal=document.getElementById('sampleModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow='auto';
+    }
+
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+    document.getElementById('sampleModal')?.addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+  </script>
+</body>
+</html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Winifred Achinike — Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#D4A574;--primary:#1A1A1A;--secondary:#4B5563}
+    body{font-family:DM Sans, system-ui, sans-serif}
+  </style>
+</head>
+<body class="bg-white text-primary">
+  <header class="py-16 border-b">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl font-serif font-bold">Winifred Achinike</h1>
+      <p class="text-lg text-secondary mt-2">Virtual Assistant & Marketing Automation Specialist</p>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-12">
+    <!-- Featured Projects -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-serif font-semibold mb-4">Featured Projects</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <article class="bg-white border rounded-lg overflow-hidden">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold">Apex Build Co. — Lead Automation</h3>
+            <p class="text-sm text-secondary mt-2">Automated lead flow from Facebook Lead Ads into HubSpot and Mailchimp follow-ups. Reduced manual work and improved response time.</p>
+            <div class="mt-4">
+              <button class="text-accent" onclick="showModal('apex_case_study')">View case study →</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white border rounded-lg overflow-hidden">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold">AutoWave Pro — Email Campaign</h3>
+            <p class="text-sm text-secondary mt-2">Targeted B2B email outreach, HTML templates and automation setup to generate sign-ups.</p>
+            <div class="mt-4">
+              <button class="text-accent" onclick="showModal('autowave_case_study')">View case study →</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="mb-16 bg-surface p-6 rounded-lg">
+      <h2 class="text-2xl font-semibold mb-4">Services</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-4 bg-white rounded border cursor-pointer" onclick="showModal('automation')">
+          <h4 class="font-semibold">Marketing Automation</h4>
+          <p class="text-sm text-secondary mt-2">Zapier, Make, HubSpot, Mailchimp integrations and custom workflows.</p>
+        </div>
+        <div class="p-4 bg-white rounded border cursor-pointer" onclick="showModal('email_marketing')">
+          <h4 class="font-semibold">Email Marketing</h4>
+          <p class="text-sm text-secondary mt-2">Campaign design, segmentation and performance tracking.</p>
+        </div>
+        <div class="p-4 bg-white rounded border cursor-pointer" onclick="showModal('lead_gen')">
+          <h4 class="font-semibold">Lead Generation</h4>
+          <p class="text-sm text-secondary mt-2">Prospecting with Apollo & Clay, enrichment and CRM workflows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">Tools & Platforms</h2>
+      <div class="flex flex-wrap gap-3">
+        <span class="px-3 py-1 bg-white border rounded">Zapier</span>
+        <span class="px-3 py-1 bg-white border rounded">HubSpot</span>
+        <span class="px-3 py-1 bg-white border rounded">Mailchimp</span>
+        <span class="px-3 py-1 bg-white border rounded">Canva</span>
+        <span class="px-3 py-1 bg-white border rounded">Airtable</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-12 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2024 Winifred Achinike — All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="sampleModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50 p-4">
+    <div class="bg-white max-w-4xl w-full rounded-lg overflow-auto max-h-[90vh]">
+      <div class="flex items-center justify-between p-4 border-b">
+        <h3 id="modalTitle" class="text-xl font-semibold"></h3>
+        <button onclick="closeModal()" aria-label="Close">✕</button>
+      </div>
+      <div id="modalContent" class="p-6"></div>
+    </div>
+  </div>
+
+  <script>
+    function showModal(type){
+      const modal=document.getElementById('sampleModal');
+      const title=document.getElementById('modalTitle');
+      const content=document.getElementById('modalContent');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow='hidden';
+
+      const caseStudies = {
+        apex_case_study: {
+          title: 'Apex Build Co. — Lead Automation',
+          content: `
+            <div class="space-y-4">
+              <p class="text-sm text-secondary">Built a Zapier-powered pipeline: Facebook Lead Ads → HubSpot → Mailchimp. Result: 90% reduction in manual work and response time dropped from 24h to ~5m.</p>
+              <ul class="list-disc pl-6 text-sm text-secondary">
+                <li>Automated lead capture & CRM sync</li>
+                <li>Immediate welcome email via Mailchimp</li>
+                <li>Tracked conversions and handoffs to sales</li>
+              </ul>
+            </div>
+          `
+        },
+
+        autowave_case_study: {
+          title: 'AutoWave Pro — Email Campaign',
+          content: `
+            <div class="space-y-4">
+              <p class="text-sm text-secondary">Designed targeted outreach for a product launch, sent 200+ personalized emails and captured 10 sign-ups in week one.</p>
+            </div>
+          `
+        },
+
+        automation: { title: 'Marketing Automation', content: `<p class="text-sm text-secondary">Automation examples: lead capture, booking flows, CRM syncs, notifications and reporting.</p>` },
+        email_marketing: { title: 'Email Marketing', content: `<p class="text-sm text-secondary">Campaign design, segmentation, A/B testing and reporting.</p>` },
+        lead_gen: { title: 'Lead Generation', content: `<p class="text-sm text-secondary">Prospecting, enrichment, and CRM workflows to scale outreach.</p>` },
+      };
+
+      const data = caseStudies[type];
+      if(data){ title.textContent = data.title; content.innerHTML = data.content; }
+      else { title.textContent = ''; content.innerHTML = ''; }
+    }
+
+    function closeModal(){
+      const modal=document.getElementById('sampleModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow='auto';
+    }
+
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+    document.getElementById('sampleModal')?.addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+  </script>
+</body>
+</html>
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+    document.getElementById('sampleModal')?.addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+    </script>
+</body>
+</html>
+                        </div>
+                    `
+                },
+                project_management: {
+                    title: 'Project Management Services',
+                    content: `
+                        <div class="space-y-8">
+                            <p class="text-lg text-secondary leading-relaxed">
+                                Keep your projects on track from start to finish. I coordinate tasks, manage timelines, and ensure deliverables are met on schedule.
+                            </p>
+
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-surface p-6 rounded-lg">
+                                    <h4 class="font-semibold text-primary mb-4 text-lg">What I Manage</h4>
+                                    <ul class="space-y-3">
+                                        <li class="flex items-start">
+                                            <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                            </svg>
+                                            <span class="text-sm text-secondary"><strong>Task Coordination:</strong> Break down projects into manageable tasks and assign responsibilities</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                            </svg>
+                                            <span class="text-sm text-secondary"><strong>Timeline Management:</strong> Create realistic schedules and track milestones to ensure on-time delivery</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                            </svg>
+                                            <span class="text-sm text-secondary"><strong>Team Communication:</strong> Keep everyone aligned with regular updates and status reports</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                            </svg>
+                                            <span class="text-sm text-secondary"><strong>Documentation:</strong> Maintain project docs, meeting notes, and progress reports</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                            </svg>
+                                            <span class="text-sm text-secondary"><strong>Risk Management:</strong> Identify potential blockers and proactively address issues</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-surface p-6 rounded-lg">
+                                    <h4 class="font-semibold text-primary mb-4 text-lg">Tools I Use</h4>
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h5 class="font-semibold text-primary mb-2 text-sm">Project Management</h5>
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs">ClickUp</span>
+                                                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs">Notion</span>
+                                                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs">Trello</span>
+                                                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs">Asana</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-primary mb-2 text-sm">Communication</h5>
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs">Slack</span>
+                                                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs">Microsoft Teams</span>
+                                                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs">Zoom</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-primary mb-2 text-sm">Documentation</h5>
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs">Google Docs</span>
+                                                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs">Notion</span>
+                                                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs">Microsoft Office</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-accent/10 p-8 rounded-lg">
+                                <h4 class="font-semibold text-primary mb-6 text-xl">My Project Management Approach</h4>
+                                <div class="grid md:grid-cols-4 gap-6">
+                                    <div class="text-center">
+                                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <span class="text-2xl font-bold text-accent">1</span>
+                                        </div>
+                                        <h5 class="font-semibold text-primary mb-2">Plan</h5>
+                                        <p class="text-xs text-secondary">Define scope, goals, and timelines</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <span class="text-2xl font-bold text-accent">2</span>
+                                        </div>
+                                        <h5 class="font-semibold text-primary mb-2">Execute</h5>
+                                        <p class="text-xs text-secondary">Coordinate tasks and track progress</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <span class="text-2xl font-bold text-accent">3</span>
+                                        </div>
+                                        <h5 class="font-semibold text-primary mb-2">Monitor</h5>
+                                        <p class="text-xs text-secondary">Regular check-ins and updates</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <span class="text-2xl font-bold text-accent">4</span>
+                                        </div>
+                                        <h5 class="font-semibold text-primary mb-2">Deliver</h5>
+                                        <p class="text-xs text-secondary">Ensure quality and on-time completion</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-surface p-8 rounded-lg">
+                                <h4 class="font-semibold text-primary mb-4 text-xl">Experience</h4>
+                                <p class="text-secondary mb-4">I've managed marketing campaigns, IT system implementations, and business operations projects at companies like LoubbyAI, Botrex Technology, and IBEDC.</p>
+                                <ul class="space-y-2">
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                        </svg>
+                                        <span class="text-sm text-secondary">Coordinated multi-tool automation projects integrating 9+ platforms</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                        </svg>
+                                        <span class="text-sm text-secondary">Managed email marketing campaigns with weekly deliverables and performance tracking</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                        </svg>
+                                        <span class="text-sm text-secondary">Tracked departmental projects at IBEDC with 95% on-time delivery rate</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    `
+                },
+                content_creation: {
+                    title: 'Content Creation Services',
+                    content: `
+                        <div class="space-y-8">
+                            <p class="text-lg text-secondary leading-relaxed">
+                                Engaging content that captures attention and drives action. From social media graphics to video editing to newsletter design.
+                            </p>
+
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <div class="bg-surface p-6 rounded-lg">
+                                    <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+                                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </div>
+                                    <h4 class="font-semibold text-primary mb-3">Graphic Design</h4>
+                                    <ul class="text-sm text-secondary space-y-2">
+                                        <li>• Social media graphics</li>
+                                        <li>• Email newsletter designs</li>
+                                        <li>• Marketing materials</li>
+                                        <li>• Presentations</li>
+                                        <li>• Brand assets</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-surface p-6 rounded-lg">
+                                    <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm text-secondary">Coordinated with global teams across multiple time zones</span>
+                            </div>
+                        </div>
+                        <button onclick="showModal('gao_case_study')" class="text-accent hover:text-primary font-medium transition-colors text-sm">
+                            View Campaign Results →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- IBEDC Executive Support -->
+                <div class="bg-white border border-gray-200 overflow-hidden hover:border-accent transition-all duration-300">
+                    <div class="h-64 bg-gradient-to-br from-accent/10 to-accent/5 flex items-center justify-center">
+                        <div class="text-center p-8">
+                            <div class="text-6xl font-serif font-bold text-accent mb-4">2,000+</div>
+                            <div class="text-lg text-secondary">Staff Accounts Managed</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-serif font-semibold mb-4 text-primary">IBEDC Executive & IT Support</h3>
+                        <p class="text-secondary mb-6 leading-relaxed">Provided executive support to C-suite leaders while managing enterprise IT operations including Active Directory, helpdesk, and system administration.</p>
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm text-secondary">Supported Chief Legal Officer and IT leadership team</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm text-secondary">Managed calendar, meetings, correspondence, and projects</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm text-secondary">Resolved 50+ daily helpdesk tickets with 95% satisfaction</span>
+                            </div>
+                        </div>
+                        <button onclick="showModal('ibedc_case_study')" class="text-accent hover:text-primary font-medium transition-colors text-sm">
+                            View Experience Details →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Portfolio Section -->
+    <section class="py-20 lg:py-28 bg-surface">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl lg:text-5xl font-serif font-semibold mb-6 text-primary">
+                    Services
+                </h2>
+                <p class="text-lg text-secondary max-w-2xl mx-auto font-light leading-relaxed">
+                    Comprehensive virtual assistant services to streamline your business
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Automation Service -->
+                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 border border-gray-200 hover:border-accent" onclick="showModal('automation')">
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
+                            Marketing Automation
+                        </h3>
+                        <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
+                            Connect your tools, automate workflows, and eliminate manual tasks. Save 10+ hours per week with custom automation systems.
+                        </p>
+                        <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" onclick="event.stopPropagation();showModal('automation');">
+                            View Examples →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Email Marketing Service -->
+                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 border border-gray-200 hover:border-accent" onclick="showModal('email_marketing')">
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
+                            Email Marketing
+                        </h3>
+                        <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
+                            Design campaigns, manage sequences, and track performance. From newsletters to automated follow-ups that convert.
+                        </p>
+                        <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" onclick="event.stopPropagation();showModal('email_marketing');">
+                            View Samples →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Lead Generation Service -->
+                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 border border-gray-200 hover:border-accent" onclick="showModal('lead_gen')">
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
+                            Lead Generation
+                        </h3>
+                        <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
+                            Target campaigns, CRM management, and lead nurturing. Generate and qualify hundreds of leads weekly.
+                        </p>
+                        <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" onclick="event.stopPropagation();showModal('lead_gen');">
+                            View Process →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Executive Support Service -->
+                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 border border-gray-200 hover:border-accent" onclick="showModal('admin_support')">
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
+                            Executive Support
+                        </h3>
+                        <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
+                            Calendar management, correspondence, meeting coordination, and daily operations for C-suite leaders.
+                        </p>
+                        <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" onclick="event.stopPropagation();showModal('admin_support');">
+                            View Services →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project Management Service -->
+                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 border border-gray-200 hover:border-accent" onclick="showModal('project_management')">
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
+                            Project Management
+                        </h3>
+                        <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
+                            Task coordination, timeline tracking, and deliverable management using ClickUp, Notion, and other tools.
+                        </p>
+                        <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" onclick="event.stopPropagation();showModal('project_management');">
+                            View Examples →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Content Creation Service -->
+                <div class="group cursor-pointer bg-white hover:bg-neutral transition-all duration-300 border border-gray-200 hover:border-accent" onclick="showModal('content_creation')">
+                    <div class="p-8">
+                        <div class="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4 text-primary group-hover:text-accent transition-colors font-serif">
+                            Content Creation
+                        </h3>
+                        <p class="text-secondary text-sm leading-relaxed mb-6 font-light">
+                            Graphics, videos, social media posts, and newsletters designed to engage your audience and drive results.
+                        </p>
+                        <button class="text-sm text-accent hover:text-primary font-medium transition-colors tracking-wide" onclick="event.stopPropagation();showModal('content_creation');">
+                            View Portfolio →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="py-20 lg:py-28 border-t border-neutral">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-serif font-semibold mb-6 text-primary">
+                    Tools & Platforms
+                </h2>
+                <p class="text-lg text-secondary max-w-2xl mx-auto font-light leading-relaxed">
+                    Proficient in the tools you already use
+                </p>
+            </div>
+            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-10 items-center max-w-6xl mx-auto">
+                <div class="flex flex-col items-center group">
+                    <div class="w-20 h-20 bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow duration-300 border border-gray-200">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/zapier/zapier-original.svg" alt="Zapier" class="h-10 w-10">
+                    </div>
+                    <span class="text-xs text-secondary mt-3 font-medium">Zapier</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="w-20 h-20 bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow duration-300 border border-gray-200">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hubspot/hubspot-original.svg" alt="HubSpot" class="h-10 w-10">
+                    </div>
+                    <span class="text-xs text-secondary mt-3 font-medium">HubSpot</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="w-20 h-20 bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow duration-300 border border-gray-200">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" alt="Canva" class="h-10 w-10">
+                    </div>
+                    <span class="text-xs text-secondary mt-3 font-medium">Canva</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="w-20 h-20 bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow duration-300 border border-gray-200">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg" alt="Notion" class="h-10 w-10">
+                    </div>
+                    <span class="text-xs text-secondary mt-3 font-medium">Notion</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="w-20 h-20 bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow duration-300 border border-gray-200">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Workspace" class="h-10 w-10">
+                    </div>
+                    <span class="text-xs text-secondary mt-3 font-medium">Google</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="w-20 h-20 bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow duration-300 border border-gray-200">
+                        <svg class="h-10 w-10 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs text-secondary mt-3 font-medium">Mailchimp</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="w-20 h-20 bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow duration-300 border border-gray-200">
+                        <svg class="h-10 w-10 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs text-secondary mt-3 font-medium">ClickUp</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="w-20 h-20 bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow duration-300 border border-gray-200">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/excel/excel-original.svg" alt="Excel" class="h-10 w-10">
+                    </div>
+                    <span class="text-xs text-secondary mt-3 font-medium">Excel</span>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <div class="w-20 h-20 bg-white shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow duration-300 border border-gray-200">
+                        <svg class="h-10 w-10 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs text-secondary mt-3 font-medium">More</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h3 class="text-3xl font-serif font-semibold mb-6">Let's Work Together</h3>
+                <p class="text-gray-300 mb-12 max-w-2xl mx-auto text-lg font-light leading-relaxed">
+                    Ready to automate your workflows and save 10+ hours per week? Let's discuss how I can help streamline your business operations.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                    <a href="mailto:winifredachinike@gmail.com" 
+                       class="inline-flex items-center justify-center px-8 py-4 bg-accent hover:bg-accent/90 text-primary font-medium tracking-wide transition-colors duration-200">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                        </svg>
+                        Email Me
+                    </a>
+                    <a href="https://calendly.com/winifredachinike" target="_blank"
+                       class="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary font-medium tracking-wide transition-colors duration-200">
+                        <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"></path>
+                        </svg>
+                        Book a Call
+                    </a>
+                </div>
+                <div class="border-t border-gray-700 pt-8">
+                    <p class="text-gray-400 text-sm font-light">
+                        © 2024 Winifred Achinike. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="sampleModal" class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden p-4" onclick="if(event.target===this)closeModal()">
+        <div class="bg-white max-w-7xl w-full max-h-[90vh] overflow-hidden animate-scale-in" onclick="event.stopPropagation()">
+            <div class="bg-primary text-white px-8 py-6 flex items-center justify-between">
+                <h2 id="modalTitle" class="text-2xl font-serif font-semibold"></h2>
+                <button onclick="closeModal()" class="w-10 h-10 flex items-center justify-center text-white hover:text-accent transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="modalContent" class="p-8 overflow-y-auto max-h-[calc(90vh-100px)]"></div>
+        </div>
+    </div>
+
+    <script>
+        function showModal(type) {
+            const modal = document.getElementById('sampleModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+
+            // Case Studies Content
+            const caseStudies = {
+                apex_case_study: {
+                    title: 'Apex Build Co. - Marketing Automation System',
+                    content: `
+                        <div class="space-y-8">
+                            <div class="bg-surface p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">The Challenge</h3>
+                                <p class="text-secondary leading-relaxed mb-4">
+                                    Apex Build Co. was manually copying lead information from Facebook ads into their CRM, then sending follow-up emails one by one. This process took 2+ hours daily and leads often waited 24+ hours before receiving a response.
+                                </p>
+                            </div>
+
+                            <div class="bg-surface p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">The Solution</h3>
+                                <p class="text-secondary leading-relaxed mb-6">
+                                    I built an end-to-end automation system that connects:
+                                </p>
+                                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                    <div class="bg-white p-6 border border-accent/20 rounded">
+                                        <h4 class="font-semibold text-primary mb-3">Step 1: Lead Capture</h4>
+                                        <p class="text-sm text-secondary">Facebook Lead Ads form submissions automatically trigger Zapier workflow</p>
+                                    </div>
+                                    <div class="bg-white p-6 border border-accent/20 rounded">
+                                        <h4 class="font-semibold text-primary mb-3">Step 2: CRM Update</h4>
+                                        <p class="text-sm text-secondary">Lead data instantly syncs to HubSpot CRM with proper segmentation and tagging</p>
+                                    </div>
+                                    <div class="bg-white p-6 border border-accent/20 rounded">
+                                        <h4 class="font-semibold text-primary mb-3">Step 3: Email Sequence</h4>
+                                        <p class="text-sm text-secondary">Mailchimp sends personalized welcome email within 5 minutes of form submission</p>
+                                    </div>
+                                    <div class="bg-white p-6 border border-accent/20 rounded">
+                                        <h4 class="font-semibold text-primary mb-3">Step 4: Follow-ups</h4>
+                                        <p class="text-sm text-secondary">Automated nurture sequence continues based on lead behavior and engagement</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-accent/10 p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">The Results</h3>
+                                <div class="grid md:grid-cols-3 gap-6">
+                                    <div class="text-center">
+                                        <div class="text-4xl font-serif font-bold text-accent mb-2">90%</div>
+                                        <div class="text-sm text-secondary">Reduction in manual work</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-4xl font-serif font-bold text-accent mb-2">24h → 5min</div>
+                                        <div class="text-sm text-secondary">Response time improvement</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-4xl font-serif font-bold text-accent mb-2">100%</div>
+                                        <div class="text-sm text-secondary">Of leads now followed up</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-surface p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">Tools Used</h3>
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium">Zapier</span>
+                                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium">HubSpot CRM</span>
+                                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium">Mailchimp</span>
+                                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium">Facebook Lead Ads</span>
+                                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium">Google Sheets</span>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                },
+                autowave_case_study: {
+                    title: 'AutoWave Pro - Email Marketing Campaign',
+                    content: `
+                        <div class="space-y-8">
+                            <div class="bg-surface p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">Campaign Overview</h3>
+                                <p class="text-secondary leading-relaxed mb-4">
+                                    AutoWave Pro needed to launch their new product to a targeted list of potential customers. The goal was to generate sign-ups while building a scalable email marketing system for future campaigns.
+                                </p>
+                            </div>
+
+                            <div class="bg-surface p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">What I Did</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                            <span class="text-accent font-semibold">1</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-primary mb-2">Lead Generation & Segmentation</h4>
+                                            <p class="text-sm text-secondary">Used Apollo and Clay to generate 200+ qualified leads, organized by industry and company size in Google Sheets</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                            <span class="text-accent font-semibold">2</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-primary mb-2">Email Design & Copywriting</h4>
+                                            <p class="text-sm text-secondary">Created HTML email templates in Mailchimp with personalized messaging and clear CTAs</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                            <span class="text-accent font-semibold">3</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-primary mb-2">Automation Setup</h4>
+                                            <p class="text-sm text-secondary">Connected HubSpot forms with Zapier to trigger automated welcome emails for new sign-ups</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                            <span class="text-accent font-semibold">4</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-primary mb-2">Performance Tracking & Optimization</h4>
+                                            <p class="text-sm text-secondary">Monitored KPIs (open rate, CTR, conversions) and conducted A/B testing to improve results</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                            <span class="text-accent font-semibold">5</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-primary mb-2">Supporting Content</h4>
+                                            <p class="text-sm text-secondary">Designed campaign graphics in Canva and managed social media ads to support email outreach</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-accent/10 p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">Campaign Results</h3>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div class="bg-white p-6 rounded">
+                                        <div class="text-3xl font-serif font-bold text-accent mb-2">200+</div>
+                                        <div class="text-sm text-secondary mb-4">Personalized emails sent</div>
+                                        <p class="text-xs text-secondary">Each email customized with recipient name, company, and relevant pain points</p>
+                                    </div>
+                                    <div class="bg-white p-6 rounded">
+                                        <div class="text-3xl font-serif font-bold text-accent mb-2">10</div>
+                                        <div class="text-sm text-secondary mb-4">New sign-ups in first week</div>
+                                        <p class="text-xs text-secondary">Exceeded initial goal of 5 sign-ups with quality leads</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-surface p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">Deliverables</h3>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                        </svg>
+                                        <span class="text-secondary text-sm">Campaign analytics dashboard and performance report</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    `
+                },
+                gao_case_study: {
+                    title: 'GAO Tek - B2B Lead Generation Campaign',
+                    content: `
+                        <div class="space-y-8">
+                            <div class="bg-surface p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">The Scope</h3>
+                                <p class="text-secondary leading-relaxed mb-4">
+                                    As part of GAO Tek's marketing team, I manage high-volume B2B email campaigns promoting their tech products and events to targeted industries across multiple global markets.
+                                </p>
+                            </div>
+
+                            <div class="bg-surface p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">Responsibilities & Process</h3>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div class="bg-white p-6 border border-accent/20 rounded">
+                                        <h4 class="font-semibold text-primary mb-3 flex items-center">
+                                            <svg class="w-5 h-5 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                                                <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd"></path>
+                                            </svg>
+                                            Lead Generation
+                                        </h4>
+                                        <p class="text-sm text-secondary">Use Apollo and Clay to prospect and enrich data for 350-700 qualified B2B leads weekly across targeted industries and locations</p>
+                                    </div>
+                                    <div class="bg-white p-6 border border-accent/20 rounded">
+                                        <h4 class="font-semibold text-primary mb-3 flex items-center">
+                                            <svg class="w-5 h-5 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                            </svg>
+                                            Campaign Execution
+                                        </h4>
+                                        <p class="text-sm text-secondary">Execute 1,400+ emails weekly using Apollo, Thunderbird, and Mailchimp for product launches, webinars, and promotional campaigns</p>
+                                    </div>
+                                    <div class="bg-white p-6 border border-accent/20 rounded">
+                                        <h4 class="font-semibold text-primary mb-3 flex items-center">
+                                            <svg class="w-5 h-5 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd"></path>
+                                            </svg>
+                                            Performance Tracking
+                                        </h4>
+                                        <p class="text-sm text-secondary">Monitor KPIs including open rates, CTR, and conversions. Prepare weekly performance reports with insights and recommendations</p>
+                                    </div>
+                                    <div class="bg-white p-6 border border-accent/20 rounded">
+                                        <h4 class="font-semibold text-primary mb-3 flex items-center">
+                                            <svg class="w-5 h-5 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
+                                            </svg>
+                                            Team Collaboration
+                                        </h4>
+                                        <p class="text-sm text-secondary">Coordinate with global team members across multiple time zones using Microsoft Teams for seamless campaign execution</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-accent/10 p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">Weekly Performance Metrics</h3>
+                                <div class="grid md:grid-cols-3 gap-6">
+                                    <div class="text-center">
+                                        <div class="text-4xl font-serif font-bold text-accent mb-2">1,400+</div>
+                                        <div class="text-sm text-secondary">Emails managed weekly</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-4xl font-serif font-bold text-accent mb-2">350-700</div>
+                                        <div class="text-sm text-secondary">Qualified leads generated</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-4xl font-serif font-bold text-accent mb-2">5+</div>
+                                        <div class="text-sm text-secondary">Active campaigns running</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-surface p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">Key Achievements</h3>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                        </svg>
+                                        <span class="text-secondary text-sm">Maintained consistent email engagement rates above industry average through targeted segmentation and personalized messaging</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                        </svg>
+                                        <span class="text-secondary text-sm">Successfully coordinated campaigns across North America, Europe, and Asia-Pacific time zones with zero scheduling conflicts</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                        </svg>
+                                        <span class="text-secondary text-sm">Developed efficient lead nurturing sequences that improved conversion rates for product inquiries and event registrations</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    `
+                },
+                ibedc_case_study: {
+                    title: 'IBEDC - Executive Support & IT Operations',
+                    content: `
+                        <div class="space-y-8">
+                            <div class="bg-surface p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">Role Overview</h3>
+                                <p class="text-secondary leading-relaxed mb-4">
+                                    At Ibadan Electricity Distribution Company (IBEDC), I provided dual support: executive assistance to C-suite leaders while managing IT operations for a 2,000+ staff organization.
+                                </p>
+                            </div>
+
+                            <div class="bg-surface p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">Executive Support Responsibilities</h3>
+                                <div class="space-y-4">
+                                    <div class="bg-white p-6 border border-accent/20 rounded">
+                                        <h4 class="font-semibold text-primary mb-3">Calendar & Meeting Management</h4>
+                                        <p class="text-sm text-secondary mb-3">Managed complex calendars for Chief Legal Officer and IT leadership team, coordinating 50+ meetings weekly across departments with zero scheduling conflicts</p>
+                                        <div class="flex items-center text-xs text-accent">
+                                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                            </svg>
+                                            <span>Result: 100% meeting attendance rate, zero double-bookings</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white p-6 border border-accent/20 rounded">
+                                        <h4 class="font-semibold text-primary mb-3">Correspondence & Communication</h4>
+                                        <p class="text-sm text-secondary mb-3">Handled executive correspondence, drafted official documents, and maintained professional communication channels for leadership team</p>
+                                        <div class="flex items-center text-xs text-accent">
+                                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                            </svg>
+                                            <span>Result: Reduced email response time by 60%</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white p-6 border border-accent/20 rounded">
+                                        <h4 class="font-semibold text-primary mb-3">Project Coordination</h4>
+                                        <p class="text-sm text-secondary mb-3">Tracked departmental projects, managed deadlines, and coordinated cross-functional initiatives to ensure timely completion</p>
+                                        <div class="flex items-center text-xs text-accent">
+                                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                            </svg>
+                                            <span>Result: 95% on-time project delivery rate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-surface p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">IT Operations & Support</h3>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div class="bg-white p-6 border border-accent/20 rounded">
+                                        <h4 class="font-semibold text-primary mb-3">User Account Administration</h4>
+                                        <ul class="text-sm text-secondary space-y-2">
+                                            <li>• Managed 2,000+ staff accounts in Active Directory</li>
+                                            <li>• Set up new user accounts and permissions</li>
+                                            <li>• Handled password resets and access requests</li>
+                                            <li>• Maintained security protocols and compliance</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white p-6 border border-accent/20 rounded">
+                                        <h4 class="font-semibold text-primary mb-3">Helpdesk Operations</h4>
+                                        <ul class="text-sm text-secondary space-y-2">
+                                            <li>• Resolved 50+ daily tickets via ManageEngine</li>
+                                            <li>• Provided support via email, phone, in-person</li>
+                                            <li>• 95% first-contact resolution rate</li>
+                                            <li>• Average response time under 1 hour</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white p-6 border border-accent/20 rounded">
+                                        <h4 class="font-semibold text-primary mb-3">Training & Documentation</h4>
+                                        <ul class="text-sm text-secondary space-y-2">
+                                            <li>• Created comprehensive user guides</li>
+                                            <li>• Delivered training on IBEDC Pay app</li>
+                                            <li>• Improved staff adoption by 40%</li>
+                                            <li>• Reduced support tickets by 25%</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-white p-6 border border-accent/20 rounded">
+                                        <h4 class="font-semibold text-primary mb-3">System Development Support</h4>
+                                        <ul class="text-sm text-secondary space-y-2">
+                                            <li>• Collaborated on Change Management System</li>
+                                            <li>• QA testing for production applications</li>
+                                            <li>• UI/UX improvement recommendations</li>
+                                            <li>• Bug reporting and issue tracking</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-accent/10 p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">Impact & Results</h3>
+                                <div class="grid md:grid-cols-3 gap-6">
+                                    <div class="text-center">
+                                        <div class="text-4xl font-serif font-bold text-accent mb-2">2,000+</div>
+                                        <div class="text-sm text-secondary">Staff accounts managed</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-4xl font-serif font-bold text-accent mb-2">95%</div>
+                                        <div class="text-sm text-secondary">First-contact resolution</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-4xl font-serif font-bold text-accent mb-2">40%</div>
+                                        <div class="text-sm text-secondary">Improvement in app adoption</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-surface p-8 rounded-lg">
+                                <h3 class="text-2xl font-serif font-semibold mb-6 text-primary">Skills Demonstrated</h3>
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium">Executive Support</span>
+                                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium">Active Directory</span>
+                                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium">ManageEngine</span>
+                                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium">Calendar Management</span>
+                                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium">Technical Support</span>
+                                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium">Training & Documentation</span>
+                                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium">Project Coordination</span>
+                                    <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium">QA Testing</span>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                },
+                // Service modals with better content
+                automation: {
+                    title: 'Marketing Automation Services',
+                    content: `
+                        <div class="space-y-8">
+                            <p class="text-lg text-secondary leading-relaxed">
+                                I build custom automation systems that connect your marketing tools and eliminate manual tasks. Save 10+ hours per week while improving response times and reducing errors.
+                            </p>
+
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-surface p-6 rounded-lg">
+                                    <h4 class="font-semibold text-primary mb-4 text-lg">What I Can Automate</h4>
+                                    <ul class="space-y-3">
+                                        <li class="flex items-start">
+                                            <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                            </svg>
+                                            <span class="text-sm text-secondary">Lead capture from ads → CRM → email sequences</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                            </svg>
+                                            <span class="text-sm text-secondary">Form submissions → welcome emails → CRM updates</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                            </svg>
+                                            <span class="text-sm text-secondary">Meeting bookings → calendar sync → reminder emails</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                            </svg>
+                                            <span class="text-sm text-secondary">Data entry → spreadsheet updates → team notifications</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                            </svg>
+                                            <span class="text-sm text-secondary">Social media posts → content calendar → cross-platform publishing</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-surface p-6 rounded-lg">
+                                    <h4 class="font-semibold text-primary mb-4 text-lg">Tools I Integrate</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium">Zapier</span>
+                                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium">Make.com</span>
+                                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium">n8n</span>
+                                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium">HubSpot</span>
+                                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium">Mailchimp</span>
+                                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium">Airtable</span>
+                                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium">Google Sheets</span>
+                                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium">Meta Suite</span>
+                                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium">Calendly</span>
+                                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium">Slack</span>
+                                        <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs font-medium">And more...</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-accent/10 p-8 rounded-lg">
+                                <h4 class="font-semibold text-primary mb-6 text-xl">Example: Apex Build Co. Automation</h4>
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                            <span class="text-accent font-semibold text-sm">1</span>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-primary mb-1">Problem</h5>
+                                            <p class="text-sm text-secondary">Manual data entry from Facebook ads taking 2+ hours daily</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                            <span class="text-accent font-semibold text-sm">2</span>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-primary mb-1">Solution</h5>
+                                            <p class="text-sm text-secondary">Built Zapier workflow: Facebook Lead Ads → HubSpot CRM → Mailchimp email sequence</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                            <span class="text-accent font-semibold text-sm">3</span>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-primary mb-1">Result</h5>
+                                            <p class="flex items-start">
+                                        <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                        </svg>
+                                        <span class="text-secondary text-sm">Reusable email templates for future campaigns</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                        </svg>
+                                        <span class="text-secondary text-sm">Automated welcome sequence for new subscribers</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                        </svg>
+                                        <span class="text-secondary text-sm">Lead database organized and ready for nurturing</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="w-5 h-5 text-accent mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                        </svg>
+                                        <span class="text-secondary text-sm">Automated welcome sequence for new subscribers</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    `
+                },
+
+                gao_case_study: {
+                    title: 'GAO Tek - B2B Lead Generation Campaign',
+                    content: `
+                        <div class="space-y-8">
+                            <p class="text-secondary">Managed high-volume B2B campaigns: prospecting, segmentation, and weekly performance reporting. Generated 350–700 qualified leads weekly.</p>
+                        </div>
+                    `
+                },
+
+                ibedc_case_study: {
+                    title: 'IBEDC - Executive Support & IT Operations',
+                    content: `
+                        <div class="space-y-8">
+                            <p class="text-secondary">Executive assistance, calendar coordination, AD administration and helpdesk management for a 2,000+ staff organisation.</p>
+                        </div>
+                    `
+                },
+
+                project_management: {
+                    title: 'Project Management Services',
+                    content: `
+                        <div class="space-y-6">
+                            <p class="text-secondary">I coordinate projects end-to-end: planning, execution, monitoring and delivery using ClickUp, Notion and team communication tools.</p>
+                        </div>
+                    `
+                },
+
+                content_creation: {
+                    title: 'Content Creation Services',
+                    content: `
+                        <div class="space-y-6">
+                            <p class="text-secondary">Graphic design, newsletters, and short video edits to support campaigns and social channels.</p>
+                        </div>
+                    `
+                }
+            };
+
+            const data = caseStudies[type];
+            if(data){ title.textContent = data.title; content.innerHTML = data.content; }
+            else { title.textContent = ''; content.innerHTML = ''; }
+        }
+
+        function closeModal(){
+            const modal=document.getElementById('sampleModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow='auto';
+        }
+
+        document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+        document.getElementById('sampleModal')?.addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+      </script>
+    </body>
+    </html>
