@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Winifred Achinike – Email Marketer & Content Writer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink:     #1a1714;
+    --warm:    #3d2e1e;
+    --accent:  #8b5e3c;
+    --gold:    #b8924a;
+    --muted:   #7a6f65;
+    --faint:   #c9bfb5;
+    --bg:      #f0ece6;
+    --paper:   #faf8f5;
+    --white:   #ffffff;
+    --rule:    #ddd8d0;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 40px auto 60px;
+    background: var(--paper);
+    box-shadow: 0 4px 40px rgba(60,40,20,0.13);
+  }
+
+  /* ── HEADER ── */
+  .hdr {
+    background: var(--warm);
+    color: var(--paper);
+    padding: 44px 52px 38px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hdr::before {
+    content: 'W';
+    position: absolute;
+    right: -10px;
+    top: -20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 220px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hdr-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+
+  .hdr-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    line-height: 1;
+    color: #fff;
+  }
+
+  .hdr-name em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hdr-title {
+    font-size: 10.5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-top: 10px;
+  }
+
+  .hdr-contact {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .hdr-contact a,
+  .hdr-contact span {
+    font-size: 12px;
+    color: rgba(255,255,255,0.72);
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s;
+  }
+
+  .hdr-contact a:hover { color: var(--gold); }
+
+  .hdr-loc {
+    margin-top: 16px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── BODY LAYOUT ── */
+  .body {
+    display: grid;
+    grid-template-columns: 196px 1fr;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    background: var(--white);
+    padding: 36px 24px 40px;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .sb-section-title {
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .skill-list li {
+    font-size: 12px;
+    color: var(--warm);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .skill-list li strong {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 1px;
+  }
+
+  .tool-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .tool-tag {
+    font-size: 10.5px;
+    padding: 3px 9px;
+    border: 1px solid var(--faint);
+    border-radius: 2px;
+    color: var(--muted);
+    background: var(--paper);
+    line-height: 1.5;
+  }
+
+  .edu-block { }
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .edu-school {
+    font-size: 11.5px;
+    color: var(--accent);
+    margin: 3px 0 2px;
+    font-weight: 500;
+  }
+  .edu-detail {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .cert-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .cert-list li {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.45;
+    padding-left: 10px;
+    position: relative;
+  }
+
+  .cert-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    padding: 36px 36px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .sec-label {
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .summary-text {
+    font-size: 13px;
+    color: #4a3f36;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* EXPERIENCE */
+  .entry {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .entry:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .entry-hdr {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+
+  .entry-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .entry-date {
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-style: italic;
+  }
+
+  .entry-org {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .entry-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .entry-points li {
+    font-size: 12.5px;
+    color: #4a3f36;
+    line-height: 1.62;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .entry-points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 5px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  /* PORTFOLIO / WORK */
+  .work-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .work-item {
+    padding: 11px 14px;
+    border-left: 2px solid var(--gold);
+    background: var(--white);
+  }
+
+  .work-item-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+
+  .work-item-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .work-item-links {
+    margin-top: 5px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .work-item-links a {
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  .work-item-links a:hover { text-decoration: underline; }
+
+  /* PRINT */
+  @media print {
+    body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { max-width: 100%; margin: 0; box-shadow: none; }
+    @page { size: A4; margin: 12mm 0; }
+    a { color: var(--accent) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="hdr">
+    <div class="hdr-top">
+      <div>
+        <div class="hdr-name">Winifred <em>Achinike</em></div>
+        <div class="hdr-title">Email Marketer &amp; Content Writer</div>
+        <div class="hdr-loc">Ibadan, Nigeria &nbsp;·&nbsp; Open to Remote Opportunities</div>
+      </div>
+      <div class="hdr-contact">
+        <a href="tel:+2349028021766">+234 902 802 1766</a>
+        <a href="mailto:winifredachinike@gmail.com">winifredachinike@gmail.com</a>
+        <a href="https://www.linkedin.com/in/winifred-achinike" target="_blank">linkedin.com/in/winifred-achinike</a>
+        <a href="https://github.com/somaga1" target="_blank">github.com/somaga1</a>
+        <a href="https://my-portfolio-winifred-achinike.vercel.app/email_marketing.html" target="_blank">Portfolio ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div>
+        <div class="sb-section-title">Skills</div>
+        <ul class="skill-list">
+          <li><strong>Email Marketing</strong>Campaign strategy, segmentation, A/B testing, nurture sequences, onboarding flows</li>
+          <li><strong>Copywriting</strong>Email copy, subject lines, brand voice, conversion writing, content calendars</li>
+          <li><strong>Automation</strong>Lead flows, CRM management, Facebook Ads integration, multi-step journeys</li>
+          <li><strong>Lead Generation</strong>B2B prospecting, data enrichment, personalised outreach, mail merge</li>
+          <li><strong>Design</strong>HTML/CSS email templates, Canva, Figma</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="sb-section-title">Tools</div>
+        <div class="tool-cloud">
+          <span class="tool-tag">Mailchimp</span>
+          <span class="tool-tag">HubSpot</span>
+          <span class="tool-tag">Apollo</span>
+          <span class="tool-tag">Zapier</span>
+          <span class="tool-tag">Make</span>
+          <span class="tool-tag">n8n</span>
+          <span class="tool-tag">Clay</span>
+          <span class="tool-tag">Calendly</span>
+          <span class="tool-tag">Canva</span>
+          <span class="tool-tag">Figma</span>
+          <span class="tool-tag">ClickUp</span>
+          <span class="tool-tag">Meta Ads</span>
+          <span class="tool-tag">Google Workspace</span>
+          <span class="tool-tag">HTML/CSS</span>
+        </div>
+      </div>
+
+      <div class="edu-block">
+        <div class="sb-section-title">Education</div>
+        <div class="edu-degree">B.Sc. Computer Science</div>
+        <div class="edu-school">Dominican University, Ibadan</div>
+        <div class="edu-detail">Second Class Upper · Aug 2023<br>Award of Excellence recipient</div>
+      </div>
+
+      <div>
+        <div class="sb-section-title">Certifications</div>
+        <ul class="cert-list">
+          <li>AI/Low-Code Automation — LoubbyAI × DivVerse Labs</li>
+          <li>Web Development — SheCodes</li>
+          <li>NYSC — Completed Oct 2024</li>
+          <li>Pursuing ITIL Foundation</li>
+        </ul>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <section>
+        <div class="sec-label">Profile</div>
+        <p class="summary-text">Creative and technically grounded marketing professional with experience in email marketing, copywriting, marketing automation, and content strategy. Skilled at writing copy that connects with real audiences, building automated workflows that keep leads engaged, and designing email campaigns that drive action. Holds a B.Sc. in Computer Science — a background that bridges strong writing instincts with hands-on knowledge of the tools and systems that make modern marketing work.</p>
+      </section>
+
+      <section>
+        <div class="sec-label">Experience</div>
+
+        <div class="entry">
+          <div class="entry-hdr">
+            <div class="entry-role">AI Automation Trainee &amp; Virtual Assistant</div>
+            <div class="entry-date">May – Oct 2025</div>
+          </div>
+          <div class="entry-org">LoubbyAI × DivVerse Labs — Remote</div>
+          <ul class="entry-points">
+            <li>Designed and wrote responsive HTML email templates in Mailchimp for client onboarding and lead nurture sequences, tailoring tone and content to each brand's audience.</li>
+            <li>Led a personalised outreach campaign for Botrex Technology (AutoWave Pro) using Apollo for lead sourcing and Zapier to automate email delivery — generating 10 sign-ups within the first week.</li>
+            <li>Built a full Facebook lead generation system for Apex Build Co. integrating Facebook Ads, HubSpot, Mailchimp, and Calendly via Zapier, capturing leads and triggering automated consultation emails.</li>
+            <li>Set up Mailchimp audience segments (Qualified Leads, High Engagement, Inactive Subscribers) and built multi-step customer journey maps with timed email sequences.</li>
+            <li>Managed campaign tasks in ClickUp, maintained lead trackers in Google Sheets, and scheduled Facebook content via Meta Business Suite.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-hdr">
+            <div class="entry-role">Email Marketing Intern</div>
+            <div class="entry-date">Sept – Nov 2025</div>
+          </div>
+          <div class="entry-org">GAO Tek Inc. — Remote</div>
+          <ul class="entry-points">
+            <li>Ran B2B email campaigns using Apollo and mail merge for product promotions, generating qualified leads weekly through targeted prospecting and data enrichment with Clay.</li>
+            <li>Wrote personalised outreach copy and built follow-up sequences to nurture leads through the sales funnel.</li>
+            <li>Tracked campaign performance and submitted weekly reports, collaborating with a global team via Microsoft Teams.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-hdr">
+            <div class="entry-role">IT Support Specialist &amp; Business App Administrator</div>
+            <div class="entry-date">Dec 2023 – Oct 2024</div>
+          </div>
+          <div class="entry-org">Ibadan Electricity Distribution Company (IBEDC) — Ibadan</div>
+          <ul class="entry-points">
+            <li>Authored a comprehensive user guide for the IBEDC Pay application, reducing repeated support requests by 35% through clear, user-friendly documentation.</li>
+            <li>Delivered staff training on new enterprise tools, translating technical processes into accessible language for non-technical users.</li>
+            <li>Managed 300+ monthly helpdesk tickets across email, calls, and in-person channels.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-hdr">
+            <div class="entry-role">Software Developer Intern</div>
+            <div class="entry-date">May – Oct 2022</div>
+          </div>
+          <div class="entry-org">O'Bounce Technologies &amp; 1App Fintech — Ibadan</div>
+          <ul class="entry-points">
+            <li>Developed cross-platform applications using Flutter, Firebase, HTML, CSS, and JavaScript, contributing to UI/UX implementation and bug documentation.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-label">Selected Work</div>
+        <ul class="work-list">
+
+          <li class="work-item">
+            <div class="work-item-title">Gartay Root Revival Oil — Email Campaign</div>
+            <div class="work-item-desc">5 subject lines, full conversion email, and 7-day content calendar for a natural hair growth oil targeting Nigerian women aged 25–40. Warm, trust-building copy with designed template.</div>
+            <div class="work-item-links">
+              <a href="https://my-portfolio-winifred-achinike.vercel.app/email_marketing.html" target="_blank">View Email Copy & Design ↗</a>
+              <a href="https://my-portfolio-winifred-achinike.vercel.app/email_gallery.html" target="_blank">Gallery ↗</a>
+            </div>
+          </li>
+
+          <li class="work-item">
+            <div class="work-item-title">Noire Atelier — Welcome & Onboarding Sequence</div>
+            <div class="work-item-desc">Two-part Mailchimp sequence for a luxury wedding photography brand — brand intro email + automated booking confirmation personalised with client details and consultation CTA.</div>
+            <div class="work-item-links">
+              <a href="https://my-portfolio-winifred-achinike.vercel.app/email_gallery.html" target="_blank">View Gallery ↗</a>
+            </div>
+          </li>
+
+          <li class="work-item">
+            <div class="work-item-title">Apex Build Co. — Facebook Lead Generation System</div>
+            <div class="work-item-desc">End-to-end automated pipeline: Facebook Ads → HubSpot CRM → Mailchimp → Calendly. Wrote all email copy, managed Meta scheduling, tracked leads in Google Sheets.</div>
+            <div class="work-item-links">
+              <a href="https://my-portfolio-winifred-achinike.vercel.app/facebook_lead_gen.html" target="_blank">View Case Study ↗</a>
+            </div>
+          </li>
+
+          <li class="work-item">
+            <div class="work-item-title">Botrex Technology — Personalised Cold Outreach</div>
+            <div class="work-item-desc">Cold email introducing AutoWave Pro's AI capabilities, automated via Zapier with leads sourced and enriched through Apollo. 10 sign-ups in week one.</div>
+            <div class="work-item-links">
+              <a href="https://my-portfolio-winifred-achinike.vercel.app/email_gallery.html" target="_blank">View Email ↗</a>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
+    </main>
+  </div><!-- /body -->
+</div><!-- /page -->
+</body>
+</html>
