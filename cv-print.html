@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Winifred Achinike — CV</title>
+  <style>
+    /* Page */
+    @page { size: A4; margin: 20mm; }
+    html,body{height:100%;}
+    body{
+      margin:0; padding:0; font-family: 'Karla', Arial, sans-serif; color:#222; background:#fff;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Layout */
+    .sheet{width:210mm; min-height:297mm; padding:18mm 16mm; box-sizing:border-box;}
+    .cv-header{display:block; margin-bottom:14px}
+    h1{font-family: 'Instrument Serif', Georgia, serif; font-size:22px; margin:0 0 6px}
+    .cv-role{font-size:13px; color:#555; margin-bottom:10px}
+    .cv-contact{font-size:12px; color:#333; margin-bottom:6px}
+    .cv-location{font-size:12px; color:#666; margin-bottom:14px}
+
+    .cv-section{margin-bottom:12px}
+    .cv-section-title{font-weight:700; font-size:13px; margin-bottom:8px; color:#111}
+    .cv-summary{font-size:13px; line-height:1.45; margin:0}
+
+    .cv-skills{display:block}
+    .cv-sk-cat{font-weight:700; font-size:12px; margin-top:6px}
+    .cv-sk-val{font-size:12px; color:#333}
+
+    .cv-entry{margin-bottom:10px}
+    .cv-entry-header{display:flex; justify-content:space-between; gap:8px}
+    .cv-entry-title{font-weight:700; font-size:13px}
+    .cv-entry-date{font-size:12px; color:#444}
+    .cv-entry-sub{font-style:italic; font-size:12px; color:#555; margin:6px 0}
+    .cv-list{margin:6px 0 0 18px; padding:0}
+    .cv-list li{margin-bottom:6px; font-size:12px; line-height:1.4}
+
+    .cv-edu-awards{font-size:12px; color:#444; margin-top:6px}
+    .cv-certs{display:block; margin-top:6px}
+    .cv-cert-item{font-size:12px; margin-bottom:6px}
+
+    /* Prevent page breaks inside these blocks when printing */
+    .cv-header, .cv-section, .cv-entry, .cv-list, .cv-skills, .cv-certs {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    p, li { widows: 2; orphans: 2; }
+
+    /* Print-specific tweaks */
+    @media print{
+      body{background:#fff}
+      .sheet{box-shadow:none; margin:0}
+      /* Ensure links output as text */
+      a[href]:after{content: " (" attr(href) ")"; font-size:10px}
+      /* Hide any interactive elements if present */
+      button, .no-print{display:none}
+    }
+
+    /* Screen preview centered */
+    @media screen{
+      body{display:flex; align-items:center; justify-content:center; padding:20px}
+      .sheet{box-shadow:0 6px 24px rgba(0,0,0,0.08); background:#fff}
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="cv-header">
+      <h1>Winifred Achinike</h1>
+      <div class="cv-role">Email Marketer &amp; Content Writer</div>
+      <div class="cv-contact">+234 902 802 1766 · winifredachinike@gmail.com · https://www.linkedin.com/in/winifred-achinike</div>
+      <div class="cv-location">Ibadan, Nigeria · Open to remote</div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Summary</div>
+      <p class="cv-summary">Marketing professional leveraging a Computer Science background to bridge the gap between creative marketing and complex technical automation. Crafting high-conversion copy that connects with people, building workflows that streamline leads, and designing campaigns that deliver growth.</p>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Skills</div>
+      <div class="cv-skills">
+        <div class="cv-sk-cat">Email Marketing</div>
+        <div class="cv-sk-val">Mailchimp, Klaviyo, GetResponse, Brevo, campaign strategy, nurture sequences, segmentation, A/B testing, HTML/CSS</div>
+        <div class="cv-sk-cat">Copywriting</div>
+        <div class="cv-sk-val">Email copy, subject lines, content calendars, brand voice, conversion-focused writing</div>
+        <div class="cv-sk-cat">Automation</div>
+        <div class="cv-sk-val">Zapier, Make, n8n, HubSpot, automated lead systems, CRM management</div>
+        <div class="cv-sk-cat">Lead Generation</div>
+        <div class="cv-sk-val">Apollo, Clay, data enrichment, B2B prospecting, personalised outreach</div>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Experience</div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div class="cv-entry-title">Marketing Intern &amp; Virtual Assistant</div>
+          <div class="cv-entry-date">Oct 2025 – Dec 2025</div>
+        </div>
+        <div class="cv-entry-sub">Botrex Technology — Remote</div>
+        <ul class="cv-list">
+          <li>Designed and executed email outreach campaigns to promote a SaaS product (AutoWave Pro).</li>
+          <li>Sourced potential leads through prospecting with Apollo and organized them in a spreadsheet, then built a Zapier automation to send email promotions.</li>
+          <li>Engaged with leads, resulting in conversions and five sign-ups in the first month.</li>
+        </ul>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div class="cv-entry-title">AI Automation Trainee &amp; Virtual Assistant</div>
+          <div class="cv-entry-date">May 2025 – Oct 2025</div>
+        </div>
+        <div class="cv-entry-sub">LoubbyAI × DivVerse Labs — Remote</div>
+        <ul class="cv-list">
+          <li>Built a Facebook lead gen system connecting Facebook Ads, HubSpot, Mailchimp, and Calendly via Zapier automation.</li>
+          <li>Built marketing workflows and created email templates in Mailchimp for client onboarding and lead nurture sequences.</li>
+          <li>Created Facebook content via Meta Business Suite, managed tasks in ClickUp, and maintained a lead tracker in Google Sheets.</li>
+        </ul>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div class="cv-entry-title">Email Marketing Intern</div>
+          <div class="cv-entry-date">Sept 2025 – Nov 2025</div>
+        </div>
+        <div class="cv-entry-sub">GAO Tek Inc. — Remote</div>
+        <ul class="cv-list">
+          <li>Ran and managed B2B email campaigns using Apollo and mail merge for product promotions, meeting KPI targets.</li>
+          <li>Generated qualified leads through prospecting and data enrichment with Clay and Apollo.</li>
+        </ul>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div class="cv-entry-title">IT Support &amp; Business Application Admin</div>
+          <div class="cv-entry-date">Dec 2023 – Oct 2024</div>
+        </div>
+        <div class="cv-entry-sub">Ibadan Electricity Distribution Company — Ibadan</div>
+        <ul class="cv-list">
+          <li>Managed 300+ monthly helpdesk tickets across email, phone, and in-person.</li>
+          <li>Wrote a user guide for the IBEDC Pay app, reducing repeated support requests by 35%.</li>
+        </ul>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div class="cv-entry-title">Software Developer Intern</div>
+          <div class="cv-entry-date">May 2022 – Oct 2022</div>
+        </div>
+        <div class="cv-entry-sub">O'Bounce Technologies &amp; 1App Fintech — Ibadan</div>
+        <ul class="cv-list">
+          <li>Built cross-platform apps using Flutter, Firebase, HTML, CSS, and JavaScript.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Education</div>
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div class="cv-entry-title">B.Sc. Computer Science</div>
+          <div class="cv-entry-date">Graduated Aug 2023</div>
+        </div>
+        <div class="cv-entry-sub">Dominican University, Ibadan</div>
+        <p class="cv-edu-awards">Second Class Upper · Award of Excellence · Student Council Rep</p>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <div class="cv-section-title">Certifications</div>
+      <div class="cv-certs">
+        <div class="cv-cert-item">AI/Low-Code Automation — LoubbyAI × DivVerse Labs</div>
+        <div class="cv-cert-item">NYSC — Completed Oct 2024</div>
+        <div class="cv-cert-item">Web Development — SheCodes</div>
+        <div class="cv-cert-item">ITIL Foundation (in progress)</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
