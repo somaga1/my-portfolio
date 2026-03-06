@@ -675,7 +675,7 @@ body {
 .lightbox-overlay.open {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
 }
 
@@ -1018,19 +1018,18 @@ body {
 }
 </style>
 </head>
-        <div>
-          <div class="img-frame" id="img-apex-meta-calendar">
-            <img src="Planner.png" alt="Meta Business Suite calendar">
-          </div>
-          <p class="img-caption">Meta Business Suite — calendar</p>
-        </div>
-        <div>
-          <div class="img-frame" id="img-apex-sheets">
-            <img src="sheets.png" alt="Google Sheets lead tracker">
-          </div>
-          <p class="img-caption">Google Sheets — lead tracker</p>
-        </div>
+<body>
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-inner">
+    <div class="nav-name">Winifred Achinike</div>
+    <ul class="nav-tabs" id="navTabs">
+      <li><button data-tab="portfolio" class="active">Portfolio</button></li>
+      <li><button data-tab="cv">CV</button></li>
     </ul>
+    <button class="hamburger" id="hamburger">
+      <i class="fa-solid fa-bars"></i>
+    </button>
   </div>
 </div>
 
@@ -1231,13 +1230,12 @@ body {
             <span class="sep">·</span>
             <a href="mailto:winifredachinike@gmail.com">winifredachinike@gmail.com</a>
             <span class="sep">·</span>
-            <a href="https://calendly.com/winifredachinike" target="_blank">Book a call</a>
-            <span class="sep">·</span>
             <a href="https://www.linkedin.com/in/winifred-achinike" target="_blank">LinkedIn</a>
             <span class="sep">·</span>
-            <a href="https://my-portfolio-winifred-achinike.vercel.app/email_marketing.html" target="_blank">Portfolio</a>
+            <a href="#tab-portfolio">Portfolio</a>
         </div>
         <div class="cv-location">Ibadan, Nigeria · Open to remote</div>
+        <button onclick="window.print()" style="margin-top:10px; font-size:12px; padding:5px 10px; background:var(--accent); color:white; border:none; border-radius:4px; cursor:pointer;">Download CV</button>
       </div>
 
       <!-- Summary -->
@@ -1259,18 +1257,7 @@ body {
           <div class="cv-sk-cat">Lead Generation</div>
           <div class="cv-sk-val">Apollo, Clay, data enrichment, B2B prospecting, personalised outreach</div>
           <div class="cv-sk-cat">Tools</div>
-            <div class="cv-sk-val" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-              <img src="https://mailchimp.com/favicon.ico" alt="Mailchimp" style="height:28px;margin-right:6px">
-              <img src="https://www.klaviyo.com/favicon.ico" alt="Klaviyo" style="height:28px;margin-right:6px">
-              <img src="https://www.getresponse.com/favicon.ico" alt="GetResponse" style="height:28px;margin-right:6px">
-              <img src="https://www.brevo.com/favicon.ico" alt="Brevo" style="height:28px;margin-right:6px">
-              <img src="hubspot.png" alt="HubSpot" style="height:28px;margin-right:6px">
-              <img src="zap.png" alt="Zapier" style="height:28px;margin-right:6px">
-              <img src="calbooking.png" alt="Calendly" style="height:28px;margin-right:6px">
-              <img src="board.png" alt="ClickUp" style="height:28px;margin-right:6px">
-              <img src="nexusflow.png" alt="Apollo" style="height:28px;margin-right:6px">
-              <img src="sheets.png" alt="Google Sheets" style="height:28px;margin-right:6px">
-            </div>
+            <div class="cv-sk-val">Mailchimp, Klaviyo, GetResponse, Brevo, HubSpot, Zapier, Calendly, ClickUp, Apollo, Google Sheets</div>
         </div>
       </div>
 
@@ -1381,7 +1368,7 @@ body {
         <div class="subject-line"><span class="sl-num">02</span> The Only 3 Things Your Hair Needs 🌿</div>
         <div class="subject-line"><span class="sl-num">03</span> If Your Edges Have Been Acting Funny…</div>
         <div class="subject-line"><span class="sl-num">04</span> What Happens When You Simplify Your Routine? 🤔</div>
-        <div class="subject-line"><span class="sl-num">05</span> Your Wig Should Not Be Your Only Option 🦬 <span class="sl-badge">Selected</span></div>
+        <div class="subject-line"><span class="sl-num">05</span> Your Wig Should Not Be Your Only Option 🙅🏾‍♀️ <span class="sl-badge">Selected</span></div>
       </div>
     </div>
 
@@ -1403,7 +1390,7 @@ body {
           <tr><td class="cal-day">Tue</td><td>The Only 3 Things Your Hair Needs 🌿</td><td><span class="cal-type ct-ed">Education</span></td></tr>
           <tr><td class="cal-day">Wed</td><td>If Your Edges Have Been Acting Funny…</td><td><span class="cal-type ct-ps">Problem/Solution</span></td></tr>
           <tr><td class="cal-day">Thu</td><td>What Happens When You Simplify Your Routine?</td><td><span class="cal-type ct-pr">Product</span></td></tr>
-          <tr><td class="cal-day">Fri</td><td>Your Wig Should Not Be Your Only Option 🦬</td><td><span class="cal-type ct-tr">Brand Trust</span></td></tr>
+          <tr><td class="cal-day">Fri</td><td>Your Wig Should Not Be Your Only Option 🙅🏾‍♀️</td><td><span class="cal-type ct-tr">Brand Trust</span></td></tr>
           <tr><td class="cal-day">Sat</td><td>A little weekend surprise for you… 🎁✨</td><td><span class="cal-type ct-pm">Promotion</span></td></tr>
           <tr><td class="cal-day">Sun</td><td>My 60-Day Gartay Diary (With Pictures) 📸</td><td><span class="cal-type ct-sp">Social Proof</span></td></tr>
         </tbody>
@@ -1452,19 +1439,17 @@ body {
           <div class="img-frame" id="img-apex-meta">
             <img src="preview.png" alt="Facebook post preview">
           </div>
-          <p class="img-caption">Facebook post preview — ad creative</p>
+          <p class="img-caption">Facebook — post preview/ad creative</p>
         </div>
+        <div class="img-frame" id="img-apex-zapier">
+          <img src="planner.png" alt="Zapier workflow">
+        </div>
+        <p class="img-caption">Facebook — content calendar</p>
         <div>
           <div class="img-frame" id="img-apex-zapier">
             <img src="zap.png" alt="Zapier workflow">
           </div>
           <p class="img-caption">Zapier — automation</p>
-        </div>
-        <div>
-          <div class="img-frame" id="img-apex-hubspot">
-            <img src="hubspot.png" alt="HubSpot form & contacts">
-          </div>
-          <p class="img-caption">HubSpot — form & audience contacts</p>
         </div>
         <div>
           <div class="img-frame" id="img-apex-calendly">
@@ -1486,7 +1471,7 @@ body {
         </div>
         <div>
           <div class="img-frame" id="img-apex-hs-list">
-            <img src="hubspot.png" alt="HubSpot audience list">
+            <img src="audience.png" alt="HubSpot audience list">
           </div>
           <p class="img-caption">HubSpot — audience list & contact records</p>
         </div>
@@ -1539,15 +1524,15 @@ body {
       <p>All email copy across the consultation nurture sequence, including the initial welcome email, follow-up reminders, and booking confirmations.</p>
       <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap;">
         <div style="flex:1 1 220px; max-width:320px;">
-          <div class="img-frame"><img src="ecommerce.png" alt="Consultation invite email"></div>
+          <div class="img-frame"><img src="automation.png" alt="Consultation invite email" style="height:70%;"></div>
           <p class="img-caption">Consultation invite</p>
         </div>
         <div style="flex:1 1 220px; max-width:320px;">
-          <div class="img-frame"><img src="newsletter.png" alt="Follow-up nurture email"></div>
+          <div class="img-frame"><img src="automation-2.png" alt="Follow-up nurture email" style="height:70%;"></div>
           <p class="img-caption">Follow-up nurture email</p>
         </div>
         <div style="flex:1 1 220px; max-width:320px;">
-          <div class="img-frame"><img src="noirebooking.png" alt="Booking confirmation email"></div>
+          <div class="img-frame"><img src="automation-3.png" alt="Booking confirmation email" style="height:70%;"></div>
           <p class="img-caption">Booking confirmation</p>
         </div>
       </div>
@@ -1582,7 +1567,7 @@ body {
         <li>Built a curated prospect list in Google Sheets with personalisation fields</li>
         <li>Wrote a cold email that introduced the product benefits naturally</li>
         <li>Automated delivery through Zapier, pulling from the Google Sheets list</li>
-        <li>Ran A/B tests on subject lines and CTAs; winner scaled.</li>
+        <li>Ran A/B tests on subject lines and CTAs</li>
         <li>Result: 10 sign-ups within the first week</li>
       </ul>
     </div>
