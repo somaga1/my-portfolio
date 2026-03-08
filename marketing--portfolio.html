@@ -1873,6 +1873,7 @@ document.querySelectorAll('.project-card').forEach(function(card) {
     if (overlay) {
       overlay.classList.add('open');
       overlay.scrollTop = 0;
+      history.pushState({ overlay: projectId }, '', '');
     }
   });
 });
@@ -1884,10 +1885,19 @@ document.querySelectorAll('.back-btn').forEach(function(btn) {
     var overlay = document.getElementById('detail-' + projectId);
     if (overlay) {
       overlay.classList.remove('open');
+      if (history.state && history.state.overlay) {
+        history.back();
+      }
     }
   });
 });
 
+// Handle browser/mobile back gesture
+window.addEventListener('popstate', function(e) {
+  document.querySelectorAll('.detail-overlay.open').forEach(function(overlay) {
+    overlay.classList.remove('open');
+  });
+});
 // Gallery lightbox
 var galleryLightbox = document.getElementById('galleryLightbox');
 var lightboxImg = document.getElementById('lightboxImg');
