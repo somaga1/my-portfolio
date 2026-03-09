@@ -1813,7 +1813,7 @@ body {
     <ul class="footer-links">
       <li><a href="mailto:winifredachinike@gmail.com" target="_blank">Email Me</a></li>
       <li><a href="https://calendly.com/winifredachinike" target="_blank">Book a call</a></li>
-      <li><a href="tel:+2349028021766">+234 902 802 1766</a></li>
+      <li><a href="https://wa.me/2349028021766" target="_blank">WhatsApp</a></li>
     </ul>
   </div>
 </div>
@@ -1906,34 +1906,48 @@ var lightboxClose = document.getElementById('lightboxClose');
 
 document.querySelectorAll('.gallery-card').forEach(function(card) {
   card.addEventListener('click', function() {
-    var img = card.querySelector('.gallery-card-img');
-    if (img) {
-      lightboxImg.src = img.src;
-      lightboxCaption.textContent = img.alt || '';
-      galleryLightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-  });
-});
+      var img = card.querySelector('.gallery-card-img');
+          if (img) {
+                lightboxImg.src = img.src;
+                      lightboxCaption.textContent = img.alt || '';
+                            galleryLightbox.classList.add('open');
+                                  document.body.style.overflow = 'hidden';
+                                        history.pushState({ lightbox: true }, '', '');
+                                            }
+                                              });
+                                              });
 
-lightboxClose.addEventListener('click', function() {
-  galleryLightbox.classList.remove('open');
-  document.body.style.overflow = '';
-});
+                                              function closeLightbox() {
+                                                galleryLightbox.classList.remove('open');
+                                                  document.body.style.overflow = '';
+                                                    if (history.state && history.state.lightbox) {
+                                                        history.back();
+                                                          }
+                                                          }
 
-galleryLightbox.addEventListener('click', function(e) {
-  if (e.target === galleryLightbox) {
-    galleryLightbox.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-});
+                                                          lightboxClose.addEventListener('click', closeLightbox);
 
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape' && galleryLightbox.classList.contains('open')) {
-    galleryLightbox.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-});
+                                                          galleryLightbox.addEventListener('click', function(e) {
+                                                            if (e.target === galleryLightbox) {
+                                                                closeLightbox();
+                                                                  }
+                                                                  });
+
+                                                                  document.addEventListener('keydown', function(e) {
+                                                                    if (e.key === 'Escape' && galleryLightbox.classList.contains('open')) {
+                                                                        closeLightbox();
+                                                                          }
+                                                                          });
+
+                                                                          window.addEventListener('popstate', function(e) {
+                                                                            if (galleryLightbox.classList.contains('open')) {
+                                                                                galleryLightbox.classList.remove('open');
+                                                                                    document.body.style.overflow = '';
+                                                                                      }
+                                                                                        document.querySelectorAll('.detail-overlay.open').forEach(function(overlay) {
+                                                                                            overlay.classList.remove('open');
+                                                                                              });
+                                                                                              });
 </script>
 
 
